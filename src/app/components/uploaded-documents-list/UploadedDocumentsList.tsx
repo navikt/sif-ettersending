@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
+import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import { useFormikContext } from 'formik';
 import { Normaltekst } from 'nav-frontend-typografi';
 import AttachmentListWithDeletion from 'common/components/attachment-list-with-deletion/AttachmentListWithDeletion';
 import AttachmentList from 'common/components/attachment-list/AttachmentList';
-import Box from 'common/components/box/Box';
 import { Attachment } from 'common/types/Attachment';
 import { containsAnyUploadedAttachments, fileExtensionIsValid } from 'common/utils/attachmentUtils';
 import { removeElementFromArray } from 'common/utils/listUtils';

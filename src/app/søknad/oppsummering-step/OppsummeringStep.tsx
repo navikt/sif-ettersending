@@ -9,27 +9,27 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { sendApplication } from '../../../../api/api';
-import RouteConfig from '../../../../config/routeConfig';
-import { StepID } from '../../../../config/stepConfig';
-import { SøkerdataContext } from '../../../../context/SøkerdataContext';
-import { Søkerdata } from '../../../../types/Søkerdata';
-import { SøknadApiData } from '../../../../types/SøknadApiData';
-import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
-import * as apiUtils from '../../../../utils/apiUtils';
-import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
-import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
-import UploadedDocumentsList from '../../../uploaded-documents-list/UploadedDocumentsList';
-import FormikStep from '../../formik-step/FormikStep';
-import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import { sendApplication } from '../../api/api';
+import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
+import RouteConfig from '../../config/routeConfig';
+import { StepID } from '../../config/stepConfig';
+import { SøkerdataContext } from '../../context/SøkerdataContext';
+import { Søkerdata } from '../../types/Søkerdata';
+import { SøknadApiData } from '../../types/SøknadApiData';
+import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import * as apiUtils from '../../utils/apiUtils';
+import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
+import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
+import SøknadFormComponents from '../SøknadFormComponents';
+import SøknadStep from '../SøknadStep';
 import SummaryBlock from './SummaryBlock';
-import './summary.less';
+import './oppsummering.less';
 
 interface Props {
     onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
 }
 
-const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
+const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
     const intl = useIntl();
     const { values } = useFormikContext<SøknadFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
@@ -61,7 +61,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
 
     return (
-        <FormikStep
+        <SøknadStep
             id={StepID.SUMMARY}
             onValidFormSubmit={() => {
                 setTimeout(() => {
@@ -95,7 +95,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
             </Box>
 
             <Box margin="l">
-                <TypedFormComponents.ConfirmationCheckbox
+                <SøknadFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
                     name={SøknadFormField.harBekreftetOpplysninger}
                     validate={(value) => {
@@ -107,8 +107,8 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
                     }}
                 />
             </Box>
-        </FormikStep>
+        </SøknadStep>
     );
 };
 
-export default SummaryStep;
+export default OppsummeringStep;
