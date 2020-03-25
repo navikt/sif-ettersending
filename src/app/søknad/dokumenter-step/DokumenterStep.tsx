@@ -53,7 +53,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     onFileInputClick={() => {
                         setFilesThatDidntGetUploaded([]);
                     }}
-                    onUnauthorizedOrForbiddenUpload={navigateToLoginPage}
+                    onUnauthorizedOrForbiddenUpload={() => navigateToLoginPage(søknadstype)}
                     validate={validateDocuments}
                 />
             </FormBlock>
