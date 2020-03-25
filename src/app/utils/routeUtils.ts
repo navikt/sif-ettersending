@@ -1,9 +1,7 @@
 import RouteConfig from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
-import { SøknadFormData, SøknadFormField } from '../types/SøknadFormData';
-import { welcomingPageIsValid } from '../validation/stepValidations';
-import { appIsRunningInDevEnvironment } from './envUtils';
-import { summaryStepAvailable } from './stepUtils';
+import { SøknadFormData } from '../types/SøknadFormData';
+import { documentsStepIsAvailable, summaryStepAvailable } from './stepUtils';
 
 export const getSøknadRoute = (stepId: StepID | undefined) => {
     if (stepId !== undefined) {
@@ -17,16 +15,14 @@ export const getNextStepRoute = (stepId: StepID, formData?: SøknadFormData): st
     return stepConfig[stepId] ? getSøknadRoute(stepConfig[stepId].nextStep) : undefined;
 };
 
-export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData) => {
-    if (!appIsRunningInDevEnvironment()) {
-        switch (path) {
-            case StepID.DOCUMENTS:
-                return welcomingPageIsValid(values);
-            case StepID.SUMMARY:
-                return summaryStepAvailable(values);
-            case RouteConfig.SØKNAD_SENDT_ROUTE:
-                return values[SøknadFormField.harBekreftetOpplysninger];
-        }
+export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData, soknadSendt?: boolean) => {
+    switch (path) {
+        case StepID.DOKUMENTER:
+            return documentsStepIsAvailable(values);
+        case StepID.OPPSUMMERING:
+            return summaryStepAvailable(values);
+        case RouteConfig.SØKNAD_SENDT_ROUTE:
+            return soknadSendt === true;
     }
     return true;
 };

@@ -7,6 +7,7 @@ export interface SøknadApiData {
     språk: Locale;
     harForståttRettigheterOgPlikter: boolean;
     harBekreftetOpplysninger: boolean;
+    beskrivelse: string;
     vedlegg: string[];
     søknadstype: Søknadstype;
 }

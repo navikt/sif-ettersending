@@ -7,7 +7,7 @@ import { getApiUrlByResourceType, sendMultipartPostRequest } from '../utils/apiU
 export const getSøker = () => axios.get(getApiUrlByResourceType(ResourceType.SØKER), axiosConfig);
 
 export const sendApplication = (data: SøknadApiData) =>
-    axios.post(getApiUrlByResourceType(ResourceType.SEND_SØKNAD), data, axiosConfig);
+    axios.post(getApiUrlByResourceType(ResourceType.SEND_DOKUMENTER), data, axiosConfig);
 
 export const uploadFile = (file: File) => {
     const formData = new FormData();

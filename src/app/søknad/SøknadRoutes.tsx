@@ -12,8 +12,8 @@ import { SøknadApiData } from '../types/SøknadApiData';
 import { SøknadFormData } from '../types/SøknadFormData';
 import { navigateTo } from '../utils/navigationUtils';
 import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
+import DokumenterStep from './dokumenter-step/DokumenterStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
-import VedleggStep from './vedlegg-step/VedleggStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -50,23 +50,23 @@ const SøknadRoutes: React.FunctionComponent = () => {
                     <WelcomingPage
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${RouteConfig.SØKNAD_ROUTE_PREFIX}/${StepID.DOCUMENTS}`, history);
+                                navigateTo(`${RouteConfig.SØKNAD_ROUTE_PREFIX}/${StepID.DOKUMENTER}`, history);
                             })
                         }
                     />
                 )}
             />
 
-            {isAvailable(StepID.DOCUMENTS, values) && (
+            {isAvailable(StepID.DOKUMENTER, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.DOCUMENTS)}
-                    render={() => <VedleggStep onValidSubmit={() => navigateToNextStep(StepID.DOCUMENTS)} />}
+                    path={getSøknadRoute(StepID.DOKUMENTER)}
+                    render={() => <DokumenterStep onValidSubmit={() => navigateToNextStep(StepID.DOKUMENTER)} />}
                 />
             )}
 
-            {isAvailable(StepID.SUMMARY, values) && (
+            {isAvailable(StepID.OPPSUMMERING, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.SUMMARY)}
+                    path={getSøknadRoute(StepID.OPPSUMMERING)}
                     render={() => (
                         <OppsummeringStep
                             onApplicationSent={(apiData: SøknadApiData, søkerdata: Søkerdata) => {
@@ -81,13 +81,12 @@ const SøknadRoutes: React.FunctionComponent = () => {
                 />
             )}
 
-            {isAvailable(RouteConfig.SØKNAD_SENDT_ROUTE, values) ||
-                (søknadHasBeenSent === true && (
-                    <Route
-                        path={RouteConfig.SØKNAD_SENDT_ROUTE}
-                        render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
-                    />
-                ))}
+            {isAvailable(RouteConfig.SØKNAD_SENDT_ROUTE, values, søknadHasBeenSent) && (
+                <Route
+                    path={RouteConfig.SØKNAD_SENDT_ROUTE}
+                    render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
+                />
+            )}
 
             <Route path={RouteConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
             <Redirect to={RouteConfig.WELCOMING_PAGE_ROUTE} />

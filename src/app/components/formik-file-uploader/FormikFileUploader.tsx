@@ -16,6 +16,7 @@ export type FieldArrayPushFn = (obj: any) => void;
 export type FieldArrayRemoveFn = (index: number) => undefined;
 
 interface FormikFileUploader {
+    groupName: SøknadFormField;
     name: SøknadFormField;
     label: string;
     validate?: FormikValidateFunction;
@@ -28,6 +29,7 @@ type Props = FormikFileUploader;
 
 const FormikFileUploader: React.FunctionComponent<Props> = ({
     name,
+    groupName,
     onFileInputClick,
     onErrorUploadingAttachments,
     onUnauthorizedOrForbiddenUpload,
@@ -109,16 +111,18 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
     }
 
     return (
-        <SøknadFormComponents.FileInput
-            name={name}
-            acceptedExtensions={VALID_EXTENSIONS.join(', ')}
-            onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
-                const attachments = files.map((file) => addPendingAttachmentToFieldArray(file, push));
-                await uploadAttachments([...(values as any)[name], ...attachments], replace);
-            }}
-            onClick={onFileInputClick}
-            {...otherProps}
-        />
+        <SøknadFormComponents.InputGroup name={groupName} legend="Dokumenter">
+            <SøknadFormComponents.FileInput
+                name={name}
+                acceptedExtensions={VALID_EXTENSIONS.join(', ')}
+                onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
+                    const attachments = files.map((file) => addPendingAttachmentToFieldArray(file, push));
+                    await uploadAttachments([...(values as any)[name], ...attachments], replace);
+                }}
+                onClick={onFileInputClick}
+                {...otherProps}
+            />
+        </SøknadFormComponents.InputGroup>
     );
 };
 

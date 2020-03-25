@@ -2,8 +2,8 @@ import { getSøknadRoute } from '../utils/routeUtils';
 import routeConfig from './routeConfig';
 
 export enum StepID {
-    'DOCUMENTS' = 'documents',
-    'SUMMARY' = 'summary'
+    'DOKUMENTER' = 'dokumenter',
+    'OPPSUMMERING' = 'oppsummering'
 }
 
 export interface StepConfigItemTexts {
@@ -36,16 +36,16 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
 export const getStepConfig = (): StepConfigInterface => {
     let idx = 0;
     const config = {
-        [StepID.DOCUMENTS]: {
-            ...getStepConfigItemTextKeys(StepID.DOCUMENTS),
+        [StepID.DOKUMENTER]: {
+            ...getStepConfigItemTextKeys(StepID.DOKUMENTER),
             index: idx++,
-            nextStep: StepID.SUMMARY,
+            nextStep: StepID.OPPSUMMERING,
             backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
         },
-        [StepID.SUMMARY]: {
-            ...getStepConfigItemTextKeys(StepID.SUMMARY),
+        [StepID.OPPSUMMERING]: {
+            ...getStepConfigItemTextKeys(StepID.OPPSUMMERING),
             index: idx++,
-            backLinkHref: getSøknadRoute(StepID.DOCUMENTS),
+            backLinkHref: getSøknadRoute(StepID.DOKUMENTER),
             nextButtonLabel: 'step.sendButtonLabel',
             nextButtonAriaLabel: 'step.sendButtonAriaLabel'
         }

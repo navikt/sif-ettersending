@@ -41,6 +41,10 @@ const startServer = () => {
         res.sendStatus(200);
     });
 
+    server.post('/ettersend', (req, res) => {
+        res.sendStatus(200);
+    });
+
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
     });

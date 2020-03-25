@@ -62,7 +62,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
 
     return (
         <SøknadStep
-            id={StepID.SUMMARY}
+            id={StepID.OPPSUMMERING}
             onValidFormSubmit={() => {
                 setTimeout(() => {
                     navigate(apiValues, søkerdata); // La view oppdatere seg først
@@ -79,16 +79,12 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
                         <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                        <Normaltekst>
-                            <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
-                        </Normaltekst>
+                        <Normaltekst>Fødselsnummer: {fødselsnummer}</Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søknadstype')}>
-                        Søknaden gjelder {apiValues.søknadstype}
-                    </SummaryBlock>
+                    <SummaryBlock header="Søknadstype">Dokumentene gjelder {apiValues.søknadstype}</SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.vedlegg')}>
+                    <SummaryBlock header="Dokumenter">
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
                     </SummaryBlock>
                 </Panel>
