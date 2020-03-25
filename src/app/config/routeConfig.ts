@@ -1,5 +1,5 @@
 import { getEnvironmentVariable } from 'app/utils/envUtils';
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 
 interface RouteConfig {
     UTILGJENGELIG_ROUTE: string;

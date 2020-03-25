@@ -1,5 +1,5 @@
 import { Locale } from 'common/types/Locale';
-import { Søknadstype } from './SøknadFormData';
+import { Søknadstype } from './Søknadstype';
 
 export type ISO8601Duration = string;
 

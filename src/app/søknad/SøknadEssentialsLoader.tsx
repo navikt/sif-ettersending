@@ -3,7 +3,7 @@ import { getSøker } from '../api/api';
 import LoadingPage from '../components/pages/loading-page/LoadingPage';
 import { SøkerdataContextProvider } from '../context/SøkerdataContext';
 import { Søkerdata } from '../types/Søkerdata';
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import * as apiUtils from '../utils/apiUtils';
 import {
     navigateToErrorPage, navigateToLoginPage, navigateToWelcomePage, userIsCurrentlyOnErrorPage

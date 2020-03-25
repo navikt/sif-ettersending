@@ -1,6 +1,6 @@
 import { History } from 'history';
 import { getRouteConfig, getRouteUrl } from '../config/routeConfig';
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import { getEnvironmentVariable } from './envUtils';
 
 const getLoginUrl = (søknadstype: Søknadstype) => `${getEnvironmentVariable('LOGIN_URL')}/${søknadstype}`;

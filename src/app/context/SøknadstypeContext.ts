@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 
 interface SøknadstypeContextType {
     søknadstype?: Søknadstype;

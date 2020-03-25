@@ -1,10 +1,5 @@
 import { Attachment } from '@navikt/sif-common-core/lib/types/Attachment';
-
-export enum Søknadstype {
-    'ukjent' = 'ukjent',
-    'pleiepenger' = 'pleiepenger',
-    'omsorgspenger' = 'omsorgspenger'
-}
+import { Søknadstype } from './Søknadstype';
 
 export enum SøknadFormField {
     harForståttRettigheterOgPlikter = 'harForståttRettigheterOgPlikter',

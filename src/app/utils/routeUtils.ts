@@ -1,6 +1,7 @@
 import { getRouteConfig } from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
-import { SøknadFormData, Søknadstype } from '../types/SøknadFormData';
+import { SøknadFormData } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import { documentsStepIsAvailable, summaryStepAvailable } from './stepUtils';
 
 export const getSøknadRoute = (søknadstype: Søknadstype, stepId: StepID | undefined) => {

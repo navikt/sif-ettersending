@@ -8,7 +8,8 @@ import {
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import SøknadFormComponents from '../../søknad/SøknadFormComponents';
-import { SøknadFormData, SøknadFormField, Søknadstype } from '../../types/SøknadFormData';
+import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { Søknadstype } from '../../types/Søknadstype';
 import * as apiUtils from '../../utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;

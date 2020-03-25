@@ -1,7 +1,8 @@
 import * as React from 'react';
 import IkkeMyndigPage from '../components/pages/ikke-myndig-page/IkkeMyndigPage';
 import { SøknadstypeContext } from '../context/SøknadstypeContext';
-import { initialSøknadValues, Søknadstype } from '../types/SøknadFormData';
+import { initialSøknadValues } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import SøknadEssentialsLoader from './SøknadEssentialsLoader';
 import SøknadFormComponents from './SøknadFormComponents';
 import SøknadRoutes from './SøknadRoutes';

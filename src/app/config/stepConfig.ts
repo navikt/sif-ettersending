@@ -1,4 +1,4 @@
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import { getSøknadRoute } from '../utils/routeUtils';
 import { getRouteConfig } from './routeConfig';
 

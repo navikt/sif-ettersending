@@ -2,7 +2,7 @@ import axios from 'axios';
 import axiosConfig from '../config/axiosConfig';
 import { ResourceType } from '../types/ResourceType';
 import { SøknadApiData } from '../types/SøknadApiData';
-import { Søknadstype } from '../types/SøknadFormData';
+import { Søknadstype } from '../types/Søknadstype';
 import { getApiUrlByResourceType, sendMultipartPostRequest } from '../utils/apiUtils';
 
 export const getSøker = (søknadstype: Søknadstype) =>

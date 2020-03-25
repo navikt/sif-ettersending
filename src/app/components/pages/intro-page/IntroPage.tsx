@@ -10,7 +10,7 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
-import { Søknadstype } from '../../../types/SøknadFormData';
+import { Søknadstype } from '../../../types/Søknadstype';
 
 const bem = bemUtils('introPage');
 

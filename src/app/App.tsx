@@ -9,7 +9,7 @@ import GeneralErrorPage from './components/pages/general-error-page/GeneralError
 import IntroPage from './components/pages/intro-page/IntroPage';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
 import Søknad from './søknad/Søknad';
-import { Søknadstype } from './types/SøknadFormData';
+import { Søknadstype } from './types/Søknadstype';
 import { Feature, isFeatureEnabled } from './utils/featureToggleUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import 'common/styles/globalStyles.less';
