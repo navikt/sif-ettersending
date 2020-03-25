@@ -45,7 +45,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
-                navigateToLoginPage();
+                navigateToLoginPage(søknadstype);
             } else {
                 navigateTo(getRouteConfig(søknadstype).ERROR_PAGE_ROUTE, history);
             }
