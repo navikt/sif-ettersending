@@ -3,7 +3,7 @@ import { getRouteConfig, getRouteUrl } from '../config/routeConfig';
 import { Søknadstype } from '../types/SøknadFormData';
 import { getEnvironmentVariable } from './envUtils';
 
-const loginUrl = getEnvironmentVariable('LOGIN_URL');
+const getLoginUrl = (søknadstype: Søknadstype) => `${getEnvironmentVariable('LOGIN_URL')}/${søknadstype}`;
 
 export const redirectTo = (route: string) => window.location.assign(route);
 export const navigateTo = (route: string, history: History) => history.push(route);
@@ -15,7 +15,7 @@ export const navigateToErrorPage = (søknadstype: Søknadstype, history?: Histor
         window.location.assign(getRouteUrl(undefined, routeConfig.ERROR_PAGE_ROUTE));
     }
 };
-export const navigateToLoginPage = () => window.location.assign(loginUrl);
+export const navigateToLoginPage = (søknadstype: Søknadstype) => window.location.assign(getLoginUrl(søknadstype));
 export const navigateToWelcomePage = (søknadstype: Søknadstype) =>
     window.location.assign(getRouteUrl(søknadstype, getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE));
 export const userIsCurrentlyOnErrorPage = (søknadstype: Søknadstype) =>

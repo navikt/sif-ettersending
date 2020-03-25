@@ -48,5 +48,5 @@ spec:
         - name: PUBLIC_PATH
           value: /familie/sykdom-i-familien/soknad/ettersending
         - name: LOGIN_URL
-          value: https://loginservice.nav.no/login?redirect=https://www.nav.no/familie/sykdom-i-familien/soknad/ettersending/soknad
+          value: https://loginservice.nav.no/login?redirect=https://www.nav.no/familie/sykdom-i-familien/soknad/ettersending/
 

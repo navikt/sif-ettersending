@@ -34,7 +34,7 @@ const SøknadEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props)
                 }
             } catch (response) {
                 if (apiUtils.isForbidden(response) || apiUtils.isUnauthorized(response)) {
-                    navigateToLoginPage();
+                    navigateToLoginPage(søknadstype);
                 } else if (!userIsCurrentlyOnErrorPage(søknadstype)) {
                     navigateToErrorPage(søknadstype);
                 }
