@@ -24,7 +24,7 @@ const SøknadEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props)
     const [søkerdata, setSøkerdata] = useState<Søkerdata | undefined>();
 
     async function loadAppEssentials() {
-        if (søkerdata === undefined) {
+        if (søkerdata === undefined && loadState.error === undefined) {
             try {
                 const { data: person } = await getSøker(søknadstype);
                 setSøkerdata({ person });
