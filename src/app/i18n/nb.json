@@ -1,1 +1,100 @@
-{}
+{
+    "Ja": "Ja",
+    "Nei": "Nei",
+    "VetIkke": "Jeg er usikker",
+
+    "locale.nb": "Bokmål - norsk",
+    "locale.nn": "Nynorsk - norsk",
+
+    "page.loadingPage.tekst": "Laster ...",
+    "gotoApplicationLink.lenketekst": "Gå til den digitale søknaden",
+    "backlink.label": "Tilbake",
+
+    "banner.title": "Ettersending av dokumenter",
+
+    "søknadstype.pleiepenger": "pleiepengesøknad",
+    "søknadstype.omsorgspenger": "omsorgspengesøknad",
+
+    "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
+    "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
+    "welcomingPage.samtykke.harForståttLabel": "For å gå videre til opplasting av dokumenter, må du bekrefte at du har lest og forstått {plikterLink}.",
+    "welcomingPage.samtykke.harForståttLabel.lenketekst": "dine plikter",
+    "welcomingPage.personopplysninger.lenketekst": "Les om hvordan NAV behandler personopplysningene dine",
+    "welcomingPage.modal.omDinePlikter.tittel": "Om dine plikter",
+    "welcomingPage.modal.behandlingAvPersonalia.tittel": "Om behandling av personopplysninger",
+    "welcomingPage.begynnsøknad": "Gå til søknaden",
+
+    "modal.personalopplysninger.tittel": "Slik behandler NAV personopplysningene dine",
+    "modal.personalopplysninger.intro.1": "NAV innhenter og mottar opplysninger om deg når du sender inn en søknad. Det er nødvendig for at du skal kunne få riktig tjeneste og ytelser.",
+    "modal.personalopplysninger.intro.2a": "Du har valgt å søke om omsorgspenger. Det er en ytelse fra folketrygden som du kan få hvis du fyller vilkårene. Vilkårene står på",
+    "modal.personalopplysninger.intro.2b": "nav.no/omsorgspenger",
+    "modal.personalopplysninger.opplysninger.tittel": "Opplysningene vi innhenter",
+    "modal.personalopplysninger.opplysninger.part1": "Opplysningene kommer enten fra deg eller fra offentlige registre:",
+    "modal.personalopplysninger.opplysninger.1": "arbeidsforholdene dine og inntekten din",
+    "modal.personalopplysninger.opplysninger.2": "ytelser du mottar fra NAV",
+    "modal.personalopplysninger.opplysninger.3": "opplysninger om barnets helse",
+    "modal.personalopplysninger.opplysninger.4": "tilknytningen din til Norge",
+    "modal.personalopplysninger.opplysninger.5": "trygdeordninger du kan ha rett til i andre land",
+    "modal.personalopplysninger.opplysninger.part2": "Vi kan også sende opplysninger om deg til trygdemyndigheter i andre land.",
+
+    "modal.personalopplysninger.svar.tittel": "Svar på søknaden",
+    "modal.personalopplysninger.svar.part1": "Du får et brev fra NAV når søknaden din er behandlet. Brevet inneholder",
+    "modal.personalopplysninger.svar.1": "begrunnelse for beslutningen og reglene som er brukt",
+    "modal.personalopplysninger.svar.2": "hvordan du får innsyn i saksbehandlingen",
+    "modal.personalopplysninger.svar.3": "hvordan du kan klage hvis du er uenig",
+
+    "modal.personalopplysninger.personvern.tittel": "Personvern i NAV",
+    "modal.personalopplysninger.personvern.part1a": "Vil du vite mer om hvordan NAV behandler personopplysninger? Se",
+    "modal.personalopplysninger.personvern.part1b": "nav.no/personvern",
+
+    "modal.minePlikter.tittel": "Mine plikter",
+    "modal.minePlikter.part1": "Jeg forstår at det kan få konsekvenser for retten min til omsorgspenger hvis jeg",
+    "modal.minePlikter.part1a": "gir uriktig informasjon eller",
+    "modal.minePlikter.part1b": "holder tilbake opplysninger",
+    "modal.minePlikter.part2a": "Jeg har lest og forstått det som står på",
+    "modal.minePlikter.part2b": "nav.no/rettogplikt",
+
+    "step.nextButtonLabel": "Fortsett",
+    "step.nextButtonAriaLabel": "Gå til neste steg",
+    "step.sendButtonLabel": "Send inn søknaden",
+    "step.sendButtonAriaLabel": "Send inn søknaden",
+
+    "step.dokumenter.pageTitle": "Last opp dokumenter",
+    "step.dokumenter.stepTitle": "Ta bilde av dokumentene og last opp",
+    "step.dokumenter.stepIndicatorLabel": "Last opp dokumenter",
+    "steg.dokumenter.vedlegg": "Last opp bilde av dokumentene (maks 3 bilder)",
+
+    "step.oppsummering.pageTitle": "Pleiepengesøknad - oppsummering",
+    "step.oppsummering.stepTitle": "Oppsummering",
+    "step.oppsummering.stepIndicatorLabel": "Oppsummering",
+    "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn søknaden. Hvis du vil gjøre endringer, kan du gå tilbake.",
+    "steg.oppsummering.søker.header": "Navn på søker",
+    "steg.oppsummering.søker.fnr": "Fødselsnummer: {fodselsnummer}",
+    "steg.oppsummering.vedlegg": "Dokumenter",
+    "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til pleiepenger.",
+    "steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet": "Du må bekrefte opplysningene",
+
+    "vedleggsliste.fjernKnapp": "Fjern dokument",
+    "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokumenter er lastet opp",
+
+    "page.generalErrorPage.sidetittel": "Feil",
+    "page.generalErrorPage.tittel": "Noe gikk galt...",
+    "page.generalErrorPage.tekst": "Beklager, her har det dessverre skjedd en feil.",
+
+    "page.ikkeMyndig.sidetittel": "Ettersending av dokumenter - ikke myndig",
+    "page.ikkeMyndig.banner.tittel": "Hei!",
+    "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må den av foreldrene dine eller den foresatte som sendte inn søknanden sammen med degn, sende inn dokumentene.",
+    "page.ikkeMyndig.tittel": "Ettersending av dokumenter",
+
+    "page.confirmation.sidetittel": "Vi har mottatt ettersendingen av dokumenter",
+    "page.confirmation.tittel": "Vi har mottatt ettersendingen av dokumenter",
+    "page.confirmation.undertittel": "Hva skjer videre nå?",
+    "page.confirmation.hvaSkjer1": "Hva",
+    "page.confirmation.hvaSkjer2": "Skjer",
+    "page.confirmation.hvaSkjer3": "Videre",
+
+    "fieldvalidation.påkrevd": "Påkrevd verdi",
+    "fieldvalidation.for_lang_beskrivelse": "Beskrivelsen er for lang",
+    "fieldvalidation.ingen_dokumenter": "Ingen dokumenter er lastet opp",
+    "fieldvalidation.for_mange_dokumente": "For mange dokumenter er lastet opp"
+}

@@ -6,8 +6,9 @@ import { FieldValidationResult } from 'common/validation/types';
 
 export enum AppFieldValidationErrors {
     'påkrevd' = 'fieldvalidation.påkrevd',
-    'ingen_dokumenter' = 'ingen_dokumenter',
-    'for_mange_dokumenter' = 'for_mange_dokumenter'
+    'for_lang_beskrivelse' = 'fieldvalidation.for_lang_beskrivelse',
+    'ingen_dokumenter' = 'fieldvalidation.ingen_dokumenter',
+    'for_mange_dokumenter' = 'fieldvalidation.for_mange_dokumenter'
 }
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;
@@ -26,6 +27,15 @@ export const validateYesOrNoIsAnswered = (answer: YesOrNo): FieldValidationResul
         return fieldIsRequiredError();
     }
     return undefined;
+};
+
+export const validateBeskrivelse = (maxLength: number) => (text: any): FieldValidationResult => {
+    if (!hasValue(text)) {
+        return fieldIsRequiredError();
+    }
+    if (text && text.length > 1000) {
+        return createAppFieldValidationError(AppFieldValidationErrors.for_lang_beskrivelse);
+    }
 };
 
 export const validateRequiredField = (value: any): FieldValidationResult => {

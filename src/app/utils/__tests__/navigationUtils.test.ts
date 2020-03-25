@@ -1,5 +1,6 @@
 import { History } from 'history';
-import routeConfig from '../../config/routeConfig';
+import { getRouteConfig } from '../../config/routeConfig';
+import { Søknadstype } from '../../types/SøknadFormData';
 import { navigateTo, navigateToErrorPage, userIsCurrentlyOnErrorPage } from '../navigationUtils';
 
 const historyMock: Partial<History> = {
@@ -9,6 +10,9 @@ const historyMock: Partial<History> = {
 jest.mock('./../envUtils.ts', () => {
     return { getEnvironmentVariable: () => '' };
 });
+
+const søknadstype = Søknadstype.omsorgspenger;
+const routeConfig = getRouteConfig(søknadstype);
 
 // hacky workaround for this issue, which actually seems to be an issue
 // with jsdom (not jest):
@@ -33,7 +37,7 @@ describe('navigationUtils', () => {
 
     describe('navigateToErrorPage', () => {
         it('should navigate user to the path specified by routeConfig.ERROR_PAGE_ROUTE', () => {
-            navigateToErrorPage(historyMock as History);
+            navigateToErrorPage(søknadstype, historyMock as History);
             expect(historyMock.push).toHaveBeenCalledWith(routeConfig.ERROR_PAGE_ROUTE);
         });
     });
@@ -41,14 +45,14 @@ describe('navigationUtils', () => {
     describe('userIsCurrentlyOnErrorPage', () => {
         it('should return true if current window.location.pathname is equal to routeConfig.ERROR_PAGE_ROUTE', () => {
             setWindowLocationPathname(routeConfig.ERROR_PAGE_ROUTE);
-            expect(userIsCurrentlyOnErrorPage()).toBe(true);
+            expect(userIsCurrentlyOnErrorPage(søknadstype)).toBe(true);
         });
 
         it('should return false if current window.location.pathname is not equal to routeConfig.ERROR_PAGE_ROUTE', () => {
             setWindowLocationPathname(undefined);
-            expect(userIsCurrentlyOnErrorPage()).toBe(false);
+            expect(userIsCurrentlyOnErrorPage(søknadstype)).toBe(false);
             setWindowLocationPathname('/foobar');
-            expect(userIsCurrentlyOnErrorPage()).toBe(false);
+            expect(userIsCurrentlyOnErrorPage(søknadstype)).toBe(false);
         });
     });
 });

@@ -5,6 +5,7 @@ import FormBlock from 'common/components/form-block/FormBlock';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import Step, { StepProps } from '../components/step/Step';
 import { getStepConfig } from '../config/stepConfig';
+import { SøknadstypeContext } from '../context/SøknadstypeContext';
 import { getStepTexts } from '../utils/stepUtils';
 import SøknadFormComponents from './SøknadFormComponents';
 
@@ -22,8 +23,12 @@ type Props = FormikStepProps & StepProps;
 
 const SøknadStep: React.FunctionComponent<Props> = (props) => {
     const intl = useIntl();
+    const { søknadstype } = React.useContext(SøknadstypeContext);
+    if (!søknadstype) {
+        return <div>what?</div>;
+    }
     const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, customErrorSummary, id } = props;
-    const stepConfig = getStepConfig();
+    const stepConfig = getStepConfig(søknadstype);
     const texts = getStepTexts(intl, id, stepConfig);
     return (
         <Step stepConfig={stepConfig} {...props}>

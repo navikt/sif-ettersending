@@ -5,15 +5,17 @@ import moment from 'moment';
 import Modal from 'nav-frontend-modal';
 import { Locale } from 'common/types/Locale';
 import ApplicationWrapper from './components/application-wrapper/ApplicationWrapper';
+import GeneralErrorPage from './components/pages/general-error-page/GeneralErrorPage';
 import IntroPage from './components/pages/intro-page/IntroPage';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
-import RouteConfig from './config/routeConfig';
 import Søknad from './søknad/Søknad';
+import { Søknadstype } from './types/SøknadFormData';
 import { Feature, isFeatureEnabled } from './utils/featureToggleUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import 'common/styles/globalStyles.less';
 
 const localeFromSessionStorage = getLocaleFromSessionStorage();
+
 moment.locale(localeFromSessionStorage);
 
 const App: React.FunctionComponent = () => {
@@ -30,8 +32,13 @@ const App: React.FunctionComponent = () => {
                     <UnavailablePage />
                 ) : (
                     <Switch>
-                        <Route path={RouteConfig.SØKNAD_ROUTE_PREFIX} component={Søknad} />
-                        <Route path="/" component={IntroPage} />
+                        <Route
+                            path={'/omsorgspenger'}
+                            render={() => <Søknad søknadstype={Søknadstype.omsorgspenger} />}
+                        />
+                        <Route path={'/pleiepenger'} render={() => <Søknad søknadstype={Søknadstype.pleiepenger} />} />
+                        <Route path={'/feil'} component={GeneralErrorPage} />
+                        <Route component={IntroPage} />
                     </Switch>
                 )}
             </>

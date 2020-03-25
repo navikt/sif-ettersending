@@ -11,12 +11,12 @@ import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { sendApplication } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
-import RouteConfig from '../../config/routeConfig';
+import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
 import { SøkerdataContext } from '../../context/SøkerdataContext';
 import { Søkerdata } from '../../types/Søkerdata';
 import { SøknadApiData } from '../../types/SøknadApiData';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { SøknadFormData, SøknadFormField, Søknadstype } from '../../types/SøknadFormData';
 import * as apiUtils from '../../utils/apiUtils';
 import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
@@ -26,10 +26,11 @@ import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
 
 interface Props {
+    søknadstype: Søknadstype;
     onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
 }
 
-const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
+const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, søknadstype }) => {
     const intl = useIntl();
     const { values } = useFormikContext<SøknadFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
@@ -40,13 +41,13 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
     async function navigate(data: SøknadApiData, søker: Søkerdata) {
         setSendingInProgress(true);
         try {
-            await sendApplication(data);
+            await sendApplication(søknadstype, data);
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
-                navigateToLoginPage();
+                navigateToLoginPage(søknadstype);
             } else {
-                navigateTo(RouteConfig.ERROR_PAGE_ROUTE, history);
+                navigateTo(getRouteConfig(søknadstype).ERROR_PAGE_ROUTE, history);
             }
         }
     }
@@ -62,7 +63,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
 
     return (
         <SøknadStep
-            id={StepID.SUMMARY}
+            id={StepID.OPPSUMMERING}
             onValidFormSubmit={() => {
                 setTimeout(() => {
                     navigate(apiValues, søkerdata); // La view oppdatere seg først
@@ -79,16 +80,12 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
                         <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                        <Normaltekst>
-                            <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
-                        </Normaltekst>
+                        <Normaltekst>Fødselsnummer: {fødselsnummer}</Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søknadstype')}>
-                        Søknaden gjelder {apiValues.søknadstype}
-                    </SummaryBlock>
+                    <SummaryBlock header="Søknadstype">Dokumentene gjelder {apiValues.søknadstype}</SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.vedlegg')}>
+                    <SummaryBlock header="Dokumenter">
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
                     </SummaryBlock>
                 </Panel>

@@ -8,7 +8,7 @@ import {
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import SøknadFormComponents from '../../søknad/SøknadFormComponents';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { SøknadFormData, SøknadFormField, Søknadstype } from '../../types/SøknadFormData';
 import * as apiUtils from '../../utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;
@@ -16,10 +16,12 @@ export type FieldArrayPushFn = (obj: any) => void;
 export type FieldArrayRemoveFn = (index: number) => undefined;
 
 interface FormikFileUploader {
+    groupName: SøknadFormField;
     name: SøknadFormField;
     label: string;
     validate?: FormikValidateFunction;
     onFileInputClick?: () => void;
+    søknadstype: Søknadstype;
     onErrorUploadingAttachments: (files: File[]) => void;
     onUnauthorizedOrForbiddenUpload: () => void;
 }
@@ -28,6 +30,8 @@ type Props = FormikFileUploader;
 
 const FormikFileUploader: React.FunctionComponent<Props> = ({
     name,
+    søknadstype,
+    groupName,
     onFileInputClick,
     onErrorUploadingAttachments,
     onUnauthorizedOrForbiddenUpload,
@@ -38,7 +42,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
         const { file } = attachment;
         if (isFileObject(file)) {
             try {
-                const response = await uploadFile(file);
+                const response = await uploadFile(søknadstype, file);
                 attachment = setAttachmentPendingToFalse(attachment);
                 attachment.url = response.headers.location;
                 attachment.uploaded = true;
@@ -109,16 +113,18 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
     }
 
     return (
-        <SøknadFormComponents.FileInput
-            name={name}
-            acceptedExtensions={VALID_EXTENSIONS.join(', ')}
-            onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
-                const attachments = files.map((file) => addPendingAttachmentToFieldArray(file, push));
-                await uploadAttachments([...(values as any)[name], ...attachments], replace);
-            }}
-            onClick={onFileInputClick}
-            {...otherProps}
-        />
+        <SøknadFormComponents.InputGroup name={groupName} legend="Dokumenter">
+            <SøknadFormComponents.FileInput
+                name={name}
+                acceptedExtensions={VALID_EXTENSIONS.join(', ')}
+                onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
+                    const attachments = files.map((file) => addPendingAttachmentToFieldArray(file, push));
+                    await uploadAttachments([...(values as any)[name], ...attachments], replace);
+                }}
+                onClick={onFileInputClick}
+                {...otherProps}
+            />
+        </SøknadFormComponents.InputGroup>
     );
 };
 

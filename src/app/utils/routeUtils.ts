@@ -1,32 +1,33 @@
-import RouteConfig from '../config/routeConfig';
+import { getRouteConfig } from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
-import { SøknadFormData, SøknadFormField } from '../types/SøknadFormData';
-import { welcomingPageIsValid } from '../validation/stepValidations';
-import { appIsRunningInDevEnvironment } from './envUtils';
-import { summaryStepAvailable } from './stepUtils';
+import { SøknadFormData, Søknadstype } from '../types/SøknadFormData';
+import { documentsStepIsAvailable, summaryStepAvailable } from './stepUtils';
 
-export const getSøknadRoute = (stepId: StepID | undefined) => {
+export const getSøknadRoute = (søknadstype: Søknadstype, stepId: StepID | undefined) => {
     if (stepId !== undefined) {
-        return `${RouteConfig.SØKNAD_ROUTE_PREFIX}/${stepId}`;
+        return `${getRouteConfig(søknadstype).SØKNAD_ROUTE_PREFIX}/${stepId}`;
     }
     return undefined;
 };
 
-export const getNextStepRoute = (stepId: StepID, formData?: SøknadFormData): string | undefined => {
-    const stepConfig = getStepConfig();
-    return stepConfig[stepId] ? getSøknadRoute(stepConfig[stepId].nextStep) : undefined;
+export const getNextStepRoute = (søknadstype: Søknadstype, stepId: StepID): string | undefined => {
+    const stepConfig = getStepConfig(søknadstype);
+    return stepConfig[stepId] ? getSøknadRoute(søknadstype, stepConfig[stepId].nextStep) : undefined;
 };
 
-export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData) => {
-    if (!appIsRunningInDevEnvironment()) {
-        switch (path) {
-            case StepID.DOCUMENTS:
-                return welcomingPageIsValid(values);
-            case StepID.SUMMARY:
-                return summaryStepAvailable(values);
-            case RouteConfig.SØKNAD_SENDT_ROUTE:
-                return values[SøknadFormField.harBekreftetOpplysninger];
-        }
+export const isAvailable = (
+    søknadstype: Søknadstype,
+    path: StepID | string,
+    values: SøknadFormData,
+    soknadSendt?: boolean
+) => {
+    switch (path) {
+        case StepID.DOKUMENTER:
+            return documentsStepIsAvailable(values);
+        case StepID.OPPSUMMERING:
+            return summaryStepAvailable(values);
+        case getRouteConfig(søknadstype).SØKNAD_SENDT_ROUTE:
+            return soknadSendt === true;
     }
     return true;
 };
