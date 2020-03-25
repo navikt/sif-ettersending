@@ -16,7 +16,7 @@ import { validateBeskrivelse, validateDocuments } from '../../validation/fieldVa
 import SøknadFormComponents from '../SøknadFormComponents';
 import SøknadStep from '../SøknadStep';
 
-const DokumenterStep = ({ onValidSubmit }: StepConfigProps) => {
+const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
     const { values } = useFormikContext<SøknadFormData>();
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
@@ -45,6 +45,7 @@ const DokumenterStep = ({ onValidSubmit }: StepConfigProps) => {
 
             <FormBlock>
                 <FormikFileUploader
+                    søknadstype={søknadstype}
                     groupName={SøknadFormField.dokumenterGruppe}
                     name={SøknadFormField.dokumenter}
                     label={intlHelper(intl, 'steg.dokumenter.vedlegg')}

@@ -10,6 +10,7 @@ import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps } from '../../../config/stepConfig';
 import BehandlingAvPersonopplysningerModal from '../../information/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
 import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterModal';
+import SøknadstypeTekst from '../../søknadstype-tekst/SøknadstypeTekst';
 import SamtykkeForm from './SamtykkeForm';
 import './welcomingPage.less';
 
@@ -22,7 +23,7 @@ interface DialogState {
     behandlingAvPersonopplysningerModalOpen?: boolean;
 }
 
-const WelcomingPage = ({ onValidSubmit }: Props) => {
+const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
     const [dialogState, setDialogState] = useState<DialogState>({});
     const intl = useIntl();
 
@@ -36,7 +37,7 @@ const WelcomingPage = ({ onValidSubmit }: Props) => {
                 topContentRenderer={() => <StepBanner text="Ettersending av dokumenter" />}>
                 <Box margin="xxl">
                     <Sidetittel className={bem.element('title')}>
-                        Ettersende dokumenter til en omsorgspengesøknad
+                        Ettersende dokumenter til en <SøknadstypeTekst søknadstype={søknadstype} />
                     </Sidetittel>
                 </Box>
                 <Box margin="xl">

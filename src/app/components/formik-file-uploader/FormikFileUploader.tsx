@@ -8,7 +8,7 @@ import {
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import SøknadFormComponents from '../../søknad/SøknadFormComponents';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { SøknadFormData, SøknadFormField, Søknadstype } from '../../types/SøknadFormData';
 import * as apiUtils from '../../utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;
@@ -21,6 +21,7 @@ interface FormikFileUploader {
     label: string;
     validate?: FormikValidateFunction;
     onFileInputClick?: () => void;
+    søknadstype: Søknadstype;
     onErrorUploadingAttachments: (files: File[]) => void;
     onUnauthorizedOrForbiddenUpload: () => void;
 }
@@ -29,6 +30,7 @@ type Props = FormikFileUploader;
 
 const FormikFileUploader: React.FunctionComponent<Props> = ({
     name,
+    søknadstype,
     groupName,
     onFileInputClick,
     onErrorUploadingAttachments,
@@ -40,7 +42,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
         const { file } = attachment;
         if (isFileObject(file)) {
             try {
-                const response = await uploadFile(file);
+                const response = await uploadFile(søknadstype, file);
                 attachment = setAttachmentPendingToFalse(attachment);
                 attachment.url = response.headers.location;
                 attachment.uploaded = true;

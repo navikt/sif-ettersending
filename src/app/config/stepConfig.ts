@@ -1,5 +1,6 @@
+import { Søknadstype } from '../types/SøknadFormData';
 import { getSøknadRoute } from '../utils/routeUtils';
-import routeConfig from './routeConfig';
+import { getRouteConfig } from './routeConfig';
 
 export enum StepID {
     'DOKUMENTER' = 'dokumenter',
@@ -33,19 +34,19 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
     };
 };
 
-export const getStepConfig = (): StepConfigInterface => {
+export const getStepConfig = (søknadstype: Søknadstype): StepConfigInterface => {
     let idx = 0;
     const config = {
         [StepID.DOKUMENTER]: {
             ...getStepConfigItemTextKeys(StepID.DOKUMENTER),
             index: idx++,
             nextStep: StepID.OPPSUMMERING,
-            backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
+            backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
         },
         [StepID.OPPSUMMERING]: {
             ...getStepConfigItemTextKeys(StepID.OPPSUMMERING),
             index: idx++,
-            backLinkHref: getSøknadRoute(StepID.DOKUMENTER),
+            backLinkHref: getSøknadRoute(søknadstype, StepID.DOKUMENTER),
             nextButtonLabel: 'step.sendButtonLabel',
             nextButtonAriaLabel: 'step.sendButtonAriaLabel'
         }
@@ -56,6 +57,5 @@ export const getStepConfig = (): StepConfigInterface => {
 
 export interface StepConfigProps {
     onValidSubmit: () => void;
+    søknadstype: Søknadstype;
 }
-
-export const stepConfig: StepConfigInterface = getStepConfig();

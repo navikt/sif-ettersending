@@ -12,6 +12,9 @@
 
     "banner.title": "Ettersending av dokumenter",
 
+    "søknadstype.pleiepenger": "pleiepengesøknad",
+    "søknadstype.omsorgspenger": "omsorgspengesøknad",
+
     "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre til opplasting av dokumenter, må du bekrefte at du har lest og forstått {plikterLink}.",
