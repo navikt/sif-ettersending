@@ -8,7 +8,14 @@ const LoadingPage: React.FunctionComponent = () => {
     const intl = useIntl();
     return (
         <Page title={intlHelper(intl, 'page.loadingPage.tekst')}>
-            <div style={{ display: 'flex', justifyContent: 'center', minHeight: '15rem', alignItems: 'center' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    minHeight: '15rem',
+                    alignItems: 'center',
+                    flexDirection: 'column'
+                }}>
                 <LoadingSpinner type="XXL" />
             </div>
         </Page>

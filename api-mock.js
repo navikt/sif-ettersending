@@ -34,7 +34,9 @@ const startServer = () => {
     server.get('/health/isReady', (req, res) => res.sendStatus(200));
 
     server.get('/soker', (req, res) => {
-        res.send(søkerMock);
+        setTimeout(() => {
+            res.send(søkerMock);
+        }, 1000);
     });
 
     server.post('/overfor_omsorgsdager', (req, res) => {

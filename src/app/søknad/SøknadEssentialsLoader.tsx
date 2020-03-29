@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getSøker } from '../api/api';
-import LoadingPage from '../components/pages/loading-page/LoadingPage';
+import LoadWrapper from '../components/load-wrapper/LoadWrapper';
 import { SøkerdataContextProvider } from '../context/SøkerdataContext';
 import { Søkerdata } from '../types/Søkerdata';
 import { Søknadstype } from '../types/Søknadstype';
@@ -52,11 +52,16 @@ const SøknadEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props)
 
     const { isLoading, error } = loadState;
 
-    if (isLoading && !!error) {
-        return <LoadingPage />;
-    }
-
-    return <SøkerdataContextProvider value={søkerdata}>{contentLoadedRenderer(søkerdata)}</SøkerdataContextProvider>;
+    return (
+        <LoadWrapper
+            isLoading={isLoading && error === undefined}
+            contentRenderer={() => (
+                <SøkerdataContextProvider value={søkerdata}>
+                    {contentLoadedRenderer(søkerdata)}
+                </SøkerdataContextProvider>
+            )}
+        />
+    );
 };
 
 export default SøknadEssentialsLoader;
