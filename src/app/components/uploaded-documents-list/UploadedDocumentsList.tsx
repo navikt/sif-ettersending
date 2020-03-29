@@ -9,7 +9,7 @@ import { Attachment } from 'common/types/Attachment';
 import { containsAnyUploadedAttachments, fileExtensionIsValid } from 'common/utils/attachmentUtils';
 import { removeElementFromArray } from 'common/utils/listUtils';
 import { deleteFile } from '../../api/api';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 
 interface Props {
     includeDeletionFunctionality: boolean;
@@ -20,7 +20,7 @@ const UploadedDocumentsList: React.FunctionComponent<Props> = ({
     wrapNoAttachmentsInBox,
     includeDeletionFunctionality
 }) => {
-    const { values, setFieldValue } = useFormikContext<SøknadFormData>();
+    const { values, setFieldValue } = useFormikContext<ApplicationFormData>();
 
     const dokumenter: Attachment[] = values.dokumenter.filter(({ file }: Attachment) =>
         fileExtensionIsValid(file.name)
@@ -44,13 +44,19 @@ const UploadedDocumentsList: React.FunctionComponent<Props> = ({
                 attachments={dokumenter}
                 onRemoveAttachmentClick={(attachment: Attachment) => {
                     attachment.pending = true;
-                    setFieldValue(SøknadFormField.dokumenter, dokumenter);
+                    setFieldValue(ApplicationFormField.dokumenter, dokumenter);
                     deleteFile(attachment.url!).then(
                         () => {
-                            setFieldValue(SøknadFormField.dokumenter, removeElementFromArray(attachment, dokumenter));
+                            setFieldValue(
+                                ApplicationFormField.dokumenter,
+                                removeElementFromArray(attachment, dokumenter)
+                            );
                         },
                         () => {
-                            setFieldValue(SøknadFormField.dokumenter, removeElementFromArray(attachment, dokumenter));
+                            setFieldValue(
+                                ApplicationFormField.dokumenter,
+                                removeElementFromArray(attachment, dokumenter)
+                            );
                         }
                     );
                 }}

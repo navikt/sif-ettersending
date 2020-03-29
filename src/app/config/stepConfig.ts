@@ -1,5 +1,5 @@
-import { Søknadstype } from '../types/Søknadstype';
-import { getSøknadRoute } from '../utils/routeUtils';
+import { ApplicationType } from '../types/ApplicationType';
+import { getApplicationRoute } from '../utils/routeUtils';
 import { getRouteConfig } from './routeConfig';
 
 export enum StepID {
@@ -34,7 +34,7 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
     };
 };
 
-export const getStepConfig = (søknadstype: Søknadstype): StepConfigInterface => {
+export const getStepConfig = (søknadstype: ApplicationType): StepConfigInterface => {
     let idx = 0;
     const config = {
         [StepID.DOKUMENTER]: {
@@ -46,7 +46,7 @@ export const getStepConfig = (søknadstype: Søknadstype): StepConfigInterface =
         [StepID.OPPSUMMERING]: {
             ...getStepConfigItemTextKeys(StepID.OPPSUMMERING),
             index: idx++,
-            backLinkHref: getSøknadRoute(søknadstype, StepID.DOKUMENTER),
+            backLinkHref: getApplicationRoute(søknadstype, StepID.DOKUMENTER),
             nextButtonLabel: 'step.sendButtonLabel',
             nextButtonAriaLabel: 'step.sendButtonAriaLabel'
         }
@@ -57,5 +57,5 @@ export const getStepConfig = (søknadstype: Søknadstype): StepConfigInterface =
 
 export interface StepConfigProps {
     onValidSubmit: () => void;
-    søknadstype: Søknadstype;
+    søknadstype: ApplicationType;
 }

@@ -1,13 +1,13 @@
 import { Locale } from 'common/types/Locale';
-import { Søknadstype } from './Søknadstype';
+import { ApplicationType } from './ApplicationType';
 
 export type ISO8601Duration = string;
 
-export interface SøknadApiData {
+export interface ApplicationApiData {
     språk: Locale;
     harForståttRettigheterOgPlikter: boolean;
     harBekreftetOpplysninger: boolean;
     beskrivelse: string;
     vedlegg: string[];
-    søknadstype: Søknadstype;
+    søknadstype: ApplicationType;
 }

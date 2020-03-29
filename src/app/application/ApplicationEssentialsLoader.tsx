@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getSøker } from '../api/api';
 import LoadWrapper from '../components/load-wrapper/LoadWrapper';
-import { SøkerdataContextProvider } from '../context/SøkerdataContext';
-import { Søkerdata } from '../types/Søkerdata';
-import { Søknadstype } from '../types/Søknadstype';
+import { SøkerdataContextProvider } from '../context/ApplicantDataContext';
+import { ApplicantData } from '../types/ApplicantData';
+import { ApplicationType } from '../types/ApplicationType';
 import * as apiUtils from '../utils/apiUtils';
 import {
     navigateToErrorPage, navigateToLoginPage, navigateToWelcomePage, userIsCurrentlyOnErrorPage
 } from '../utils/navigationUtils';
 
 interface Props {
-    contentLoadedRenderer: (søkerdata?: Søkerdata) => React.ReactNode;
-    søknadstype: Søknadstype;
+    contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
+    søknadstype: ApplicationType;
 }
 
 interface LoadState {
@@ -19,9 +19,9 @@ interface LoadState {
     error?: boolean;
 }
 
-const SøknadEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props) => {
+const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props) => {
     const [loadState, setLoadState] = useState<LoadState>({ isLoading: true });
-    const [søkerdata, setSøkerdata] = useState<Søkerdata | undefined>();
+    const [søkerdata, setSøkerdata] = useState<ApplicantData | undefined>();
 
     async function loadAppEssentials() {
         if (søkerdata === undefined && loadState.error === undefined) {
@@ -64,4 +64,4 @@ const SøknadEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props)
     );
 };
 
-export default SøknadEssentialsLoader;
+export default ApplicationEssentialsLoader;

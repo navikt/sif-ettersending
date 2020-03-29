@@ -13,33 +13,33 @@ import { sendApplication } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
-import { SøkerdataContext } from '../../context/SøkerdataContext';
-import { Søkerdata } from '../../types/Søkerdata';
-import { SøknadApiData } from '../../types/SøknadApiData';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
-import { Søknadstype } from '../../types/Søknadstype';
+import { SøkerdataContext } from '../../context/ApplicantDataContext';
+import { ApplicantData } from '../../types/ApplicantData';
+import { ApplicationApiData } from '../../types/ApplicationApiData';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
+import { ApplicationType } from '../../types/ApplicationType';
 import * as apiUtils from '../../utils/apiUtils';
 import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
-import SøknadFormComponents from '../SøknadFormComponents';
-import SøknadStep from '../SøknadStep';
+import ApplicationFormComponents from '../ApplicationFormComponents';
+import ApplicationStep from '../ApplicationStep';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
 
 interface Props {
-    søknadstype: Søknadstype;
-    onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
+    søknadstype: ApplicationType;
+    onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
 }
 
 const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, søknadstype }) => {
     const intl = useIntl();
-    const { values } = useFormikContext<SøknadFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
     const history = useHistory();
 
     const [sendingInProgress, setSendingInProgress] = useState(false);
 
-    async function navigate(data: SøknadApiData, søker: Søkerdata) {
+    async function navigate(data: ApplicationApiData, søker: ApplicantData) {
         setSendingInProgress(true);
         try {
             await sendApplication(søknadstype, data);
@@ -63,7 +63,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
     const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
 
     return (
-        <SøknadStep
+        <ApplicationStep
             id={StepID.OPPSUMMERING}
             onValidFormSubmit={() => {
                 setTimeout(() => {
@@ -93,9 +93,9 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
             </Box>
 
             <Box margin="l">
-                <SøknadFormComponents.ConfirmationCheckbox
+                <ApplicationFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
-                    name={SøknadFormField.harBekreftetOpplysninger}
+                    name={ApplicationFormField.harBekreftetOpplysninger}
                     validate={(value) => {
                         let result;
                         if (value !== true) {
@@ -105,7 +105,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
                     }}
                 />
             </Box>
-        </SøknadStep>
+        </ApplicationStep>
     );
 };
 

@@ -10,7 +10,7 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
-import { Søknadstype } from '../../../types/Søknadstype';
+import { ApplicationType } from '../../../types/ApplicationType';
 
 const bem = bemUtils('introPage');
 
@@ -19,7 +19,7 @@ enum PageFormField {
 }
 
 interface PageFormValues {
-    [PageFormField.søknadstype]: Søknadstype;
+    [PageFormField.søknadstype]: ApplicationType;
 }
 
 const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
@@ -45,11 +45,11 @@ const IntroPage: React.StatelessComponent = () => {
                                 legend="Hvilken type søknad gjelder denne ettersendingen?"
                                 radios={[
                                     {
-                                        value: Søknadstype.pleiepenger,
+                                        value: ApplicationType.pleiepenger,
                                         label: 'Søknad om pleiepenger'
                                     },
                                     {
-                                        value: Søknadstype.omsorgspenger,
+                                        value: ApplicationType.omsorgspenger,
                                         label: 'Søknad om omsorgspenger'
                                     }
                                 ]}

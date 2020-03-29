@@ -1,12 +1,12 @@
 import React from 'react';
-import { Søknadstype } from '../../types/Søknadstype';
+import { ApplicationType } from '../../types/ApplicationType';
 
 interface Props {
-    søknadstype: Søknadstype;
+    søknadstype: ApplicationType;
 }
 
 const SøknadstypeTekst: React.FunctionComponent<Props> = ({ søknadstype }) => (
-    <span>{søknadstype === Søknadstype.pleiepenger ? 'søknad om pleiepenger' : 'søknad om omsorgspenger'}</span>
+    <span>{søknadstype === ApplicationType.pleiepenger ? 'søknad om pleiepenger' : 'søknad om omsorgspenger'}</span>
 );
 
 export default SøknadstypeTekst;

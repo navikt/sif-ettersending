@@ -1,5 +1,5 @@
 import { getEnvironmentVariable } from 'app/utils/envUtils';
-import { Søknadstype } from '../types/Søknadstype';
+import { ApplicationType } from '../types/ApplicationType';
 
 interface RouteConfig {
     UTILGJENGELIG_ROUTE: string;
@@ -9,7 +9,7 @@ interface RouteConfig {
     SØKNAD_SENDT_ROUTE: string;
 }
 
-export const getRouteConfig = (søknadstype: Søknadstype): RouteConfig => {
+export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
     return {
         UTILGJENGELIG_ROUTE: '/utilgjengelig',
         SØKNAD_ROUTE_PREFIX: `/${søknadstype}`,
@@ -19,7 +19,7 @@ export const getRouteConfig = (søknadstype: Søknadstype): RouteConfig => {
     };
 };
 
-export const getRouteUrl = (søknadstype: Søknadstype | undefined, route: string): string => {
+export const getRouteUrl = (søknadstype: ApplicationType | undefined, route: string): string => {
     return søknadstype
         ? `${getEnvironmentVariable('PUBLIC_PATH')}/${søknadstype}${route}`
         : `${getEnvironmentVariable('PUBLIC_PATH')}${route}`;

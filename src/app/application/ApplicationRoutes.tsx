@@ -7,13 +7,13 @@ import GeneralErrorPage from '../components/pages/general-error-page/GeneralErro
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
 import { getRouteConfig } from '../config/routeConfig';
 import { StepID } from '../config/stepConfig';
-import { SøknadstypeContext } from '../context/SøknadstypeContext';
-import { Søkerdata } from '../types/Søkerdata';
-import { SøknadApiData } from '../types/SøknadApiData';
-import { SøknadFormData } from '../types/SøknadFormData';
-import { Søknadstype } from '../types/Søknadstype';
+import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
+import { ApplicantData } from '../types/ApplicantData';
+import { ApplicationApiData } from '../types/ApplicationApiData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
+import { ApplicationType } from '../types/ApplicationType';
 import { navigateTo } from '../utils/navigationUtils';
-import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
+import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
 import DokumenterStep from './dokumenter-step/DokumenterStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 
@@ -21,23 +21,23 @@ export interface KvitteringInfo {
     søkernavn: string;
 }
 
-const getKvitteringInfoFromApiData = (søkerdata: Søkerdata): KvitteringInfo | undefined => {
+const getKvitteringInfoFromApiData = (søkerdata: ApplicantData): KvitteringInfo | undefined => {
     const { fornavn, mellomnavn, etternavn } = søkerdata.person;
     return {
         søkernavn: formatName(fornavn, etternavn, mellomnavn)
     };
 };
 
-const SøknadRoutes = () => {
-    const [søknadHasBeenSent, setSøknadHasBeenSent] = React.useState(false);
+const ApplicationRoutes = () => {
+    const [applicationHasBeenSent, setApplicationHasBeenSent] = React.useState(false);
     const [kvitteringInfo, setKvitteringInfo] = React.useState<KvitteringInfo | undefined>(undefined);
-    const { values, resetForm } = useFormikContext<SøknadFormData>();
-    const { søknadstype } = React.useContext(SøknadstypeContext);
+    const { values, resetForm } = useFormikContext<ApplicationFormData>();
+    const { søknadstype } = React.useContext(ApplicationTypeContext);
 
     const history = useHistory();
 
     if (!søknadstype) {
-        return <Route path={getRouteConfig(Søknadstype.ukjent).ERROR_PAGE_ROUTE} component={GeneralErrorPage} />;
+        return <Route path={getRouteConfig(ApplicationType.ukjent).ERROR_PAGE_ROUTE} component={GeneralErrorPage} />;
     }
     const routeConfig = getRouteConfig(søknadstype);
 
@@ -68,7 +68,7 @@ const SøknadRoutes = () => {
 
             {isAvailable(søknadstype, StepID.DOKUMENTER, values) && (
                 <Route
-                    path={getSøknadRoute(søknadstype, StepID.DOKUMENTER)}
+                    path={getApplicationRoute(søknadstype, StepID.DOKUMENTER)}
                     render={() => (
                         <DokumenterStep
                             søknadstype={søknadstype}
@@ -80,14 +80,14 @@ const SøknadRoutes = () => {
 
             {isAvailable(søknadstype, StepID.OPPSUMMERING, values) && (
                 <Route
-                    path={getSøknadRoute(søknadstype, StepID.OPPSUMMERING)}
+                    path={getApplicationRoute(søknadstype, StepID.OPPSUMMERING)}
                     render={() => (
                         <OppsummeringStep
                             søknadstype={søknadstype}
-                            onApplicationSent={(apiData: SøknadApiData, søkerdata: Søkerdata) => {
+                            onApplicationSent={(apiData: ApplicationApiData, søkerdata: ApplicantData) => {
                                 const info = getKvitteringInfoFromApiData(søkerdata);
                                 setKvitteringInfo(info);
-                                setSøknadHasBeenSent(true);
+                                setApplicationHasBeenSent(true);
                                 resetForm();
                                 navigateTo(routeConfig.SØKNAD_SENDT_ROUTE, history);
                             }}
@@ -96,7 +96,7 @@ const SøknadRoutes = () => {
                 />
             )}
 
-            {isAvailable(søknadstype, routeConfig.SØKNAD_SENDT_ROUTE, values, søknadHasBeenSent) && (
+            {isAvailable(søknadstype, routeConfig.SØKNAD_SENDT_ROUTE, values, applicationHasBeenSent) && (
                 <Route
                     path={routeConfig.SØKNAD_SENDT_ROUTE}
                     render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
@@ -109,4 +109,4 @@ const SøknadRoutes = () => {
     );
 };
 
-export default SøknadRoutes;
+export default ApplicationRoutes;

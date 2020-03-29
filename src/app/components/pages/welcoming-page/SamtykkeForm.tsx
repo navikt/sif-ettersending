@@ -6,8 +6,8 @@ import FormBlock from 'common/components/form-block/FormBlock';
 import bemHelper from 'common/utils/bemUtils';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import intlHelper from 'common/utils/intlUtils';
-import SøknadFormComponents from '../../../søknad/SøknadFormComponents';
-import { SøknadFormField } from '../../../types/SøknadFormData';
+import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
+import { ApplicationFormField } from '../../../types/ApplicationFormData';
 
 interface Props {
     onConfirm: () => void;
@@ -24,15 +24,15 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
 }) => {
     const intl = useIntl();
     return (
-        <SøknadFormComponents.Form
+        <ApplicationFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
             <FormBlock>
                 <FormBlock>
-                    <SøknadFormComponents.ConfirmationCheckbox
+                    <ApplicationFormComponents.ConfirmationCheckbox
                         label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
-                        name={SøknadFormField.harForståttRettigheterOgPlikter}
+                        name={ApplicationFormField.harForståttRettigheterOgPlikter}
                         validate={(value) => {
                             let result;
                             if (value !== true) {
@@ -50,7 +50,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                                 )
                             }}
                         />
-                    </SøknadFormComponents.ConfirmationCheckbox>
+                    </ApplicationFormComponents.ConfirmationCheckbox>
                 </FormBlock>
                 <FormBlock>
                     <Hovedknapp className={bem.element('startApplicationButton')}>Gå videre</Hovedknapp>
@@ -63,7 +63,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                     </div>
                 </FormBlock>
             </FormBlock>
-        </SøknadFormComponents.Form>
+        </ApplicationFormComponents.Form>
     );
 };
 export default SamtykkeForm;
