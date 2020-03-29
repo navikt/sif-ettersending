@@ -4,12 +4,12 @@ import { Route, Switch } from 'react-router-dom';
 import moment from 'moment';
 import Modal from 'nav-frontend-modal';
 import { Locale } from 'common/types/Locale';
+import Application from './application/Application';
 import ApplicationWrapper from './components/application-wrapper/ApplicationWrapper';
 import GeneralErrorPage from './components/pages/general-error-page/GeneralErrorPage';
 import IntroPage from './components/pages/intro-page/IntroPage';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
-import Søknad from './søknad/Søknad';
-import { Søknadstype } from './types/Søknadstype';
+import { ApplicationType } from './types/ApplicationType';
 import { Feature, isFeatureEnabled } from './utils/featureToggleUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import 'common/styles/globalStyles.less';
@@ -34,9 +34,12 @@ const App: React.FunctionComponent = () => {
                     <Switch>
                         <Route
                             path={'/omsorgspenger'}
-                            render={() => <Søknad søknadstype={Søknadstype.omsorgspenger} />}
+                            render={() => <Application søknadstype={ApplicationType.omsorgspenger} />}
                         />
-                        <Route path={'/pleiepenger'} render={() => <Søknad søknadstype={Søknadstype.pleiepenger} />} />
+                        <Route
+                            path={'/pleiepenger'}
+                            render={() => <Application søknadstype={ApplicationType.pleiepenger} />}
+                        />
                         <Route path={'/feil'} component={GeneralErrorPage} />
                         <Route component={IntroPage} />
                     </Switch>

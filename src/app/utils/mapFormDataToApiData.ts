@@ -1,13 +1,19 @@
 import { attachmentUploadHasFailed } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
 import { Locale } from 'common/types/Locale';
-import { SøknadApiData } from '../types/SøknadApiData';
-import { SøknadFormData } from '../types/SøknadFormData';
+import { ApplicationApiData } from '../types/ApplicationApiData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
 
 export const mapFormDataToApiData = (
-    { harBekreftetOpplysninger, harForståttRettigheterOgPlikter, søknadstype, beskrivelse, dokumenter }: SøknadFormData,
+    {
+        harBekreftetOpplysninger,
+        harForståttRettigheterOgPlikter,
+        søknadstype,
+        beskrivelse,
+        dokumenter
+    }: ApplicationFormData,
     sprak: Locale
-): SøknadApiData => {
-    const apiData: SøknadApiData = {
+): ApplicationApiData => {
+    const apiData: ApplicationApiData = {
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         harBekreftetOpplysninger,
         harForståttRettigheterOgPlikter,

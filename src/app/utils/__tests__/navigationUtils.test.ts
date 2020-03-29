@@ -1,6 +1,6 @@
 import { History } from 'history';
 import { getRouteConfig } from '../../config/routeConfig';
-import { Søknadstype } from '../../types/Søknadstype';
+import { ApplicationType } from '../../types/ApplicationType';
 import { navigateTo, navigateToErrorPage, userIsCurrentlyOnErrorPage } from '../navigationUtils';
 
 const historyMock: Partial<History> = {
@@ -11,7 +11,7 @@ jest.mock('./../envUtils.ts', () => {
     return { getEnvironmentVariable: () => '' };
 });
 
-const søknadstype = Søknadstype.omsorgspenger;
+const søknadstype = ApplicationType.omsorgspenger;
 const routeConfig = getRouteConfig(søknadstype);
 
 // hacky workaround for this issue, which actually seems to be an issue

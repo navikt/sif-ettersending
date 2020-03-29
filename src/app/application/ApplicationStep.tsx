@@ -5,9 +5,9 @@ import FormBlock from 'common/components/form-block/FormBlock';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import Step, { StepProps } from '../components/step/Step';
 import { getStepConfig } from '../config/stepConfig';
-import { SøknadstypeContext } from '../context/SøknadstypeContext';
+import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { getStepTexts } from '../utils/stepUtils';
-import SøknadFormComponents from './SøknadFormComponents';
+import ApplicationFormComponents from './ApplicationFormComponents';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -21,9 +21,9 @@ export interface FormikStepProps {
 
 type Props = FormikStepProps & StepProps;
 
-const SøknadStep: React.FunctionComponent<Props> = (props) => {
+const ApplicationStep: React.FunctionComponent<Props> = (props) => {
     const intl = useIntl();
-    const { søknadstype } = React.useContext(SøknadstypeContext);
+    const { søknadstype } = React.useContext(ApplicationTypeContext);
     if (!søknadstype) {
         return <div>what?</div>;
     }
@@ -32,7 +32,7 @@ const SøknadStep: React.FunctionComponent<Props> = (props) => {
     const texts = getStepTexts(intl, id, stepConfig);
     return (
         <Step stepConfig={stepConfig} {...props}>
-            <SøknadFormComponents.Form
+            <ApplicationFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
                 fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
@@ -49,9 +49,9 @@ const SøknadStep: React.FunctionComponent<Props> = (props) => {
                         {texts.nextButtonLabel}
                     </Knapp>
                 </FormBlock>
-            </SøknadFormComponents.Form>
+            </ApplicationFormComponents.Form>
         </Step>
     );
 };
 
-export default SøknadStep;
+export default ApplicationStep;

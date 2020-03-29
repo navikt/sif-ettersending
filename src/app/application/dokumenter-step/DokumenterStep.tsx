@@ -10,20 +10,20 @@ import FormikFileUploader from '../../components/formik-file-uploader/FormikFile
 import PictureScanningGuide from '../../components/picture-scanning-guide/PictureScanningGuide';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateBeskrivelse, validateDocuments } from '../../validation/fieldValidations';
-import SøknadFormComponents from '../SøknadFormComponents';
-import SøknadStep from '../SøknadStep';
+import ApplicationFormComponents from '../ApplicationFormComponents';
+import ApplicationStep from '../ApplicationStep';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
-    const { values } = useFormikContext<SøknadFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
 
     return (
-        <SøknadStep
+        <ApplicationStep
             id={StepID.DOKUMENTER}
             onValidFormSubmit={onValidSubmit}
             useValidationErrorSummary={true}
@@ -35,8 +35,8 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             </FormBlock>
 
             <FormBlock>
-                <SøknadFormComponents.Textarea
-                    name={SøknadFormField.beskrivelse}
+                <ApplicationFormComponents.Textarea
+                    name={ApplicationFormField.beskrivelse}
                     label="Beskriv hva ettersendingen gjelder"
                     maxLength={1000}
                     validate={validateBeskrivelse(1000)}
@@ -46,8 +46,8 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             <FormBlock>
                 <FormikFileUploader
                     søknadstype={søknadstype}
-                    groupName={SøknadFormField.dokumenterGruppe}
-                    name={SøknadFormField.dokumenter}
+                    groupName={ApplicationFormField.dokumenterGruppe}
+                    name={ApplicationFormField.dokumenter}
                     label={intlHelper(intl, 'steg.dokumenter.vedlegg')}
                     onErrorUploadingAttachments={setFilesThatDidntGetUploaded}
                     onFileInputClick={() => {
@@ -63,7 +63,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             <Box margin="l">
                 <UploadedDocumentsList wrapNoAttachmentsInBox={true} includeDeletionFunctionality={true} />
             </Box>
-        </SøknadStep>
+        </ApplicationStep>
     );
 };
 

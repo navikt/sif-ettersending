@@ -1,8 +1,8 @@
 import axios, { AxiosError } from 'axios';
 import HttpStatus from 'http-status-codes';
 import axiosConfig from '../config/axiosConfig';
+import { ApplicationType } from '../types/ApplicationType';
 import { ResourceType } from '../types/ResourceType';
-import { Søknadstype } from '../types/Søknadstype';
 import { getEnvironmentVariable } from './envUtils';
 
 export const multipartConfig = { headers: { 'Content-Type': 'multipart/form-data' }, ...axiosConfig };
@@ -17,11 +17,11 @@ export const isForbidden = ({ response }: AxiosError) =>
 export const isUnauthorized = ({ response }: AxiosError) =>
     response !== undefined && response.status === HttpStatus.UNAUTHORIZED;
 
-export const getApiUrlByResourceType = (søknadstype: Søknadstype, resourceType: ResourceType) => {
+export const getApiUrlByResourceType = (søknadstype: ApplicationType, resourceType: ResourceType) => {
     switch (søknadstype) {
-        case Søknadstype.pleiepenger:
+        case ApplicationType.pleiepenger:
             return `${getEnvironmentVariable('API_URL_PLEIEPENGER')}/${resourceType}`;
-        case Søknadstype.omsorgspenger:
+        case ApplicationType.omsorgspenger:
             return `${getEnvironmentVariable('API_URL_OMSORGSPENGER')}/${resourceType}`;
         default:
             return `${getEnvironmentVariable('API_URL')}/${resourceType}`;

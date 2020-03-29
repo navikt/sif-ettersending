@@ -3,7 +3,7 @@ import {
     ValidationSummaryError
 } from 'common/components/validation-error-summary-base/ValidationErrorSummaryBase';
 import intlHelper from 'common/utils/intlUtils';
-import { SøknadApiData } from '../types/SøknadApiData';
+import { ApplicationApiData } from '../types/ApplicationApiData';
 
 export const apiVedleggIsInvalid = (vedlegg: string[]): boolean => {
     vedlegg.find((v) => {
@@ -12,7 +12,10 @@ export const apiVedleggIsInvalid = (vedlegg: string[]): boolean => {
     return vedlegg.length === 0 || vedlegg.find((v) => v === undefined || v === '' || v === null) !== undefined;
 };
 
-export const validateApiValues = (values: SøknadApiData, intl: IntlShape): ValidationSummaryError[] | undefined => {
+export const validateApiValues = (
+    values: ApplicationApiData,
+    intl: IntlShape
+): ValidationSummaryError[] | undefined => {
     const errors: ValidationSummaryError[] = [];
 
     if (apiVedleggIsInvalid(values.vedlegg)) {

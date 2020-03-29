@@ -7,9 +7,9 @@ import {
     getPendingAttachmentFromFile, isFileObject, VALID_EXTENSIONS
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
-import SøknadFormComponents from '../../søknad/SøknadFormComponents';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
-import { Søknadstype } from '../../types/Søknadstype';
+import ApplicationFormComponents from '../../application/ApplicationFormComponents';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
+import { ApplicationType } from '../../types/ApplicationType';
 import * as apiUtils from '../../utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;
@@ -17,12 +17,12 @@ export type FieldArrayPushFn = (obj: any) => void;
 export type FieldArrayRemoveFn = (index: number) => undefined;
 
 interface FormikFileUploader {
-    groupName: SøknadFormField;
-    name: SøknadFormField;
+    groupName: ApplicationFormField;
+    name: ApplicationFormField;
     label: string;
     validate?: FormikValidateFunction;
     onFileInputClick?: () => void;
-    søknadstype: Søknadstype;
+    søknadstype: ApplicationType;
     onErrorUploadingAttachments: (files: File[]) => void;
     onUnauthorizedOrForbiddenUpload: () => void;
 }
@@ -38,7 +38,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
     onUnauthorizedOrForbiddenUpload,
     ...otherProps
 }) => {
-    const { values } = useFormikContext<SøknadFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
     async function uploadAttachment(attachment: Attachment) {
         const { file } = attachment;
         if (isFileObject(file)) {
@@ -114,8 +114,8 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
     }
 
     return (
-        <SøknadFormComponents.InputGroup name={groupName} legend="Dokumenter">
-            <SøknadFormComponents.FileInput
+        <ApplicationFormComponents.InputGroup name={groupName} legend="Dokumenter">
+            <ApplicationFormComponents.FileInput
                 name={name}
                 acceptedExtensions={VALID_EXTENSIONS.join(', ')}
                 onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
@@ -125,7 +125,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
                 onClick={onFileInputClick}
                 {...otherProps}
             />
-        </SøknadFormComponents.InputGroup>
+        </ApplicationFormComponents.InputGroup>
     );
 };
 

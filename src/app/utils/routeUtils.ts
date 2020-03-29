@@ -1,25 +1,25 @@
 import { getRouteConfig } from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
-import { SøknadFormData } from '../types/SøknadFormData';
-import { Søknadstype } from '../types/Søknadstype';
+import { ApplicationFormData } from '../types/ApplicationFormData';
+import { ApplicationType } from '../types/ApplicationType';
 import { documentsStepIsAvailable, summaryStepAvailable } from './stepUtils';
 
-export const getSøknadRoute = (søknadstype: Søknadstype, stepId: StepID | undefined) => {
+export const getApplicationRoute = (søknadstype: ApplicationType, stepId: StepID | undefined) => {
     if (stepId !== undefined) {
         return `${getRouteConfig(søknadstype).SØKNAD_ROUTE_PREFIX}/${stepId}`;
     }
     return undefined;
 };
 
-export const getNextStepRoute = (søknadstype: Søknadstype, stepId: StepID): string | undefined => {
+export const getNextStepRoute = (søknadstype: ApplicationType, stepId: StepID): string | undefined => {
     const stepConfig = getStepConfig(søknadstype);
-    return stepConfig[stepId] ? getSøknadRoute(søknadstype, stepConfig[stepId].nextStep) : undefined;
+    return stepConfig[stepId] ? getApplicationRoute(søknadstype, stepConfig[stepId].nextStep) : undefined;
 };
 
 export const isAvailable = (
-    søknadstype: Søknadstype,
+    søknadstype: ApplicationType,
     path: StepID | string,
-    values: SøknadFormData,
+    values: ApplicationFormData,
     soknadSendt?: boolean
 ) => {
     switch (path) {
