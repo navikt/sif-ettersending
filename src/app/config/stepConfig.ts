@@ -3,6 +3,7 @@ import { getApplicationRoute } from '../utils/routeUtils';
 import { getRouteConfig } from './routeConfig';
 
 export enum StepID {
+    'BESKRIVELSE' = 'beskrivelse',
     'DOKUMENTER' = 'dokumenter',
     'OPPSUMMERING' = 'oppsummering'
 }
@@ -37,11 +38,17 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
 export const getStepConfig = (søknadstype: ApplicationType): StepConfigInterface => {
     let idx = 0;
     const config = {
+        [StepID.BESKRIVELSE]: {
+            ...getStepConfigItemTextKeys(StepID.BESKRIVELSE),
+            index: idx++,
+            nextStep: StepID.DOKUMENTER,
+            backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
+        },
         [StepID.DOKUMENTER]: {
             ...getStepConfigItemTextKeys(StepID.DOKUMENTER),
             index: idx++,
             nextStep: StepID.OPPSUMMERING,
-            backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
+            backLinkHref: getApplicationRoute(søknadstype, StepID.BESKRIVELSE)
         },
         [StepID.OPPSUMMERING]: {
             ...getStepConfigItemTextKeys(StepID.OPPSUMMERING),

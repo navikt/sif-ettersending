@@ -43,7 +43,6 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
                 <Box margin="xl">
                     <CounsellorPanel>Skal vi ha noe informasjon her?</CounsellorPanel>
                 </Box>
-
                 <SamtykkeForm
                     onOpenDinePlikterModal={() => setDialogState({ dinePlikterModalOpen: true })}
                     openBehandlingAvPersonopplysningerModal={() =>

@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
+import TextareaSummary from '@navikt/sif-common-core/lib/components/textarea-summary/TextareaSummary';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
@@ -60,7 +61,8 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
     const {
         person: { fornavn, mellomnavn, etternavn, fødselsnummer }
     } = søkerdata;
-    const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
+
+    const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
 
     return (
         <ApplicationStep
@@ -71,12 +73,11 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
                 });
             }}
             useValidationErrorSummary={true}
-            buttonDisabled={sendingInProgress}
+            buttonDisabled={sendingInProgress || apiValues.søknadstype === ApplicationType.ukjent}
             showButtonSpinner={sendingInProgress}>
             <CounsellorPanel>
                 <FormattedMessage id="steg.oppsummering.info" />
             </CounsellorPanel>
-
             <Box margin="xl">
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
@@ -84,7 +85,9 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
                         <Normaltekst>Fødselsnummer: {fødselsnummer}</Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header="Søknadstype">Dokumentene gjelder {apiValues.søknadstype}</SummaryBlock>
+                    <SummaryBlock header="Hva gjelder ettersendelsen?">
+                        <TextareaSummary text={apiValues.beskrivelse} />
+                    </SummaryBlock>
 
                     <SummaryBlock header="Dokumenter">
                         <UploadedDocumentsList includeDeletionFunctionality={false} />

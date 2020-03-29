@@ -14,6 +14,7 @@ import { ApplicationFormData } from '../types/ApplicationFormData';
 import { ApplicationType } from '../types/ApplicationType';
 import { navigateTo } from '../utils/navigationUtils';
 import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
+import BeskrivelseStep from './beskrivelse-step/BeskrivelseStep';
 import DokumenterStep from './dokumenter-step/DokumenterStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 
@@ -59,12 +60,24 @@ const ApplicationRoutes = () => {
                         søknadstype={søknadstype}
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${routeConfig.SØKNAD_ROUTE_PREFIX}/${StepID.DOKUMENTER}`, history);
+                                navigateTo(`${routeConfig.SØKNAD_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
                             })
                         }
                     />
                 )}
             />
+
+            {isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (
+                <Route
+                    path={getApplicationRoute(søknadstype, StepID.BESKRIVELSE)}
+                    render={() => (
+                        <BeskrivelseStep
+                            søknadstype={søknadstype}
+                            onValidSubmit={() => navigateToNextStep(StepID.BESKRIVELSE)}
+                        />
+                    )}
+                />
+            )}
 
             {isAvailable(søknadstype, StepID.DOKUMENTER, values) && (
                 <Route

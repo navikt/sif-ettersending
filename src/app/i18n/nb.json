@@ -59,6 +59,10 @@
     "step.sendButtonLabel": "Send inn søknaden",
     "step.sendButtonAriaLabel": "Send inn søknaden",
 
+    "step.beskrivelse.pageTitle": "Hva gjelder ettersendelsen?",
+    "step.beskrivelse.stepTitle": "Hva gjelder ettersendelsen?",
+    "step.beskrivelse.stepIndicatorLabel": "Hva gjelder ettersendelsen?",
+
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Ta bilde av dokumentene og last opp",
     "step.dokumenter.stepIndicatorLabel": "Last opp dokumenter",

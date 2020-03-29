@@ -12,8 +12,7 @@ import UploadedDocumentsList from '../../components/uploaded-documents-list/Uplo
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
-import { validateBeskrivelse, validateDocuments } from '../../validation/fieldValidations';
-import ApplicationFormComponents from '../ApplicationFormComponents';
+import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
@@ -33,16 +32,6 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     <PictureScanningGuide />
                 </HelperTextPanel>
             </FormBlock>
-
-            <FormBlock>
-                <ApplicationFormComponents.Textarea
-                    name={ApplicationFormField.beskrivelse}
-                    label="Beskriv hva ettersendingen gjelder"
-                    maxLength={1000}
-                    validate={validateBeskrivelse(1000)}
-                />
-            </FormBlock>
-
             <FormBlock>
                 <FormikFileUploader
                     søknadstype={søknadstype}
