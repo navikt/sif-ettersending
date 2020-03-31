@@ -17,7 +17,7 @@ const UnavailablePage: React.StatelessComponent<{}> = () => {
                 <AlertStripeAdvarsel>
                     <p>
                         Den digitale søknaden for ettersending av dokumenter er dessverre ikke tilgjengelig på grunn av
-                        teknisk feil. Vi jobber med å løse feilen slik at du kan søke digitalt.
+                        teknisk feil. Vi jobber med å løse feilen.
                     </p>
                     <p>Vi beklager.</p>
                 </AlertStripeAdvarsel>
