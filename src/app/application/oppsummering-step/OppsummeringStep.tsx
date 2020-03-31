@@ -82,14 +82,16 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
                         <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                        <Normaltekst>Fødselsnummer: {fødselsnummer}</Normaltekst>
+                        <Normaltekst>
+                            {intlHelper(intl, 'steg.oppsummering.fødselsnummer')}: {fødselsnummer}
+                        </Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header="Hva gjelder ettersendelsen?">
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.hvaGjelder.header')}>
                         <TextareaSummary text={apiValues.beskrivelse} />
                     </SummaryBlock>
 
-                    <SummaryBlock header="Dokumenter">
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.dokumenter.header')}>
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
                     </SummaryBlock>
                 </Panel>

@@ -10,7 +10,6 @@ import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps } from '../../../config/stepConfig';
 import BehandlingAvPersonopplysningerModal from '../../information/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
 import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterModal';
-import SøknadstypeTekst from '../../søknadstype-tekst/SøknadstypeTekst';
 import SamtykkeForm from './SamtykkeForm';
 import './welcomingPage.less';
 
@@ -32,16 +31,16 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
     return (
         <>
             <Page
-                title={'Ettersending av dokumenter'}
+                title={intlHelper(intl, `welcomingPage.title.${søknadstype}`)}
                 className={bem.block}
-                topContentRenderer={() => <StepBanner text="Ettersending av dokumenter" />}>
+                topContentRenderer={() => <StepBanner text={intlHelper(intl, `banner.${søknadstype}`)} />}>
                 <Box margin="xxl">
                     <Sidetittel className={bem.element('title')}>
-                        Ettersende dokumenter til en <SøknadstypeTekst søknadstype={søknadstype} />
+                        {intlHelper(intl, `welcomingPage.title.${søknadstype}`)}
                     </Sidetittel>
                 </Box>
                 <Box margin="xl">
-                    <CounsellorPanel>Skal vi ha noe informasjon her?</CounsellorPanel>
+                    <CounsellorPanel>{intlHelper(intl, 'welcomingPage.counsellor')}</CounsellorPanel>
                 </Box>
                 <SamtykkeForm
                     onOpenDinePlikterModal={() => setDialogState({ dinePlikterModalOpen: true })}
