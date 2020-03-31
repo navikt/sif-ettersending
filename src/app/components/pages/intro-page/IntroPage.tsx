@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
-import {
-    commonFieldErrorRenderer
-} from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import { getTypedFormComponents } from '@navikt/sif-common-formik/lib';
 import Lenke from 'nav-frontend-lenker';
 import Box from 'common/components/box/Box';
@@ -11,6 +9,7 @@ import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
 import { ApplicationType } from '../../../types/ApplicationType';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 const bem = bemUtils('introPage');
 
@@ -30,8 +29,8 @@ const IntroPage: React.StatelessComponent = () => {
     return (
         <Page
             className={bem.block}
-            title="Ettersending av dokumenter"
-            topContentRenderer={() => <StepBanner text="Ettersending av dokumenter" />}>
+            title={intlHelper(intl, 'banner.intro')}
+            topContentRenderer={() => <StepBanner text={intlHelper(intl, 'banner.intro')} />}>
             <PageForm.FormikWrapper
                 onSubmit={() => null}
                 initialValues={initialValues}
@@ -42,15 +41,15 @@ const IntroPage: React.StatelessComponent = () => {
                         <Box margin="xl">
                             <PageForm.RadioPanelGroup
                                 name={PageFormField.søknadstype}
-                                legend="Hvilken type søknad gjelder denne ettersendingen?"
+                                legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
                                 radios={[
                                     {
                                         value: ApplicationType.pleiepenger,
-                                        label: 'Søknad om pleiepenger'
+                                        label: intlHelper(intl, 'page.intro.type.pleiepenger')
                                     },
                                     {
                                         value: ApplicationType.omsorgspenger,
-                                        label: 'Søknad om omsorgspenger'
+                                        label: intlHelper(intl, 'page.intro.type.omsorgspenger')
                                     }
                                 ]}
                             />
@@ -59,7 +58,7 @@ const IntroPage: React.StatelessComponent = () => {
                             <Box margin="xl" textAlignCenter={true}>
                                 <Lenke
                                     href={getRouteUrl(søknadstype, getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE)}>
-                                    Gå videre til ettersending
+                                    {intlHelper(intl, 'page.intro.gåVidere')}
                                 </Lenke>
                             </Box>
                         )}
