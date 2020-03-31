@@ -3,19 +3,19 @@ import { ApplicationType } from '../types/ApplicationType';
 
 interface RouteConfig {
     UTILGJENGELIG_ROUTE: string;
-    SØKNAD_ROUTE_PREFIX: string;
+    APPLICATION_ROUTE_PREFIX: string;
     ERROR_PAGE_ROUTE: string;
     WELCOMING_PAGE_ROUTE: string;
-    SØKNAD_SENDT_ROUTE: string;
+    APPLICATION_SENDT_ROUTE: string;
 }
 
 export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
     return {
         UTILGJENGELIG_ROUTE: '/utilgjengelig',
-        SØKNAD_ROUTE_PREFIX: `/${søknadstype}`,
+        APPLICATION_ROUTE_PREFIX: `/${søknadstype}`,
         ERROR_PAGE_ROUTE: `/${søknadstype}/feil`,
         WELCOMING_PAGE_ROUTE: `/${søknadstype}/velkommen`,
-        SØKNAD_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`
+        APPLICATION_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`
     };
 };
 

@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
-import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import ConfirmationPage from '../components/pages/confirmation-page/ConfirmationPage';
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
-import { getRouteConfig } from '../config/routeConfig';
+import { getRouteConfig, getRouteUrl } from '../config/routeConfig';
 import { StepID } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
-import { ApplicantData } from '../types/ApplicantData';
-import { ApplicationApiData } from '../types/ApplicationApiData';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { ApplicationType } from '../types/ApplicationType';
 import { navigateTo } from '../utils/navigationUtils';
@@ -22,17 +19,8 @@ export interface KvitteringInfo {
     søkernavn: string;
 }
 
-const getKvitteringInfoFromApiData = (søkerdata: ApplicantData): KvitteringInfo | undefined => {
-    const { fornavn, mellomnavn, etternavn } = søkerdata.person;
-    return {
-        søkernavn: formatName(fornavn, etternavn, mellomnavn)
-    };
-};
-
 const ApplicationRoutes = () => {
-    const [applicationHasBeenSent, setApplicationHasBeenSent] = React.useState(false);
-    const [kvitteringInfo, setKvitteringInfo] = React.useState<KvitteringInfo | undefined>(undefined);
-    const { values, resetForm } = useFormikContext<ApplicationFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
     const { søknadstype } = React.useContext(ApplicationTypeContext);
 
     const history = useHistory();
@@ -60,7 +48,7 @@ const ApplicationRoutes = () => {
                         søknadstype={søknadstype}
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${routeConfig.SØKNAD_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
+                                navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
                             })
                         }
                     />
@@ -97,24 +85,18 @@ const ApplicationRoutes = () => {
                     render={() => (
                         <OppsummeringStep
                             søknadstype={søknadstype}
-                            onApplicationSent={(apiData: ApplicationApiData, søkerdata: ApplicantData) => {
-                                const info = getKvitteringInfoFromApiData(søkerdata);
-                                setKvitteringInfo(info);
-                                setApplicationHasBeenSent(true);
-                                resetForm();
-                                navigateTo(routeConfig.SØKNAD_SENDT_ROUTE, history);
+                            onApplicationSent={() => {
+                                window.location.href = getRouteUrl(
+                                    søknadstype,
+                                    getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE
+                                ); // Ensures history is lost
                             }}
                         />
                     )}
                 />
             )}
 
-            {isAvailable(søknadstype, routeConfig.SØKNAD_SENDT_ROUTE, values, applicationHasBeenSent) && (
-                <Route
-                    path={routeConfig.SØKNAD_SENDT_ROUTE}
-                    render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
-                />
-            )}
+            <Route path={routeConfig.APPLICATION_SENDT_ROUTE} render={() => <ConfirmationPage />} />
 
             <Route path={routeConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
             <Redirect to={routeConfig.WELCOMING_PAGE_ROUTE} />

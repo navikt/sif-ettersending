@@ -6,7 +6,7 @@ import { documentsStepIsAvailable, summaryStepAvailable } from './stepUtils';
 
 export const getApplicationRoute = (søknadstype: ApplicationType, stepId: StepID | undefined) => {
     if (stepId !== undefined) {
-        return `${getRouteConfig(søknadstype).SØKNAD_ROUTE_PREFIX}/${stepId}`;
+        return `${getRouteConfig(søknadstype).APPLICATION_ROUTE_PREFIX}/${stepId}`;
     }
     return undefined;
 };
@@ -27,7 +27,7 @@ export const isAvailable = (
             return documentsStepIsAvailable(values);
         case StepID.OPPSUMMERING:
             return summaryStepAvailable(values);
-        case getRouteConfig(søknadstype).SØKNAD_SENDT_ROUTE:
+        case getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE:
             return soknadSendt === true;
     }
     return true;
