@@ -1,6 +1,6 @@
 import axios from 'axios';
 import axiosConfig from '../config/axiosConfig';
-import { ApplicationApiData } from '../types/ApplicationApiData';
+import { ApplicationApiData, ApplicationApiDataPleiepenger } from '../types/ApplicationApiData';
 import { ApplicationType } from '../types/ApplicationType';
 import { ResourceType } from '../types/ResourceType';
 import { getApiUrlByResourceType, sendMultipartPostRequest } from '../utils/apiUtils';
@@ -8,8 +8,11 @@ import { getApiUrlByResourceType, sendMultipartPostRequest } from '../utils/apiU
 export const getSøker = (søknadstype: ApplicationType) =>
     axios.get(getApiUrlByResourceType(søknadstype, ResourceType.SØKER), axiosConfig);
 
-export const sendApplication = (søknadstype: ApplicationType, data: ApplicationApiData) =>
-    axios.post(getApiUrlByResourceType(søknadstype, ResourceType.SEND_DOKUMENTER), data, axiosConfig);
+export const sendApplicationToOmsorgspengerApi = (data: ApplicationApiData) =>
+    axios.post(getApiUrlByResourceType(ApplicationType.omsorgspenger, ResourceType.SEND_DOKUMENTER), data, axiosConfig);
+
+export const sendApplicationToPleiepengerApi = (data: ApplicationApiDataPleiepenger) =>
+    axios.post(getApiUrlByResourceType(ApplicationType.pleiepenger, ResourceType.SEND_DOKUMENTER), data, axiosConfig);
 
 export const uploadFile = (søknadstype: ApplicationType, file: File) => {
     const formData = new FormData();

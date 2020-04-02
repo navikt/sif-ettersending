@@ -10,7 +10,7 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { sendApplication } from '../../api/api';
+import { sendApplicationToOmsorgspengerApi, sendApplicationToPleiepengerApi } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
@@ -20,7 +20,7 @@ import { ApplicationApiData } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import * as apiUtils from '../../utils/apiUtils';
-import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
+import { mapFormDataToApiData, mapApiDataToPleiepengerApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
@@ -43,7 +43,11 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
     async function navigate(data: ApplicationApiData, søker: ApplicantData) {
         setSendingInProgress(true);
         try {
-            await sendApplication(søknadstype, data);
+            if (søknadstype === ApplicationType.omsorgspenger) {
+                await sendApplicationToOmsorgspengerApi(data);
+            } else {
+                await sendApplicationToPleiepengerApi(mapApiDataToPleiepengerApiData(data));
+            }
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {

@@ -8,6 +8,7 @@ import { getStepConfig } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { getStepTexts } from '../utils/stepUtils';
 import ApplicationFormComponents from './ApplicationFormComponents';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -31,7 +32,7 @@ const ApplicationStep: React.FunctionComponent<Props> = (props) => {
     const stepConfig = getStepConfig(søknadstype);
     const texts = getStepTexts(intl, id, stepConfig);
     return (
-        <Step stepConfig={stepConfig} {...props}>
+        <Step stepConfig={stepConfig} {...props} bannerTitle={intlHelper(intl, `banner.${søknadstype}`)}>
             <ApplicationFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
