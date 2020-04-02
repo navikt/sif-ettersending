@@ -19,6 +19,7 @@ const bem = bemHelper('step');
 export interface StepProps {
     id: StepID;
     useValidationErrorSummary?: boolean;
+    bannerTitle?: string;
 }
 
 interface OwnProps {
@@ -27,6 +28,7 @@ interface OwnProps {
 
 const Step: React.FunctionComponent<StepProps & OwnProps> = ({
     id,
+    bannerTitle,
     stepConfig,
     useValidationErrorSummary,
     children
@@ -40,7 +42,7 @@ const Step: React.FunctionComponent<StepProps & OwnProps> = ({
             title={stepTexts.pageTitle}
             topContentRenderer={() => (
                 <>
-                    <StepBanner text={intlHelper(intl, 'banner.title')} />
+                    <StepBanner text={bannerTitle || intlHelper(intl, 'banner.title')} />
                     {useValidationErrorSummary !== false && <FormikValidationErrorSummary />}
                 </>
             )}>
