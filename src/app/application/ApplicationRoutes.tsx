@@ -87,7 +87,7 @@ const ApplicationRoutes = () => {
                             søknadstype={søknadstype}
                             onApplicationSent={() => {
                                 window.location.href = getRouteUrl(
-                                    søknadstype,
+                                    undefined,
                                     getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE
                                 ); // Ensures history is lost
                             }}

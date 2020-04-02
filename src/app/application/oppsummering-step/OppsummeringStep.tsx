@@ -43,9 +43,11 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
     async function navigate(data: ApplicationApiData, søker: ApplicantData) {
         setSendingInProgress(true);
         try {
-            (await søknadstype) === ApplicationType.omsorgspenger
-                ? sendApplicationToOmsorgspengerApi(data)
-                : sendApplicationToPleiepengerApi(mapApiDataToPleiepengerApiData(data));
+            if (søknadstype === ApplicationType.omsorgspenger) {
+                await sendApplicationToOmsorgspengerApi(data);
+            } else {
+                await sendApplicationToPleiepengerApi(mapApiDataToPleiepengerApiData(data));
+            }
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {

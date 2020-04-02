@@ -88,6 +88,7 @@
     "steg.oppsummering.dokumenter.header": "Dokumenter",
     "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min sak.",
     "steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet": "Du må bekrefte opplysningene",
+    "steg.oppsummering.fødselsnummer": "Fødselsnummer",
 
     "vedleggsliste.fjernKnapp": "Fjern dokument",
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokumenter er lastet opp",
