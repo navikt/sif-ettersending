@@ -51,6 +51,7 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
                 />
             </Page>
             <DinePlikterModal
+                søknadstype={søknadstype}
                 isOpen={dinePlikterModalOpen === true}
                 onRequestClose={() => setDialogState({ dinePlikterModalOpen: false })}
                 contentLabel={intlHelper(intl, 'welcomingPage.modal.omDinePlikter.tittel')}
