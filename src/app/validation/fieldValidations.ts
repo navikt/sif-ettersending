@@ -7,9 +7,13 @@ import { FieldValidationResult } from 'common/validation/types';
 export enum AppFieldValidationErrors {
     'påkrevd' = 'fieldvalidation.påkrevd',
     'for_lang_beskrivelse' = 'fieldvalidation.for_lang_beskrivelse',
+    'for_kort_beskrivelse' = 'fieldvalidation.for_kort_beskrivelse',
     'ingen_dokumenter' = 'fieldvalidation.ingen_dokumenter',
     'for_mange_dokumenter' = 'fieldvalidation.for_mange_dokumenter'
 }
+
+export const MAX_BESKRIVELSE_LENGTH = 250;
+export const MIN_BESKRIVELSE_LENGTH = 5;
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;
 
@@ -33,8 +37,11 @@ export const validateBeskrivelse = (maxLength: number) => (text: any): FieldVali
     if (!hasValue(text)) {
         return fieldIsRequiredError();
     }
-    if (text && text.length > 1000) {
+    if (text && text.trim().length > MAX_BESKRIVELSE_LENGTH) {
         return createAppFieldValidationError(AppFieldValidationErrors.for_lang_beskrivelse);
+    }
+    if (text && text.trim().length < MIN_BESKRIVELSE_LENGTH) {
+        return createAppFieldValidationError(AppFieldValidationErrors.for_kort_beskrivelse);
     }
 };
 

@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import { useFormikContext } from 'formik';
-import { Normaltekst } from 'nav-frontend-typografi';
 import AttachmentListWithDeletion from 'common/components/attachment-list-with-deletion/AttachmentListWithDeletion';
 import AttachmentList from 'common/components/attachment-list/AttachmentList';
 import { Attachment } from 'common/types/Attachment';
@@ -27,15 +24,7 @@ const UploadedDocumentsList: React.FunctionComponent<Props> = ({
     );
 
     if (!containsAnyUploadedAttachments(dokumenter)) {
-        const noAttachmentsText = (
-            <Normaltekst>
-                <FormattedMessage id="vedleggsliste.ingenVedleggLastetOpp" />
-            </Normaltekst>
-        );
-        if (wrapNoAttachmentsInBox) {
-            return <Box margin="m">{noAttachmentsText}</Box>;
-        }
-        return noAttachmentsText;
+        return null;
     }
 
     if (includeDeletionFunctionality) {
