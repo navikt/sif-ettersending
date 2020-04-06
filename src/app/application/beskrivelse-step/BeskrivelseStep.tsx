@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedHTMLMessage } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
@@ -18,7 +18,7 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     label={intlHelper(intl, 'step.beskrivelse.hvaSendes.spm')}
                     maxLength={250}
                     validate={validateBeskrivelse(250)}
-                    description={intlHelper(intl, 'step.beskrivelse.hvaSendes.tekst')}
+                    description={<FormattedHTMLMessage id="step.beskrivelse.hvaSendes.html" />}
                 />
             </FormBlock>
         </ApplicationStep>
