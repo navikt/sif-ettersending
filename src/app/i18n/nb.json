@@ -48,7 +48,7 @@
     "modal.personalopplysninger.personvern.part1b": "nav.no/personvern",
 
     "modal.minePlikter.tittel": "Mine plikter",
-    "modal.minePlikter.part1": "Jeg forstår at det kan få konsekvenser for retten min til omsorgspenger hvis jeg",
+    "modal.minePlikter.part1": "Jeg forstår at det kan få konsekvenser for retten min til {søknadstype} hvis jeg",
     "modal.minePlikter.part1a": "gir uriktig informasjon eller",
     "modal.minePlikter.part1b": "holder tilbake opplysninger",
     "modal.minePlikter.part2a": "Jeg har lest og forstått det som står på",

@@ -3,20 +3,30 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Lenke from 'nav-frontend-lenker';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import getLenker from 'app/lenker';
+import { ApplicationType } from '../../../types/ApplicationType';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 const getText = (part: string) => <FormattedMessage id={`modal.minePlikter.${part}`} />;
 
-const DinePlikterContent: React.FunctionComponent = () => {
+interface Props {
+    søknadstype: ApplicationType;
+}
+
+const DinePlikterContent = ({ søknadstype }: Props) => {
     const intl = useIntl();
+    const søknadstypeText = intlHelper(intl, `søknadstype.${søknadstype}`);
     return (
         <>
             <Systemtittel>{getText('tittel')}</Systemtittel>
             <ul>
                 <li>
-                    <Normaltekst>{getText('part1')}</Normaltekst>
-                    <ul>
+                    <Normaltekst>
+                        <FormattedMessage id="modal.minePlikter.part1" values={{ søknadstype: søknadstypeText }} />
+                    </Normaltekst>
+
+                    <ul style={{ marginTop: '.5rem' }}>
                         <li>{getText('part1a')}</li>
-                        <li>{getText('part1b')}</li>
+                        <li style={{ marginTop: '.5rem' }}>{getText('part1b')}</li>
                     </ul>
                 </li>
                 <li style={{ marginTop: '0.5rem' }}>
