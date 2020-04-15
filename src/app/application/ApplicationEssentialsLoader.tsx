@@ -6,7 +6,10 @@ import { ApplicantData } from '../types/ApplicantData';
 import { ApplicationType } from '../types/ApplicationType';
 import * as apiUtils from '../utils/apiUtils';
 import {
-    navigateToErrorPage, navigateToLoginPage, navigateToWelcomePage, userIsCurrentlyOnErrorPage
+    navigateToErrorPage,
+    navigateToLoginPage,
+    navigateToWelcomePage,
+    userIsCurrentlyOnErrorPage
 } from '../utils/navigationUtils';
 
 interface Props {
@@ -27,7 +30,13 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
         if (søkerdata === undefined && loadState.error === undefined) {
             try {
                 const { data: person } = await getSøker(søknadstype);
-                setSøkerdata({ person });
+                setSøkerdata({
+                    person: {
+                        ...person,
+                        fødselsnummer:
+                            søknadstype === ApplicationType.pleiepenger ? person.fodselsnummer : person.fødselsnummer
+                    }
+                });
                 setLoadState({ isLoading: false, error: undefined });
                 if (userIsCurrentlyOnErrorPage(søknadstype)) {
                     navigateToWelcomePage(søknadstype);
