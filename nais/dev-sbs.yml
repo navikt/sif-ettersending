@@ -41,11 +41,11 @@ spec:
         - name: APPRES_CMS_URL
           value: http://appres.nav.no
         - name: API_URL
-          value: https://omsorgspengesoknad-api-q.nav.no
+          value: https://k9-ettersending-api-q.nav.no
         - name: API_URL_OMSORGSPENGER
-          value: https://omsorgspengesoknad-api-q.nav.no
+          value: https://k9-ettersending-api-q.nav.no
         - name: API_URL_PLEIEPENGER
-          value: https://pleiepengesoknad-api-q.nav.no
+          value: https://k9-ettersending-api-q.nav.no
         - name: PUBLIC_PATH
           value: /familie/sykdom-i-familien/soknad/ettersending
         - name: LOGIN_URL
