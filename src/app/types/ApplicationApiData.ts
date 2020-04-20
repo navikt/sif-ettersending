@@ -12,10 +12,10 @@ export interface ApplicationApiData {
     søknadstype: ApplicationType;
 }
 export interface ApplicationApiDataPleiepenger {
-    sprak: Locale;
-    har_forstatt_rettigheter_og_plikter: boolean;
-    har_bekreftet_opplysninger: boolean;
+    språk: Locale;
+    harForståttRettigheterOgPlikter: boolean;
+    harBekreftetOpplysninger: boolean;
     beskrivelse: string;
     vedlegg: string[];
-    soknadstype: ApplicationType;
+    søknadstype: ApplicationType;
 }

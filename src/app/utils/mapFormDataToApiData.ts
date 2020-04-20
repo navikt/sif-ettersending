@@ -21,10 +21,10 @@ export const mapFormDataToApiData = (
 };
 
 export const mapApiDataToPleiepengerApiData = (data: ApplicationApiData): ApplicationApiDataPleiepenger => ({
-    sprak: data.språk,
-    har_bekreftet_opplysninger: data.harBekreftetOpplysninger,
-    har_forstatt_rettigheter_og_plikter: data.harForståttRettigheterOgPlikter,
-    soknadstype: data.søknadstype,
+    språk: data.språk,
+    harBekreftetOpplysninger: data.harBekreftetOpplysninger,
+    harForståttRettigheterOgPlikter: data.harForståttRettigheterOgPlikter,
+    søknadstype: data.søknadstype,
     beskrivelse: data.beskrivelse,
     vedlegg: data.vedlegg
 });
