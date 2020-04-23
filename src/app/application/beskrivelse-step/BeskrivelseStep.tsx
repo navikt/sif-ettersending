@@ -18,7 +18,12 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     label={intlHelper(intl, 'step.beskrivelse.hvaSendes.spm')}
                     maxLength={MAX_BESKRIVELSE_LENGTH}
                     validate={validateBeskrivelse(MAX_BESKRIVELSE_LENGTH)}
-                    description={<FormattedHTMLMessage id="step.beskrivelse.hvaSendes.html" />}
+                    description={
+                        <div>
+                            <FormattedHTMLMessage id="step.beskrivelse.hvaSendes.html" />
+                            <FormattedHTMLMessage id="step.beskrivelse.ikkeSendSporsmal" />
+                        </div>
+                    }
                 />
             </FormBlock>
         </ApplicationStep>
