@@ -27,3 +27,5 @@ export const getApiUrlByResourceType = (søknadstype: ApplicationType, resourceT
             return `${getEnvironmentVariable('API_URL')}/${resourceType}`;
     }
 };
+
+export const getApiUrl = (resourceType: ResourceType) => `${getEnvironmentVariable('API_URL')}/${resourceType}`;

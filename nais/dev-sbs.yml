@@ -42,10 +42,6 @@ spec:
           value: http://appres.nav.no
         - name: API_URL
           value: https://k9-ettersending-api-q.nav.no
-        - name: API_URL_OMSORGSPENGER
-          value: https://k9-ettersending-api-q.nav.no
-        - name: API_URL_PLEIEPENGER
-          value: https://k9-ettersending-api-q.nav.no
         - name: PUBLIC_PATH
           value: /familie/sykdom-i-familien/soknad/ettersending
         - name: LOGIN_URL
