@@ -1,5 +1,5 @@
 export enum ResourceType {
     SEND_DOKUMENTER = 'ettersend',
-    SØKER = 'ettersending/soker',
+    SØKER = 'soker',
     VEDLEGG = 'vedlegg'
 }
