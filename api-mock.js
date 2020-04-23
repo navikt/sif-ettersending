@@ -38,6 +38,11 @@ const startServer = () => {
             res.send(søkerMock);
         }, 1000);
     });
+    server.get('/ettersending/soker', (req, res) => {
+        setTimeout(() => {
+            res.send(søkerMock);
+        }, 1000);
+    });
 
     server.post('/overfor_omsorgsdager', (req, res) => {
         res.sendStatus(200);
