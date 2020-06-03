@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
 import Box from 'common/components/box/Box';
 import CheckmarkIcon from 'common/components/checkmark-icon/CheckmarkIcon';
 import Page from 'common/components/page/Page';
 import bemUtils from 'common/utils/bemUtils';
 import intlHelper from 'common/utils/intlUtils';
-import getLenker from 'app/lenker';
+import Lenke from 'nav-frontend-lenker';
 import './confirmationPage.less';
 
 const bem = bemUtils('confirmationPage');
@@ -28,19 +28,21 @@ const ConfirmationPage: React.FunctionComponent = () => {
                     <FormattedMessage id="page.confirmation.undertittel" />
                 </Ingress>
                 <ul className="checklist">
+                    "page.confirmation.hvaSkjer1": "", "page.confirmation.hvaSkjer2": "", "page.confirmation.hvaSkjer3":
+                    "",
+                    <li>Innsendingen din vil bli synlig på Ditt NAV etter omkring en uke.</li>
                     <li>
-                        <FormattedHTMLMessage id="page.confirmation.hvaSkjer1" />
+                        Vi starter behandlingen av søknaden din når vi har mottatt all nødvendig dokumentasjon. Vi
+                        kontakter deg hvis vi trenger flere opplysninger i saken din.
                     </li>
                     <li>
-                        <FormattedHTMLMessage id="page.confirmation.hvaSkjer2" />
-                    </li>
-                    <li>
-                        <FormattedHTMLMessage
-                            id="page.confirmation.hvaSkjer3"
-                            values={{
-                                lenke: getLenker(intl.locale).saksbehandlingstider
-                            }}
-                        />
+                        Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se{' '}
+                        <Lenke
+                            href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
+                            target="_blank">
+                            saksbehandlingstiden for ditt fylke her
+                        </Lenke>
+                        .
                     </li>
                 </ul>
             </Box>
