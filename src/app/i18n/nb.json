@@ -56,15 +56,13 @@
 
     "step.nextButtonLabel": "Fortsett",
     "step.nextButtonAriaLabel": "Gå til neste steg",
-    "step.sendButtonLabel": "Send inn søknaden",
-    "step.sendButtonAriaLabel": "Send inn søknaden",
+    "step.sendButtonLabel": "Send inn",
+    "step.sendButtonAriaLabel": "Send inn",
 
     "step.beskrivelse.stepTitle": "Ettersendelse av dokumentasjon",
     "step.beskrivelse.pageTitle": "Ettersendelse av dokumentasjon",
     "step.beskrivelse.stepIndicatorLabel": "Ettersendelse av dokumentasjon",
     "step.beskrivelse.hvaSendes.spm": "Hva skal du ettersende?",
-    "step.beskrivelse.hvaSendes.html": "Her beskriver du hvilken dokumentasjon du skal sende. Det er også til hjelp for oss, om du forteller at du ettersender fordi:<ul><li>vi har etterspurt mer dokumentasjon fra deg, eller</li><li>om du ikke hadde dokumentasjonen klar da du sendte inn søknaden</li></ul>",
-    "step.beskrivelse.ikkeSendSporsmal": "Du kan ikke skrive spørsmål til oss her. Se informasjon om hvordan du kommer i kontakt med oss under «Kontakt oss» nederst på siden.",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Ta bilde av dokumentene og last opp",

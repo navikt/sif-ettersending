@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIntl, FormattedHTMLMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
@@ -20,8 +20,16 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     validate={validateBeskrivelse(MAX_BESKRIVELSE_LENGTH)}
                     description={
                         <div>
-                            <FormattedHTMLMessage id="step.beskrivelse.hvaSendes.html" />
-                            <FormattedHTMLMessage id="step.beskrivelse.ikkeSendSporsmal" />
+                            Her beskriver du hvilken dokumentasjon du skal sende. Det er også til hjelp for oss, om du
+                            forteller at du ettersender fordi:
+                            <ul>
+                                <li>vi har etterspurt mer dokumentasjon fra deg, eller</li>
+                                <li>om du ikke hadde dokumentasjonen klar da du sendte inn søknaden</li>
+                            </ul>
+                            <p>
+                                Du kan ikke skrive spørsmål til oss her. Se informasjon om hvordan du kommer i kontakt
+                                med oss under "Kontakt oss" nederst på siden.
+                            </p>
                         </div>
                     }
                 />
