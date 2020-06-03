@@ -28,8 +28,6 @@ const ConfirmationPage: React.FunctionComponent = () => {
                     <FormattedMessage id="page.confirmation.undertittel" />
                 </Ingress>
                 <ul className="checklist">
-                    "page.confirmation.hvaSkjer1": "", "page.confirmation.hvaSkjer2": "", "page.confirmation.hvaSkjer3":
-                    "",
                     <li>Innsendingen din vil bli synlig på Ditt NAV etter omkring en uke.</li>
                     <li>
                         Vi starter behandlingen av søknaden din når vi har mottatt all nødvendig dokumentasjon. Vi
