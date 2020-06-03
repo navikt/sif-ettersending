@@ -14,7 +14,9 @@ const CoronaWarning: React.FunctionComponent<Props> = (props) => (
             </Box>
             <p style={{ marginTop: 0, marginBottom: '1rem' }}>
                 Hvis du er arbeidstaker, selvstendig næringsdrivende eller frilanser kan du bruke omsorgsdager{' '}
-                <Lenke href="https://www.nav.no/no/person/innhold-til-person-forside/nyttig-a-vite/stengte-skoler-og-barnehager-gir-rett-til-omsorgspenger">
+                <Lenke
+                    href="https://www.nav.no/no/person/innhold-til-person-forside/nyttig-a-vite/stengte-skoler-og-barnehager-gir-rett-til-omsorgspenger"
+                    target="_blank">
                     når du må være hjemme med barn fordi skole eller barnehage har stengt
                 </Lenke>
                 .
@@ -24,13 +26,17 @@ const CoronaWarning: React.FunctionComponent<Props> = (props) => (
             </p>
             <p style={{ marginBottom: '1rem' }}>
                 Som selvstendig næringsdrivende eller frilanser kan du i{' '}
-                <Lenke href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-tar-du-ut-omsorgsdager">
+                <Lenke
+                    href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-tar-du-ut-omsorgsdager"
+                    target="_blank">
                     noen tilfeller få utbetaling fra NAV
                 </Lenke>
                 .
             </p>
             <p style={{ marginBottom: '1rem' }}>
-                <Lenke href="https://www.nav.no/familie/sykdom-i-familien/nb/ofte-stilte-sporsmal-om-koronaviruset-og-bruk-av-omsorgsdager">
+                <Lenke
+                    href="https://www.nav.no/familie/sykdom-i-familien/nb/ofte-stilte-sporsmal-om-koronaviruset-og-bruk-av-omsorgsdager"
+                    target="_blank">
                     Ofte stilte spørsmål om koronaviruset og bruk av omsorgsdager
                 </Lenke>
             </p>
