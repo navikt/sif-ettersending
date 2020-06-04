@@ -11,6 +11,7 @@ import {
     navigateToWelcomePage,
     userIsCurrentlyOnErrorPage
 } from '../utils/navigationUtils';
+import appSentryLogger from '../utils/appSentryLogger';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
@@ -41,10 +42,11 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
                 if (userIsCurrentlyOnErrorPage(søknadstype)) {
                     navigateToWelcomePage(søknadstype);
                 }
-            } catch (response) {
-                if (apiUtils.isForbidden(response) || apiUtils.isUnauthorized(response)) {
+            } catch (error) {
+                if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                     navigateToLoginPage(søknadstype);
                 } else if (!userIsCurrentlyOnErrorPage(søknadstype)) {
+                    appSentryLogger.logApiError(error);
                     navigateToErrorPage(søknadstype);
                 }
                 // this timeout is set because if isLoading is updated in the state too soon,

@@ -13,6 +13,9 @@ import { ApplicationType } from './types/ApplicationType';
 import { Feature, isFeatureEnabled } from './utils/featureToggleUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import 'common/styles/globalStyles.less';
+import appSentryLogger from './utils/appSentryLogger';
+
+appSentryLogger.init();
 
 const localeFromSessionStorage = getLocaleFromSessionStorage();
 

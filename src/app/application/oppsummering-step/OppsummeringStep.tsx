@@ -26,19 +26,30 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
+import appSentryLogger from '../../utils/appSentryLogger';
 
 interface Props {
     søknadstype: ApplicationType;
     onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
 }
 
-const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, søknadstype }) => {
+const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, søknadstype }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
     const history = useHistory();
 
     const [sendingInProgress, setSendingInProgress] = useState(false);
+
+    if (!søkerdata) {
+        return null;
+    }
+
+    const {
+        person: { fornavn, mellomnavn, etternavn, fødselsnummer }
+    } = søkerdata;
+
+    const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
 
     async function navigate(data: ApplicationApiData, søker: ApplicantData) {
         setSendingInProgress(true);
@@ -53,20 +64,11 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                 navigateToLoginPage(søknadstype);
             } else {
+                appSentryLogger.logApiError(error);
                 navigateTo(getRouteConfig(søknadstype).ERROR_PAGE_ROUTE, history);
             }
         }
     }
-
-    if (!søkerdata) {
-        return null;
-    }
-
-    const {
-        person: { fornavn, mellomnavn, etternavn, fødselsnummer }
-    } = søkerdata;
-
-    const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
 
     return (
         <ApplicationStep
