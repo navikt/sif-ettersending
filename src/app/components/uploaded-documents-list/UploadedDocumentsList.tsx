@@ -15,7 +15,7 @@ interface Props {
 
 const UploadedDocumentsList: React.FunctionComponent<Props> = ({
     wrapNoAttachmentsInBox,
-    includeDeletionFunctionality
+    includeDeletionFunctionality,
 }) => {
     const { values, setFieldValue } = useFormikContext<ApplicationFormData>();
 
