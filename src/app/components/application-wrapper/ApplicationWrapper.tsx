@@ -25,7 +25,7 @@ const ApplicationWrapper = ({ locale, children }: ApplicationWrapperProps) => {
                             nb: appBokmålstekster,
                             nn: appNynorsktekster,
                         }}
-                        title="Søknad pleiepenger"
+                        title="Ettersending av dokumenter"
                     />
                 </Router>
             </Normaltekst>
