@@ -8,7 +8,7 @@ import {
     attachmentUploadHasFailed,
     getPendingAttachmentFromFile,
     isFileObject,
-    VALID_EXTENSIONS
+    VALID_EXTENSIONS,
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
@@ -34,7 +34,7 @@ interface FormikFileUploader {
 
 type Props = FormikFileUploader;
 
-const FormikFileUploader: React.FunctionComponent<Props> = ({
+const FormikFileUploader = ({
     name,
     søknadstype,
     groupName,

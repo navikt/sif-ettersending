@@ -28,17 +28,18 @@ const ConfirmationPage: React.FunctionComponent = () => {
                     <FormattedMessage id="page.confirmation.undertittel" />
                 </Ingress>
                 <ul className="checklist">
-                    <li>Innsendingen din vil bli synlig på Ditt NAV etter omkring en uke.</li>
                     <li>
-                        Vi starter behandlingen av søknaden din når vi har mottatt all nødvendig dokumentasjon. Vi
-                        kontakter deg hvis vi trenger flere opplysninger i saken din.
+                        <FormattedMessage id="page.confirmation.check.1" />
                     </li>
                     <li>
-                        Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se{' '}
+                        <FormattedMessage id="page.confirmation.check.2" />
+                    </li>
+                    <li>
+                        <FormattedMessage id="page.confirmation.check.3.1" />{' '}
                         <Lenke
                             href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
                             target="_blank">
-                            saksbehandlingstiden for ditt fylke her
+                            <FormattedMessage id="page.confirmation.check.3.2" />
                         </Lenke>
                         .
                     </li>

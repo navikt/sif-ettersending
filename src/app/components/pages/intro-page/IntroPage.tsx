@@ -14,7 +14,7 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 const bem = bemUtils('introPage');
 
 enum PageFormField {
-    'søknadstype' = 'søknadstype'
+    'søknadstype' = 'søknadstype',
 }
 
 interface PageFormValues {
@@ -45,12 +45,12 @@ const IntroPage: React.StatelessComponent = () => {
                                 radios={[
                                     {
                                         value: ApplicationType.pleiepenger,
-                                        label: intlHelper(intl, 'page.intro.type.pleiepenger')
+                                        label: intlHelper(intl, 'page.intro.type.pleiepenger'),
                                     },
                                     {
                                         value: ApplicationType.omsorgspenger,
-                                        label: intlHelper(intl, 'page.intro.type.omsorgspenger')
-                                    }
+                                        label: intlHelper(intl, 'page.intro.type.omsorgspenger'),
+                                    },
                                 ]}
                             />
                         </Box>

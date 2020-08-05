@@ -15,7 +15,7 @@ export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
         APPLICATION_ROUTE_PREFIX: `/${søknadstype}`,
         ERROR_PAGE_ROUTE: `/${søknadstype}/feil`,
         WELCOMING_PAGE_ROUTE: `/${søknadstype}/velkommen`,
-        APPLICATION_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`
+        APPLICATION_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`,
     };
 };
 

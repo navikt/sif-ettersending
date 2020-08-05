@@ -14,7 +14,7 @@ const LoadingPage: React.FunctionComponent = () => {
                     justifyContent: 'center',
                     minHeight: '15rem',
                     alignItems: 'center',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
                 }}>
                 <LoadingSpinner type="XXL" />
             </div>
