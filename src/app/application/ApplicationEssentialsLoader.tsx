@@ -27,6 +27,7 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
     const [loadState, setLoadState] = useState<LoadState>({ isLoading: true });
     const [søkerdata, setSøkerdata] = useState<ApplicantData | undefined>();
 
+    // TODO: Vedleggsopplastings status vil ikke virke hvis mellomlagring blir lagt på.
     async function loadAppEssentials() {
         if (søkerdata === undefined && loadState.error === undefined) {
             try {

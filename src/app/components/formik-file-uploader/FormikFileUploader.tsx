@@ -8,11 +8,11 @@ import {
     attachmentUploadHasFailed,
     getPendingAttachmentFromFile,
     isFileObject,
-    VALID_EXTENSIONS
+    VALID_EXTENSIONS,
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
-import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
+import { ApplicationFormData, ApplicationFormField, AttachmentWithSize } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import * as apiUtils from '../../utils/apiUtils';
 import appSentryLogger from '../../utils/appSentryLogger';
@@ -31,6 +31,11 @@ interface FormikFileUploader {
     onErrorUploadingAttachments: (files: File[]) => void;
     onUnauthorizedOrForbiddenUpload: () => void;
 }
+
+export const getPendingAttachmentWithSizeFromFile = (file: File): AttachmentWithSize => ({
+    ...getPendingAttachmentFromFile(file),
+    size: file.size,
+});
 
 type Props = FormikFileUploader;
 
@@ -67,7 +72,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
     }
 
     function addPendingAttachmentToFieldArray(file: File, pushFn: FieldArrayPushFn) {
-        const attachment = getPendingAttachmentFromFile(file);
+        const attachment = getPendingAttachmentWithSizeFromFile(file);
         pushFn(attachment);
         return attachment;
     }
@@ -126,7 +131,7 @@ const FormikFileUploader: React.FunctionComponent<Props> = ({
                 name={name}
                 acceptedExtensions={VALID_EXTENSIONS.join(', ')}
                 onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
-                    const attachments = files.map((file) => addPendingAttachmentToFieldArray(file, push));
+                    const attachments: Attachment[] = files.map((file) => addPendingAttachmentToFieldArray(file, push));
                     await uploadAttachments([...(values as any)[name], ...attachments], replace);
                 }}
                 onClick={onFileInputClick}

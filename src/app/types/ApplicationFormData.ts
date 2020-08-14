@@ -9,11 +9,15 @@ export enum ApplicationFormField {
     dokumenterGruppe = 'dokumenterGruppe'
 }
 
+export interface AttachmentWithSize extends Attachment {
+    size: number;
+}
+
 export interface ApplicationFormData {
     [ApplicationFormField.harForståttRettigheterOgPlikter]: boolean;
     [ApplicationFormField.harBekreftetOpplysninger]: boolean;
     [ApplicationFormField.beskrivelse]: string;
-    [ApplicationFormField.dokumenter]: Attachment[];
+    [ApplicationFormField.dokumenter]: AttachmentWithSize[];
 }
 
 export const initialApplicationValues: ApplicationFormData = {

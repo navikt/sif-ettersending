@@ -14,12 +14,15 @@ import { ApplicationFormData, ApplicationFormField } from '../../types/Applicati
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
+import ProgressBar from 'fremdriftslinje';
+import { getPercentageUsed, getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES, toMbString } from '../../utils/attachmentUtils';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
+    const totalSize = getTotalSize(values.dokumenter);
 
     return (
         <ApplicationStep
@@ -46,6 +49,17 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     validate={validateDocuments}
                 />
             </FormBlock>
+            {totalSize > 0.5 * MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
+                <Box margin={'m'}>
+                    <ProgressBar
+                        now={getPercentageUsed(totalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES)}
+                        status={getPercentageUsed(totalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES) === 100 ? 'error' : 'done'}>
+                        <span>
+                            {toMbString(totalSize)} / {toMbString(MAX_TOTAL_ATTACHMENT_SIZE_BYTES)}
+                        </span>
+                    </ProgressBar>
+                </Box>
+            )}
             <Box margin="m">
                 <FileUploadErrors filesThatDidntGetUploaded={filesThatDidntGetUploaded} />
             </Box>
