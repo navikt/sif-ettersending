@@ -2,8 +2,8 @@ import { attachmentHasBeenUploaded } from '@navikt/sif-common-core/lib/utils/att
 import { YesOrNo } from 'common/types/YesOrNo';
 import { createFieldValidationError } from 'common/validation/fieldValidations';
 import { FieldValidationResult } from 'common/validation/types';
-import { AttachmentWithSize } from '../types/ApplicationFormData';
 import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../utils/attachmentUtils';
+import { Attachment } from 'common/types/Attachment';
 
 export enum AppFieldValidationErrors {
     'påkrevd' = 'fieldvalidation.påkrevd',
@@ -54,7 +54,7 @@ export const validateRequiredField = (value: any): FieldValidationResult => {
     return undefined;
 };
 
-export const validateDocuments = (attachments: AttachmentWithSize[]): FieldValidationResult => {
+export const validateDocuments = (attachments: Attachment[]): FieldValidationResult => {
     const uploadedAttachments = attachments.filter((attachment) => attachmentHasBeenUploaded(attachment));
     const totalSizeInBytes: number = getTotalSize(attachments);
     if (totalSizeInBytes > MAX_TOTAL_ATTACHMENT_SIZE_BYTES) {

@@ -12,7 +12,7 @@ import {
 } from 'common/utils/attachmentUtils';
 import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
-import { ApplicationFormData, ApplicationFormField, AttachmentWithSize } from '../../types/ApplicationFormData';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import * as apiUtils from '../../utils/apiUtils';
 import appSentryLogger from '../../utils/appSentryLogger';
@@ -32,9 +32,8 @@ interface FormikFileUploader {
     onUnauthorizedOrForbiddenUpload: () => void;
 }
 
-export const getPendingAttachmentWithSizeFromFile = (file: File): AttachmentWithSize => ({
+export const getPendingAttachmentWithSizeFromFile = (file: File): Attachment => ({
     ...getPendingAttachmentFromFile(file),
-    size: file.size,
 });
 
 type Props = FormikFileUploader;

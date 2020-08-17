@@ -15,7 +15,12 @@ import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
 import ProgressBar from 'fremdriftslinje';
-import { getPercentageUsed, getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES, toMbString } from '../../utils/attachmentUtils';
+import {
+    getPercentageUsed,
+    getTotalSize,
+    MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
+    toMbString,
+} from '../../utils/attachmentUtils';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -53,7 +58,9 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                 <Box margin={'m'}>
                     <ProgressBar
                         now={getPercentageUsed(totalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES)}
-                        status={getPercentageUsed(totalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES) === 100 ? 'error' : 'done'}>
+                        status={
+                            getPercentageUsed(totalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES) === 100 ? 'error' : 'done'
+                        }>
                         <span>
                             {toMbString(totalSize)} / {toMbString(MAX_TOTAL_ATTACHMENT_SIZE_BYTES)}
                         </span>
