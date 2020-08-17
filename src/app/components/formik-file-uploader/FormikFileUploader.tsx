@@ -32,10 +32,6 @@ interface FormikFileUploader {
     onUnauthorizedOrForbiddenUpload: () => void;
 }
 
-export const getPendingAttachmentWithSizeFromFile = (file: File): Attachment => ({
-    ...getPendingAttachmentFromFile(file),
-});
-
 type Props = FormikFileUploader;
 
 const FormikFileUploader = ({
@@ -71,7 +67,7 @@ const FormikFileUploader = ({
     }
 
     function addPendingAttachmentToFieldArray(file: File, pushFn: FieldArrayPushFn) {
-        const attachment = getPendingAttachmentWithSizeFromFile(file);
+        const attachment = getPendingAttachmentFromFile(file);
         pushFn(attachment);
         return attachment;
     }

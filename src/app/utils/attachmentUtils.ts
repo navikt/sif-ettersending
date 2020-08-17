@@ -4,7 +4,10 @@ export const MAX_TOTAL_ATTACHMENT_SIZE_IN_MB = 24;
 export const MAX_TOTAL_ATTACHMENT_SIZE_BYTES = 1024 * 1024 * MAX_TOTAL_ATTACHMENT_SIZE_IN_MB;
 
 export const getTotalSize = (attachments: Attachment[]): number =>
-    attachments.map((attachment: Attachment) => attachment.file.size).reduce((prev, curr) => prev + curr, 0);
+    attachments
+        .filter((attachment: Attachment) => attachment.uploaded)
+        .map((attachment: Attachment) => attachment.file.size)
+        .reduce((prev, curr) => prev + curr, 0);
 
 export const getPercentageUsed = (size: number, maxSize: number): number => {
     if (size <= 0) {
