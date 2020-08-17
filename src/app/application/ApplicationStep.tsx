@@ -22,7 +22,7 @@ export interface FormikStepProps {
 
 type Props = FormikStepProps & StepProps;
 
-const ApplicationStep: React.FunctionComponent<Props> = (props) => {
+const ApplicationStep = (props: Props) => {
     const intl = useIntl();
     const { søknadstype } = React.useContext(ApplicationTypeContext);
     if (!søknadstype) {

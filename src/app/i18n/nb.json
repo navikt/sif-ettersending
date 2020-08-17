@@ -63,6 +63,10 @@
     "step.beskrivelse.pageTitle": "Ettersendelse av dokumentasjon",
     "step.beskrivelse.stepIndicatorLabel": "Ettersendelse av dokumentasjon",
     "step.beskrivelse.hvaSendes.spm": "Hva skal du ettersende?",
+    "step.beskrivelse.intro.1": "Her beskriver du hvilken dokumentasjon du skal sende. Det er også til hjelp for oss, om du forteller at du ettersender fordi:",
+    "step.beskrivelse.intro.li.1": "vi har etterspurt mer dokumentasjon fra deg, eller",
+    "step.beskrivelse.intro.li.2": "om du ikke hadde dokumentasjonen klar da du sendte inn søknaden",
+    "step.beskrivelse.intro.2": "Du kan ikke skrive spørsmål til oss her. Se informasjon om hvordan du kommer i kontakt med oss under \"Kontakt oss\" på nav.no forsiden.",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Ta bilde av dokumentene og last opp",
@@ -98,12 +102,16 @@
     "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må den av foreldrene dine eller den foresatte som sendte inn søknanden sammen med deg, sende inn dokumentene.",
     "page.ikkeMyndig.tittel": "Ettersending av dokumenter",
 
+    "page.unavailable.info.1": "Den digitale søknaden for ettersending av dokumenter er dessverre ikke tilgjengelig på grunn av teknisk feil. Vi jobber med å løse feilen.",
+    "page.unavailable.info.2": "Vi beklager.",
+
     "page.confirmation.sidetittel": "Vi har mottatt ettersendelse av dokumentasjon fra deg",
     "page.confirmation.tittel": "Vi har mottatt ettersendingen av dokumenter",
     "page.confirmation.undertittel": "Hva skjer videre nå?",
-    "page.confirmation.hvaSkjer1": "Innsendingen din vil bli synlig på Ditt NAV etter omkring en uke.",
-    "page.confirmation.hvaSkjer2": "Vi starter behandlingen av søknaden din når vi har mottatt all nødvendig dokumentasjon. Vi kontakter deg hvis vi trenger flere opplysninger i saken din.",
-    "page.confirmation.hvaSkjer3": "Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se saksbehandlingstiden for ditt fylke her.",
+    "page.confirmation.check.1": "Innsendingen din vil bli synlig på Ditt NAV etter omkring en uke.",
+    "page.confirmation.check.2": "Vi starter behandlingen av søknaden din når vi har mottatt all nødvendig dokumentasjon. Vi kontakter deg hvis vi trenger flere opplysninger i saken din.",
+    "page.confirmation.check.3.1": "Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se",
+    "page.confirmation.check.3.2": "saksbehandlingstiden for ditt fylke her",
 
     "fieldvalidation.påkrevd": "Påkrevd verdi",
     "fieldvalidation.for_lang_beskrivelse": "Beskrivelsen kan ikke inneholde med enn 250 tegn",
