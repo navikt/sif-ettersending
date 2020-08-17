@@ -17,11 +17,7 @@ interface Props {
 
 const bem = bemHelper('welcomingPage');
 
-const SamtykkeForm: React.FunctionComponent<Props> = ({
-    onConfirm,
-    onOpenDinePlikterModal,
-    openBehandlingAvPersonopplysningerModal
-}) => {
+const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPersonopplysningerModal }: Props) => {
     const intl = useIntl();
     return (
         <ApplicationFormComponents.Form
@@ -47,7 +43,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                                     <Lenke href="#" onClick={onOpenDinePlikterModal}>
                                         {intlHelper(intl, 'welcomingPage.samtykke.harForståttLabel.lenketekst')}
                                     </Lenke>
-                                )
+                                ),
                             }}
                         />
                     </ApplicationFormComponents.ConfirmationCheckbox>

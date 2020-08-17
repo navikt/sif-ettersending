@@ -39,7 +39,7 @@ export const getPendingAttachmentWithSizeFromFile = (file: File): AttachmentWith
 
 type Props = FormikFileUploader;
 
-const FormikFileUploader: React.FunctionComponent<Props> = ({
+const FormikFileUploader = ({
     name,
     søknadstype,
     groupName,

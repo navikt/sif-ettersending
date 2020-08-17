@@ -13,10 +13,7 @@ interface Props {
     wrapNoAttachmentsInBox?: boolean;
 }
 
-const UploadedDocumentsList: React.FunctionComponent<Props> = ({
-    wrapNoAttachmentsInBox,
-    includeDeletionFunctionality,
-}) => {
+const UploadedDocumentsList = ({ includeDeletionFunctionality }: Props) => {
     const { values, setFieldValue } = useFormikContext<ApplicationFormData>();
 
     const dokumenter: Attachment[] = values.dokumenter.filter(({ file }: Attachment) =>
@@ -34,20 +31,22 @@ const UploadedDocumentsList: React.FunctionComponent<Props> = ({
                 onRemoveAttachmentClick={(attachment: Attachment) => {
                     attachment.pending = true;
                     setFieldValue(ApplicationFormField.dokumenter, dokumenter);
-                    deleteFile(attachment.url!).then(
-                        () => {
-                            setFieldValue(
-                                ApplicationFormField.dokumenter,
-                                removeElementFromArray(attachment, dokumenter)
-                            );
-                        },
-                        () => {
-                            setFieldValue(
-                                ApplicationFormField.dokumenter,
-                                removeElementFromArray(attachment, dokumenter)
-                            );
-                        }
-                    );
+                    if (attachment.url) {
+                        deleteFile(attachment.url).then(
+                            () => {
+                                setFieldValue(
+                                    ApplicationFormField.dokumenter,
+                                    removeElementFromArray(attachment, dokumenter)
+                                );
+                            },
+                            () => {
+                                setFieldValue(
+                                    ApplicationFormField.dokumenter,
+                                    removeElementFromArray(attachment, dokumenter)
+                                );
+                            }
+                        );
+                    }
                 }}
             />
         );

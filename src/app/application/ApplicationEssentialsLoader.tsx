@@ -9,7 +9,7 @@ import {
     navigateToErrorPage,
     navigateToLoginPage,
     navigateToWelcomePage,
-    userIsCurrentlyOnErrorPage
+    userIsCurrentlyOnErrorPage,
 } from '../utils/navigationUtils';
 import appSentryLogger from '../utils/appSentryLogger';
 
@@ -36,8 +36,8 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
                     person: {
                         ...person,
                         fødselsnummer:
-                            søknadstype === ApplicationType.pleiepenger ? person.fodselsnummer : person.fødselsnummer
-                    }
+                            søknadstype === ApplicationType.pleiepenger ? person.fodselsnummer : person.fødselsnummer,
+                    },
                 });
                 setLoadState({ isLoading: false, error: undefined });
                 if (userIsCurrentlyOnErrorPage(søknadstype)) {
