@@ -1,6 +1,6 @@
 import { Attachment } from 'common/types/Attachment';
 
-export const MAX_TOTAL_ATTACHMENT_SIZE_IN_MB = 10;
+export const MAX_TOTAL_ATTACHMENT_SIZE_IN_MB = 24;
 export const MAX_TOTAL_ATTACHMENT_SIZE_BYTES = 1024 * 1024 * MAX_TOTAL_ATTACHMENT_SIZE_IN_MB;
 
 export const getTotalSize = (attachments: Attachment[]): number =>
