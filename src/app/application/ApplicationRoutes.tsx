@@ -67,7 +67,7 @@ const ApplicationRoutes = () => {
                 />
             )}
 
-            {/*{isAvailable(søknadstype, StepID.DOKUMENTER, values) && (*/}
+            {isAvailable(søknadstype, StepID.DOKUMENTER, values) && (
                 <Route
                     path={getApplicationRoute(søknadstype, StepID.DOKUMENTER)}
                     render={() => (
@@ -77,7 +77,7 @@ const ApplicationRoutes = () => {
                         />
                     )}
                 />
-            {/*)}*/}
+            )}
 
             {isAvailable(søknadstype, StepID.OPPSUMMERING, values) && (
                 <Route
