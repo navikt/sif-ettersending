@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { useFormikContext } from 'formik';
@@ -10,12 +10,7 @@ import { ApplicationFormData, ApplicationFormField } from '../../types/Applicati
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
-import {
-    getTotalSize,
-    MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
-    bytesToMbString,
-    mbToMbString, MAX_TOTAL_ATTACHMENT_SIZE_IN_MB
-} from '../../utils/attachmentUtils';
+import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../../utils/attachmentUtils';
 import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 import EkspanderbarPSG from '../../components/EkspanderbarPSG/EkspanderbarPSG';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
@@ -37,10 +32,14 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             buttonDisabled={hasPendingUploads}>
             <CounsellorPanel type={'normal'}>
                 <div>
-                    <Box padBottom={'l'}>Last opp vedlegg her.</Box>
                     <Box padBottom={'l'}>
-                        Du kan kun laste opp filer av typen .pdf, .jpeg, .jpg og .png. Du kan laste opp så mange vedlegg
-                        du vil, men samlet størrelse kan ikke overskride 24Mb.
+                        <FormattedMessage id={'steg.dokumenter.infopanel.1'} />
+                    </Box>
+                    <Box padBottom={'l'}>
+                        <FormattedMessage id={'steg.dokumenter.infopanel.2'} />
+                    </Box>
+                    <Box>
+                        <FormattedMessage id={'steg.dokumenter.infopanel.3'} />
                     </Box>
                 </div>
             </CounsellorPanel>
@@ -64,10 +63,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             {totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
                 <Box margin={'l'}>
                     <AlertStripeAdvarsel>
-                        <p>
-                            Du har lastet opp vedlegg med en samlet størrelse på { bytesToMbString(totalSize) }. Maks total samlet størrelse er { mbToMbString(MAX_TOTAL_ATTACHMENT_SIZE_IN_MB)}.
-                            Hvis du trenger alle dokumentene, så må du sende inn flere ettersendinger.
-                        </p>
+                        <FormattedMessage id={'steg.dokumenter.advarsel.totalstørrelse'} />
                     </AlertStripeAdvarsel>
                 </Box>
             )}
