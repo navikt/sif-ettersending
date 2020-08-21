@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import { getTypedFormComponents } from '@navikt/sif-common-formik/lib';
-import Lenke from 'nav-frontend-lenker';
 import Box from 'common/components/box/Box';
 import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
@@ -10,6 +9,8 @@ import bemUtils from 'common/utils/bemUtils';
 import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
 import { ApplicationType } from '../../../types/ApplicationType';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import './introPage.less';
+import Knappelenke from 'common/components/knappelenke/Knappelenke';
 
 const bem = bemUtils('introPage');
 
@@ -56,10 +57,19 @@ const IntroPage: React.StatelessComponent = () => {
                         </Box>
                         {søknadstype && (
                             <Box margin="xl" textAlignCenter={true}>
-                                <Lenke
-                                    href={getRouteUrl(søknadstype, getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE)}>
-                                    {intlHelper(intl, 'page.intro.gåVidere')}
-                                </Lenke>
+                                <Box
+                                    margin="xl"
+                                    textAlignCenter={true}
+                                    className={bem.element('gaTilSoknadenKnappelenkeWrapper')}>
+                                    <Knappelenke
+                                        type={'hoved'}
+                                        href={getRouteUrl(
+                                            søknadstype,
+                                            getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
+                                        )}>
+                                        <FormattedMessage id="page.intro.gåVidere" />
+                                    </Knappelenke>
+                                </Box>
                             </Box>
                         )}
                     </PageForm.Form>

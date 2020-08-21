@@ -1,25 +1,28 @@
 import * as React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { useFormikContext } from 'formik';
-import HelperTextPanel from 'common/components/helper-text-panel/HelperTextPanel';
 import intlHelper from 'common/utils/intlUtils';
-import FileUploadErrors from 'common/components/file-upload-errors/FileUploadErrors';
 import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
-import PictureScanningGuide from 'common/components/picture-scanning-guide/PictureScanningGuide';
-import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
+import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../../utils/attachmentUtils';
+import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
+import FileUploadErrors from 'common/components/file-upload-errors/FileUploadErrors';
+import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
+import PictureScanningGuide from 'common/components/picture-scanning-guide/PictureScanningGuide';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
+    const totalSize = getTotalSize(values.dokumenter);
 
     return (
         <ApplicationStep
@@ -27,11 +30,22 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             onValidFormSubmit={onValidSubmit}
             useValidationErrorSummary={true}
             buttonDisabled={hasPendingUploads}>
-            <FormBlock>
-                <HelperTextPanel>
-                    <PictureScanningGuide />
-                </HelperTextPanel>
-            </FormBlock>
+            <CounsellorPanel type={'normal'}>
+                <div>
+                    <Box padBottom={'l'}>
+                        <FormattedMessage id={'steg.dokumenter.infopanel.1'} />
+                    </Box>
+                    <Box padBottom={'l'}>
+                        <FormattedMessage id={'steg.dokumenter.infopanel.2'} />
+                    </Box>
+                    <Box>
+                        <FormattedMessage id={'steg.dokumenter.infopanel.3'} />
+                    </Box>
+                </div>
+            </CounsellorPanel>
+            <Box margin={'l'}>
+                <PictureScanningGuide />
+            </Box>
             <FormBlock>
                 <FormikFileUploader
                     søknadstype={søknadstype}
@@ -45,7 +59,14 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     onUnauthorizedOrForbiddenUpload={() => navigateToLoginPage(søknadstype)}
                     validate={validateDocuments}
                 />
-            </FormBlock>
+            </FormBlock>{' '}
+            {totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
+                <Box margin={'l'}>
+                    <AlertStripeAdvarsel>
+                        <FormattedMessage id={'steg.dokumenter.advarsel.totalstørrelse'} />
+                    </AlertStripeAdvarsel>
+                </Box>
+            )}
             <Box margin="m">
                 <FileUploadErrors filesThatDidntGetUploaded={filesThatDidntGetUploaded} />
             </Box>

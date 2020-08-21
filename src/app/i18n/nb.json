@@ -66,12 +66,17 @@
     "step.beskrivelse.intro.1": "Her beskriver du hvilken dokumentasjon du skal sende. Det er også til hjelp for oss, om du forteller at du ettersender fordi:",
     "step.beskrivelse.intro.li.1": "vi har etterspurt mer dokumentasjon fra deg, eller",
     "step.beskrivelse.intro.li.2": "om du ikke hadde dokumentasjonen klar da du sendte inn søknaden",
-    "step.beskrivelse.intro.2": "Du kan ikke skrive spørsmål til oss her. Se informasjon om hvordan du kommer i kontakt med oss under \"Kontakt oss\" på nav.no forsiden.",
+    "step.beskrivelse.intro.2": "Du kan ikke skrive spørsmål til oss her. Se informasjon om hvordan du kommer i {kontaktMedOssLink}.",
+    "step.beskrivelse.intro.2.1": "kontakt med oss",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
-    "step.dokumenter.stepTitle": "Ta bilde av dokumentene og last opp",
+    "step.dokumenter.stepTitle": "Nå skal du laste opp dokumentene dine",
     "step.dokumenter.stepIndicatorLabel": "Last opp dokumenter",
-    "steg.dokumenter.vedlegg": "Last opp bilde av dokumentene (maks 3 bilder)",
+    "steg.dokumenter.vedlegg": "Last opp vedlegg",
+    "steg.dokumenter.infopanel.1": "Når du skal laste opp dokumenter må du enten ta bilde av dokumentene, eller scanne dem.",
+    "steg.dokumenter.infopanel.2": "Du kan laste opp disse filtypene: JPG, JPEG, PDF og PNG. Det er ikke mulig å laste opp andre filtyper enn disse.",
+    "steg.dokumenter.infopanel.3": "Du kan laste opp så mange dokumenter du vil, men den totale størrelsen på alle dokumentene kan ikke overstige 24 Mb. Vi varsler deg hvis du når denne grensen.",
+    "steg.dokumenter.advarsel.totalstørrelse": "Du har totalt lastet opp mer enn grensen på 24 Mb. Det betyr at du må fjerne noe av det du har lastet opp. Hvis det betyr at du ikke får plass til alt du ønsker å sende nå, kan du sende inn en ny ettersendelse når du er ferdig med denne.",
 
     "step.oppsummering.pageTitle": "Pleiepengesøknad - oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
@@ -118,5 +123,8 @@
     "fieldvalidation.for_kort_beskrivelse": "Beskrivelsen må inneholde minst 5 tegn",
     "fieldvalidation.ingen_dokumenter": "Ingen dokumenter er lastet opp",
     "fieldvalidation.for_mange_dokumenter": "For mange dokumenter er lastet opp",
-    "fileUploadErrors.part1": "Det har dessverre skjedd en feil under opplasting av følgende vedlegg:"
+    "fileUploadErrors.part1": "Det har dessverre skjedd en feil under opplasting av følgende vedlegg:",
+    "fieldvalidation.samlet_storrelse_for_hoy": "Total samlet størrelse for dokumentene du har lastet opp overstiger grensen på 24Mb.",
+
+    "ekspanderbarPSG.title": "Slik tar du et godt bilde av dokumentet"
 }

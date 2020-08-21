@@ -7,6 +7,7 @@ import { validateBeskrivelse, MAX_BESKRIVELSE_LENGTH } from '../../validation/fi
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import Lenke from 'nav-frontend-lenker';
 
 const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -30,7 +31,19 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                                 </li>
                             </ul>
                             <p>
-                                <FormattedMessage id="step.beskrivelse.intro.2" />
+                                <FormattedMessage
+                                    id="step.beskrivelse.intro.2"
+                                    values={{
+                                        kontaktMedOssLink: (
+                                            <Lenke
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                href={'https://www.nav.no/person/kontakt-oss/nb/'}>
+                                                <FormattedMessage id="step.beskrivelse.intro.2.1" />
+                                            </Lenke>
+                                        ),
+                                    }}
+                                />
                             </p>
                         </div>
                     }
