@@ -12,10 +12,10 @@ import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
 import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../../utils/attachmentUtils';
 import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
-import EkspanderbarPSG from '../../components/EkspanderbarPSG/EkspanderbarPSG';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import FileUploadErrors from 'common/components/file-upload-errors/FileUploadErrors';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
+import PictureScanningGuide from 'common/components/picture-scanning-guide/PictureScanningGuide';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -43,9 +43,9 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     </Box>
                 </div>
             </CounsellorPanel>
-            <FormBlock>
-                <EkspanderbarPSG />
-            </FormBlock>
+            <Box margin={'l'}>
+                <PictureScanningGuide />
+            </Box>
             <FormBlock>
                 <FormikFileUploader
                     søknadstype={søknadstype}
