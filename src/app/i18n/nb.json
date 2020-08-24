@@ -118,7 +118,7 @@
     "page.confirmation.check.3.1": "Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se",
     "page.confirmation.check.3.2": "saksbehandlingstiden for ditt fylke her",
 
-    "fieldvalidation.påkrevd": "Påkrevd verdi",
+    "fieldvalidation.påkrevd": "Feltet er påkrevd",
     "fieldvalidation.for_lang_beskrivelse": "Beskrivelsen kan ikke inneholde med enn 250 tegn",
     "fieldvalidation.for_kort_beskrivelse": "Beskrivelsen må inneholde minst 5 tegn",
     "fieldvalidation.ingen_dokumenter": "Ingen dokumenter er lastet opp",
