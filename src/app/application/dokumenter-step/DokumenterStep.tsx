@@ -10,19 +10,19 @@ import { ApplicationFormData, ApplicationFormField } from '../../types/Applicati
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
-import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../../utils/attachmentUtils';
 import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import FileUploadErrors from 'common/components/file-upload-errors/FileUploadErrors';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import PictureScanningGuide from 'common/components/picture-scanning-guide/PictureScanningGuide';
+import { getTotalSizeOfAttachments, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from 'common/utils/attachmentUtils';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
-    const totalSize = getTotalSize(values.dokumenter);
+    const totalSize = getTotalSizeOfAttachments(values.dokumenter);
 
     return (
         <ApplicationStep
