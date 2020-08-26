@@ -1,8 +1,11 @@
-import { attachmentHasBeenUploaded } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
+import {
+    attachmentHasBeenUploaded,
+    getTotalSizeOfAttachments,
+    MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
+} from '@navikt/sif-common-core/lib/utils/attachmentUtils';
 import { YesOrNo } from 'common/types/YesOrNo';
 import { createFieldValidationError } from 'common/validation/fieldValidations';
 import { FieldValidationResult } from 'common/validation/types';
-import { getTotalSize, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from '../utils/attachmentUtils';
 import { Attachment } from 'common/types/Attachment';
 
 export enum AppFieldValidationErrors {
@@ -56,7 +59,7 @@ export const validateRequiredField = (value: any): FieldValidationResult => {
 
 export const validateDocuments = (attachments: Attachment[]): FieldValidationResult => {
     const uploadedAttachments = attachments.filter((attachment) => attachmentHasBeenUploaded(attachment));
-    const totalSizeInBytes: number = getTotalSize(attachments);
+    const totalSizeInBytes: number = getTotalSizeOfAttachments(attachments);
     if (totalSizeInBytes > MAX_TOTAL_ATTACHMENT_SIZE_BYTES) {
         return createAppFieldValidationError(AppFieldValidationErrors.samlet_storrelse_for_hoy);
     }
