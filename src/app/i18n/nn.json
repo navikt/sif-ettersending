@@ -73,10 +73,10 @@
     "step.dokumenter.stepTitle": "Nå skal du laste opp dokumentene dine",
     "step.dokumenter.stepIndicatorLabel": "Last opp dokument",
     "steg.dokumenter.vedlegg": "Last opp vedlegg",
-    "steg.dokumenter.infopanel.1": "Når du skal laste opp dokumenter må du enten ta bilde av dokumentene, eller scanne dem.",
-    "steg.dokumenter.infopanel.2": "Du kan laste opp disse filtypene: JPG, JPEG, PDF og PNG. Det er ikke mulig å laste opp andre filtyper enn disse.",
-    "steg.dokumenter.infopanel.3": "Du kan laste opp så mange dokumenter du vil, men den totale størrelsen på alle dokumentene kan ikke overstige 24 Mb. Vi varsler deg hvis du når denne grensen.",
-    "steg.dokumenter.advarsel.totalstørrelse": "Du har totalt lastet opp mer enn grensen på 24 Mb. Det betyr at du må fjerne noe av det du har lastet opp. Hvis det betyr at du ikke får plass til alt du ønsker å sende nå, kan du sende inn en ny ettersendelse når du er ferdig med denne.",
+    "steg.dokumenter.infopanel.1": "Når du skal laste opp dokument, må du enten ta bilete av dokumenta, eller scanne dei.",
+    "steg.dokumenter.infopanel.2": "Du kan laste opp disse filtypane: JPG, JPEG, PDF og PNG. Det er ikkje mulig å laste opp andre filtypar enn disse.",
+    "steg.dokumenter.infopanel.3": "Du kan laste opp så mange dokument du vil, men den totale størrelsen på alle dokumenta kan ikkje overstige 24 Mb. Vi varsler deg hvis du når denne grensen.",
+    "steg.dokumenter.advarsel.totalstørrelse": "Du har totalt lasta opp meir enn grensa på 24 Mb. Det betyr at du må fjerne nokre av dei du har lasta opp. Dersom det betyr at du ikkje får plass til alt du ynsker å sende nå, kan du sende inn ei ny ettersending når du er ferdig med denne.",
 
     "step.oppsummering.pageTitle": "Pleiepengesøknad – oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
@@ -124,7 +124,7 @@
     "fieldvalidation.ingen_dokumenter": "Ingen dokument er lasta opp",
     "fieldvalidation.for_mange_dokumenter": "For mange dokument er lasta opp",
     "fileUploadErrors.part1": "Det har dessverre skjedd ein feil under opplastinga av følgjande vedlegg:",
-    "fieldvalidation.samlet_storrelse_for_hoy": "Total samlet størrelse for dokumentene du har lastet opp overstiger grensen på 24Mb.",
+    "fieldvalidation.samlet_storrelse_for_hoy": "Total samla størrelse for dokumenta du har lasta opp overstig grensa på 24Mb.",
 
-    "ekspanderbarPSG.title": "Slik tar du et godt bilde av dokumentet"
+    "ekspanderbarPSG.title": "Slik tar du eit godt bilete av dokumentet"
 }
