@@ -1,5 +1,6 @@
 export enum Feature {
-    'UTILGJENGELIG' = 'UTILGJENGELIG'
+    'NYNORSK' = 'NYNORSK',
+    'UTILGJENGELIG' = 'UTILGJENGELIG',
 }
 
 export const isFeatureEnabled = (feature: Feature) => {

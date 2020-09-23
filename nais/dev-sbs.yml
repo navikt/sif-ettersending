@@ -50,4 +50,6 @@ spec:
           value: "ryujtq87"
         - name: APPSTATUS_DATASET
           value: "staging"
+        - name: NYNORSK
+          value: "on"
 

@@ -7,6 +7,7 @@ import { ApplicantData } from '../../types/ApplicantData';
 import { getEnvironmentVariable } from '../../utils/envUtils';
 import IntlProvider, { appBokmålstekster, appNynorsktekster } from '../intl-provider/IntlProvider';
 import LanguageToggle from '@navikt/sif-common-core/lib/components/language-toggle/LanguageToggle';
+import { Feature, isFeatureEnabled } from '../../utils/featureToggleUtils';
 
 interface ApplicationWrapperProps {
     søkerdata?: ApplicantData;
@@ -18,7 +19,7 @@ interface ApplicationWrapperProps {
 const ApplicationWrapper = ({ locale, children, onChangeLocale }: ApplicationWrapperProps) => {
     return (
         <IntlProvider locale={locale}>
-            <LanguageToggle locale={locale} toggle={onChangeLocale} />
+            {isFeatureEnabled(Feature.NYNORSK) && <LanguageToggle locale={locale} toggle={onChangeLocale} />}
 
             <Normaltekst tag="div">
                 <Router basename={getEnvironmentVariable('PUBLIC_PATH')}>
