@@ -9,7 +9,7 @@ function createEnvSettingsFile(settingsFile) {
                 API_URL_OMSORGSPENGER: '${process.env.API_URL_OMSORGSPENGER}',
                 API_URL_PLEIEPENGER: '${process.env.API_URL_PLEIEPENGER}',
                 LOGIN_URL: '${process.env.LOGIN_URL}',
-                DEMO_MODE: '${process.env.DEMO_MODE}',
+                NYNORSK: '${process.env.NYNORSK}',
                 PUBLIC_PATH: '${process.env.PUBLIC_PATH}',
                 UTILGJENGELIG: '${process.env.UTILGJENGELIG}',
                 APPSTATUS_PROJECT_ID: '${process.env.APPSTATUS_PROJECT_ID}',

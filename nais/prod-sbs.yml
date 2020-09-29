@@ -50,4 +50,6 @@ spec:
           value: "ryujtq87"
         - name: APPSTATUS_DATASET
           value: "production"
+        - name: NYNORSK
+          value: "off"
 
