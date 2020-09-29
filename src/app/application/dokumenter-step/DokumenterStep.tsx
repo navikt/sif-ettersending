@@ -71,6 +71,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     </AlertStripeAdvarsel>
                 </Box>
             )}
+
             <Box margin="m">
                 <FileUploadErrors filesThatDidntGetUploaded={filesThatDidntGetUploaded} />
             </Box>
