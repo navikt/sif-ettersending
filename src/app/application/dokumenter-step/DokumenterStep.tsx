@@ -23,13 +23,14 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const [filesThatDidntGetUploaded, setFilesThatDidntGetUploaded] = React.useState<File[]>([]);
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
     const totalSize = getTotalSizeOfAttachments(values.dokumenter);
+    const sizeOver24Mb = totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES;
 
     return (
         <ApplicationStep
             id={StepID.DOKUMENTER}
             onValidFormSubmit={onValidSubmit}
             useValidationErrorSummary={true}
-            buttonDisabled={hasPendingUploads}>
+            buttonDisabled={hasPendingUploads || sizeOver24Mb}>
             <CounsellorPanel type={'normal'}>
                 <div>
                     <Box padBottom={'l'}>
@@ -46,20 +47,23 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             <Box margin={'l'}>
                 <PictureScanningGuide />
             </Box>
-            <FormBlock>
-                <FormikFileUploader
-                    søknadstype={søknadstype}
-                    groupName={ApplicationFormField.dokumenterGruppe}
-                    name={ApplicationFormField.dokumenter}
-                    label={intlHelper(intl, 'steg.dokumenter.vedlegg')}
-                    onErrorUploadingAttachments={setFilesThatDidntGetUploaded}
-                    onFileInputClick={() => {
-                        setFilesThatDidntGetUploaded([]);
-                    }}
-                    onUnauthorizedOrForbiddenUpload={() => navigateToLoginPage(søknadstype)}
-                    validate={validateDocuments}
-                />
-            </FormBlock>{' '}
+            {totalSize <= MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
+                <FormBlock>
+                    <FormikFileUploader
+                        søknadstype={søknadstype}
+                        groupName={ApplicationFormField.dokumenterGruppe}
+                        name={ApplicationFormField.dokumenter}
+                        label={intlHelper(intl, 'steg.dokumenter.vedlegg')}
+                        onErrorUploadingAttachments={setFilesThatDidntGetUploaded}
+                        onFileInputClick={() => {
+                            setFilesThatDidntGetUploaded([]);
+                        }}
+                        onUnauthorizedOrForbiddenUpload={() => navigateToLoginPage(søknadstype)}
+                        validate={validateDocuments}
+                    />
+                </FormBlock>
+            )}
+
             {totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
                 <Box margin={'l'}>
                     <AlertStripeAdvarsel>
@@ -67,6 +71,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     </AlertStripeAdvarsel>
                 </Box>
             )}
+
             <Box margin="m">
                 <FileUploadErrors filesThatDidntGetUploaded={filesThatDidntGetUploaded} />
             </Box>
