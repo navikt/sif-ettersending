@@ -3,19 +3,22 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { useFormikContext } from 'formik';
-import intlHelper from 'common/utils/intlUtils';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
-import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
+import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
-import FileUploadErrors from 'common/components/file-upload-errors/FileUploadErrors';
+import FileUploadErrors from '@navikt/sif-common-core/lib/components/file-upload-errors/FileUploadErrors';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
-import PictureScanningGuide from 'common/components/picture-scanning-guide/PictureScanningGuide';
-import { getTotalSizeOfAttachments, MAX_TOTAL_ATTACHMENT_SIZE_BYTES } from 'common/utils/attachmentUtils';
+import PictureScanningGuide from '@navikt/sif-common-core/lib/components/picture-scanning-guide/PictureScanningGuide';
+import {
+    getTotalSizeOfAttachments,
+    MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
+} from '@navikt/sif-common-core/lib/utils/attachmentUtils';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();

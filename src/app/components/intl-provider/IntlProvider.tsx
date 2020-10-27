@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { IntlProvider as Provider } from 'react-intl';
+import '@formatjs/intl-numberformat/locale-data/nb';
+import '@formatjs/intl-numberformat/locale-data/nn';
+import '@formatjs/intl-numberformat/polyfill';
 import '@formatjs/intl-pluralrules/locale-data/nb';
 import '@formatjs/intl-pluralrules/locale-data/nn';
 import '@formatjs/intl-pluralrules/polyfill';
-import { Locale } from 'common/types/Locale';
+import '@formatjs/intl-relativetimeformat/locale-data/nb';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 
 const pictureScanningGuideTexts = {
     nb: require('common/components/picture-scanning-guide/picturescanningguide.nb.json'),
-    nn: require('common/components/picture-scanning-guide/picturescanningguide.nb.json'),
+    nn: require('common/components/picture-scanning-guide/picturescanningguide.nn.json'),
 };
 
 export const appBokmålstekster = require('../../i18n/nb.json');

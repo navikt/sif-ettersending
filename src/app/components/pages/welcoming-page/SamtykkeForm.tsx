@@ -2,10 +2,10 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import Lenke from 'nav-frontend-lenker';
-import FormBlock from 'common/components/form-block/FormBlock';
-import bemHelper from 'common/utils/bemUtils';
-import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
-import intlHelper from 'common/utils/intlUtils';
+import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
+import bemHelper from '@navikt/sif-common-core/lib/utils/bemUtils';
+import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
 import { ApplicationFormField } from '../../../types/ApplicationFormData';
 
