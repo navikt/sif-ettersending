@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import LanguageToggle from '@navikt/sif-common-core/lib/components/language-toggle/LanguageToggle';
+import ApplicationMessages from '@navikt/sif-common-core/lib/dev-utils/intl/application-messages/ApplicationMessages';
+import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import { Normaltekst } from 'nav-frontend-typografi';
-import ApplicationMessages from 'common/dev-utils/intl/application-messages/ApplicationMessages';
-import { Locale } from 'common/types/Locale';
 import { ApplicantData } from '../../types/ApplicantData';
 import { getEnvironmentVariable } from '../../utils/envUtils';
-import IntlProvider, { appBokmålstekster, appNynorsktekster } from '../intl-provider/IntlProvider';
-import LanguageToggle from '@navikt/sif-common-core/lib/components/language-toggle/LanguageToggle';
 import { Feature, isFeatureEnabled } from '../../utils/featureToggleUtils';
+import IntlProvider, { appMessages } from '../intl-provider/IntlProvider';
 
 interface ApplicationWrapperProps {
     søkerdata?: ApplicantData;
@@ -24,13 +24,7 @@ const ApplicationWrapper = ({ locale, children, onChangeLocale }: ApplicationWra
             <Normaltekst tag="div">
                 <Router basename={getEnvironmentVariable('PUBLIC_PATH')}>
                     {children}
-                    <ApplicationMessages
-                        messages={{
-                            nb: appBokmålstekster,
-                            nn: appNynorsktekster,
-                        }}
-                        title="Ettersending av dokumenter"
-                    />
+                    <ApplicationMessages messages={appMessages} title="Ettersending av dokumenter" />
                 </Router>
             </Normaltekst>
         </IntlProvider>

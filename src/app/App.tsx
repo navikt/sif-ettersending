@@ -10,7 +10,7 @@ import appSentryLogger from './utils/appSentryLogger';
 import { getEnvironmentVariable } from './utils/envUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import YtelseSwitch from './YtelseSwitch';
-import 'common/styles/globalStyles.less';
+import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 
 appSentryLogger.init();
 

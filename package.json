@@ -22,11 +22,8 @@
         "testEnvironment": "node"
     },
     "dependencies": {
-        "@formatjs/intl-numberformat": "^5.7.1",
-        "@formatjs/intl-pluralrules": "^3.5.1",
-        "@formatjs/intl-relativetimeformat": "^7.3.1",
-        "@navikt/sif-common-core": "^6.1.6",
-        "@navikt/sif-common-formik": "^12.0.0",
+        "@navikt/sif-common-core": "^6.1.7",
+        "@navikt/sif-common-formik": "^12.0.1",
         "@navikt/sif-common-sentry": "0.0.13",
         "axios": "^0.21.0",
         "busboy": "^0.3.1",
