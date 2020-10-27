@@ -18,14 +18,11 @@ const nynorsktekster = { ...appNynorsktekster, ...pictureScanningGuideTexts.nn }
 
 export interface IntlProviderProps {
     locale: Locale;
-}
-
-export interface IntlProviderProps {
-    locale: Locale;
     onError?: (err: any) => void;
+    children?: React.ReactNode;
 }
 
-const IntlProvider: React.FunctionComponent<IntlProviderProps> = ({ locale, children, onError }) => {
+const IntlProvider: React.FunctionComponent<IntlProviderProps> = ({ locale, children, onError }: IntlProviderProps) => {
     const messages = locale === 'nb' ? bokmålstekster : nynorsktekster;
     return (
         <Provider locale={locale} messages={messages} onError={onError}>

@@ -3,10 +3,10 @@ import {
     getTotalSizeOfAttachments,
     MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
+import { Attachment } from 'common/types/Attachment';
 import { YesOrNo } from 'common/types/YesOrNo';
 import { createFieldValidationError } from 'common/validation/fieldValidations';
 import { FieldValidationResult } from 'common/validation/types';
-import { Attachment } from 'common/types/Attachment';
 
 export enum AppFieldValidationErrors {
     'påkrevd' = 'fieldvalidation.påkrevd',
