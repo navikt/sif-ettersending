@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import AppStatusWrapper from '@navikt/sif-common-core/lib/components/app-status-wrapper/AppStatusWrapper';
+import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import moment from 'moment';
 import Modal from 'nav-frontend-modal';
-import { Locale } from 'common/types/Locale';
 import ApplicationWrapper from './components/application-wrapper/ApplicationWrapper';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
 import appSentryLogger from './utils/appSentryLogger';
 import { getEnvironmentVariable } from './utils/envUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import YtelseSwitch from './YtelseSwitch';
-import 'common/styles/globalStyles.less';
+import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 
 appSentryLogger.init();
 

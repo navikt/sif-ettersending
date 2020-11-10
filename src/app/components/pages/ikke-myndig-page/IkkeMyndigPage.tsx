@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
-import Box from 'common/components/box/Box';
-import FrontPageBanner from 'common/components/front-page-banner/FrontPageBanner';
-import Page from 'common/components/page/Page';
-import intlHelper from 'common/utils/intlUtils';
+import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import FrontPageBanner from '@navikt/sif-common-core/lib/components/front-page-banner/FrontPageBanner';
+import Page from '@navikt/sif-common-core/lib/components/page/Page';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import './ikkeMyndigPage.less';
 
 const IkkeMyndigPage: React.FunctionComponent = () => {
@@ -18,7 +18,7 @@ const IkkeMyndigPage: React.FunctionComponent = () => {
                     bannerSize="xlarge"
                     counsellorWithSpeechBubbleProps={{
                         strongText: intlHelper(intl, 'page.ikkeMyndig.banner.tittel'),
-                        normalText: intlHelper(intl, 'page.ikkeMyndig.banner.tekst')
+                        normalText: intlHelper(intl, 'page.ikkeMyndig.banner.tekst'),
                     }}
                 />
             )}>

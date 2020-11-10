@@ -35,8 +35,6 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
                 setSøkerdata({
                     person: {
                         ...person,
-                        fødselsnummer:
-                            søknadstype === ApplicationType.pleiepenger ? person.fodselsnummer : person.fødselsnummer,
                     },
                 });
                 setLoadState({ isLoading: false, error: undefined });

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import Lenke from 'nav-frontend-lenker';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
-import getLenker from 'app/lenker';
+import getLenker from '../../../lenker';
 import { ApplicationType } from '../../../types/ApplicationType';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 const getText = (part: string) => <FormattedMessage id={`modal.minePlikter.${part}`} />;
 

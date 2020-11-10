@@ -18,10 +18,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
         "baseUrl": "./src",
-        "paths": {
-            "common/formik*": ["../node_modules/@navikt/sif-common-formik/lib*"],
-            "common*": ["../node_modules/@navikt/sif-common-core/lib*"]
-        },
+        "paths": {},
 
         "typeRoots": ["./node_modules/@types", "./src/@types"]
     },

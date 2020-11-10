@@ -1,8 +1,6 @@
 import { IntlShape } from 'react-intl';
-import {
-    ValidationSummaryError
-} from 'common/components/validation-error-summary-base/ValidationErrorSummaryBase';
-import intlHelper from 'common/utils/intlUtils';
+import { ValidationSummaryError } from '@navikt/sif-common-core/lib/components/validation-error-summary-base/ValidationErrorSummaryBase';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { ApplicationApiData } from '../types/ApplicationApiData';
 
 export const apiVedleggIsInvalid = (vedlegg: string[]): boolean => {
@@ -21,7 +19,7 @@ export const validateApiValues = (
     if (apiVedleggIsInvalid(values.vedlegg)) {
         errors.push({
             name: 'vedlegg',
-            message: intlHelper(intl, 'steg.oppsummering.validering.manglerVedlegg')
+            message: intlHelper(intl, 'steg.oppsummering.validering.manglerVedlegg'),
         });
     }
     return errors.length > 0 ? errors : undefined;

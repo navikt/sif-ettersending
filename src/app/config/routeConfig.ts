@@ -1,5 +1,5 @@
-import { getEnvironmentVariable } from 'app/utils/envUtils';
 import { ApplicationType } from '../types/ApplicationType';
+import { getEnvironmentVariable } from '../utils/envUtils';
 
 interface RouteConfig {
     UTILGJENGELIG_ROUTE: string;
