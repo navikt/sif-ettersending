@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { IntlProvider as Provider } from 'react-intl';
+import '@formatjs/intl-pluralrules/locale-data/nb';
+import '@formatjs/intl-pluralrules/locale-data/nn';
+import '@formatjs/intl-pluralrules/polyfill';
 import { allCommonMessages } from '@navikt/sif-common-core/lib/i18n/allCommonMessages';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import { getBokmålLocale, getNynorskLocale } from '@navikt/sif-common-core/lib/utils/localeUtils';
