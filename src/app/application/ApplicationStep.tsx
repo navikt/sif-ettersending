@@ -45,8 +45,7 @@ const ApplicationStep = (props: Props) => {
                         htmlType="submit"
                         className={'step__button'}
                         spinner={showButtonSpinner || false}
-                        disabled={buttonDisabled || false}
-                        aria-label={texts.nextButtonAriaLabel}>
+                        disabled={buttonDisabled || false}>
                         {texts.nextButtonLabel}
                     </Knapp>
                 </FormBlock>

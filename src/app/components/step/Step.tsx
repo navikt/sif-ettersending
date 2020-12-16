@@ -45,7 +45,7 @@ const Step: React.FunctionComponent<Props> = ({
             title={stepTexts.pageTitle}
             topContentRenderer={() => (
                 <>
-                    <StepBanner text={bannerTitle || intlHelper(intl, 'banner.title')} />
+                    <StepBanner tag="h1" text={bannerTitle || intlHelper(intl, 'banner.title')} />
                     {useValidationErrorSummary !== false && <FormikValidationErrorSummary />}
                 </>
             )}>
