@@ -23,8 +23,8 @@
     },
     "dependencies": {
         "@formatjs/intl-pluralrules": "^4.0.1",
-        "@navikt/sif-common-core": "^7.1.4",
-        "@navikt/sif-common-formik": "^13.0.3",
+        "@navikt/sif-common-core": "^7.1.8",
+        "@navikt/sif-common-formik": "^13.0.4",
         "@navikt/sif-common-sentry": "0.0.14",
         "axios": "^0.21.0",
         "busboy": "^0.3.1",
@@ -47,8 +47,8 @@
         "prop-types": "^15.7.2",
         "react": "^16.14.0",
         "react-day-picker": "^7.4.8",
-        "react-intl": "^5.10.7",
-        "snyk": "^1.437.1",
+        "react-intl": "^5.10.8",
+        "snyk": "^1.437.2",
         "svg-sprite-loader": "^5.2.1"
     },
     "devDependencies": {
