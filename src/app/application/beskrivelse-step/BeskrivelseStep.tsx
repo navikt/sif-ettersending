@@ -18,10 +18,13 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     name={ApplicationFormField.beskrivelse}
                     label={intlHelper(intl, 'step.beskrivelse.hvaSendes.spm')}
                     maxLength={MAX_BESKRIVELSE_LENGTH}
+                    autoComplete="off"
                     validate={validateBeskrivelse(MAX_BESKRIVELSE_LENGTH)}
                     description={
                         <div>
-                            <FormattedMessage id="step.beskrivelse.intro.1" />
+                            <p style={{ marginTop: 0 }}>
+                                <FormattedMessage id="step.beskrivelse.intro.1" />
+                            </p>
                             <ul>
                                 <li>
                                     <FormattedMessage id="step.beskrivelse.intro.li.1" />

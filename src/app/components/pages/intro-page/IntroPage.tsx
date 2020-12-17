@@ -31,7 +31,7 @@ const IntroPage: React.StatelessComponent = () => {
         <Page
             className={bem.block}
             title={intlHelper(intl, 'banner.intro')}
-            topContentRenderer={() => <StepBanner text={intlHelper(intl, 'banner.intro')} />}>
+            topContentRenderer={() => <StepBanner tag="h1" text={intlHelper(intl, 'banner.intro')} />}>
             <PageForm.FormikWrapper
                 onSubmit={() => null}
                 initialValues={initialValues}

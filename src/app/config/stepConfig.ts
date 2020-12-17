@@ -5,7 +5,7 @@ import { getRouteConfig } from './routeConfig';
 export enum StepID {
     'BESKRIVELSE' = 'beskrivelse',
     'DOKUMENTER' = 'dokumenter',
-    'OPPSUMMERING' = 'oppsummering'
+    'OPPSUMMERING' = 'oppsummering',
 }
 
 export interface StepConfigItemTexts {
@@ -13,7 +13,6 @@ export interface StepConfigItemTexts {
     stepTitle: string;
     stepIndicatorLabel: string;
     nextButtonLabel?: string;
-    nextButtonAriaLabel?: string;
 }
 export interface StepItemConfigInterface extends StepConfigItemTexts {
     index: number;
@@ -31,7 +30,6 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
         stepTitle: `step.${stepId}.stepTitle`,
         stepIndicatorLabel: `step.${stepId}.stepIndicatorLabel`,
         nextButtonLabel: 'step.nextButtonLabel',
-        nextButtonAriaLabel: 'step.nextButtonAriaLabel'
     };
 };
 
@@ -42,21 +40,20 @@ export const getStepConfig = (søknadstype: ApplicationType): StepConfigInterfac
             ...getStepConfigItemTextKeys(StepID.BESKRIVELSE),
             index: idx++,
             nextStep: StepID.DOKUMENTER,
-            backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
+            backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE,
         },
         [StepID.DOKUMENTER]: {
             ...getStepConfigItemTextKeys(StepID.DOKUMENTER),
             index: idx++,
             nextStep: StepID.OPPSUMMERING,
-            backLinkHref: getApplicationRoute(søknadstype, StepID.BESKRIVELSE)
+            backLinkHref: getApplicationRoute(søknadstype, StepID.BESKRIVELSE),
         },
         [StepID.OPPSUMMERING]: {
             ...getStepConfigItemTextKeys(StepID.OPPSUMMERING),
             index: idx++,
             backLinkHref: getApplicationRoute(søknadstype, StepID.DOKUMENTER),
             nextButtonLabel: 'step.sendButtonLabel',
-            nextButtonAriaLabel: 'step.sendButtonAriaLabel'
-        }
+        },
     };
 
     return config;

@@ -11,7 +11,7 @@ const bem = bemUtils('loadWrapper');
 
 const LoadWrapper = ({ isLoading, contentRenderer }: Props) => (
     <div className={bem.classNames(bem.block, bem.modifierConditional('loading', isLoading))}>
-        <div className={bem.child('loader')}>{isLoading && <LoadingPage />}</div>
+        {isLoading && <LoadingPage />}
         {!isLoading && <>{contentRenderer()}</>}
     </div>
 );
