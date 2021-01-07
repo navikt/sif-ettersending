@@ -2,7 +2,6 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import AppStatusWrapper from '@navikt/sif-common-core/lib/components/app-status-wrapper/AppStatusWrapper';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
-import moment from 'moment';
 import Modal from 'nav-frontend-modal';
 import ApplicationWrapper from './components/application-wrapper/ApplicationWrapper';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
@@ -15,8 +14,6 @@ import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 appSentryLogger.init();
 
 const localeFromSessionStorage = getLocaleFromSessionStorage();
-
-moment.locale(localeFromSessionStorage);
 
 const getAppStatusSanityConfig = () => {
     const projectId = getEnvironmentVariable('APPSTATUS_PROJECT_ID');
