@@ -56,8 +56,8 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     async function sendApiData(data: ApplicationApiData, søker: ApplicantData) {
         const skjemanavn = getSkjemanavn(søknadstype);
         try {
-            await logSoknadSent(skjemanavn);
             await sendApplication(data);
+            await logSoknadSent(skjemanavn);
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
