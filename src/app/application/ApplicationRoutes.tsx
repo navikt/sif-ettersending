@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
 import { useFormikContext } from 'formik';
 import ConfirmationPage from '../components/pages/confirmation-page/ConfirmationPage';
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
@@ -9,6 +10,7 @@ import { StepID } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { ApplicationType } from '../types/ApplicationType';
+import { getSkjemanavn } from '../types/skjemanavn';
 import { navigateTo } from '../utils/navigationUtils';
 import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
 import BeskrivelseStep from './beskrivelse-step/BeskrivelseStep';
@@ -28,6 +30,7 @@ const ApplicationRoutes = () => {
     if (!søknadstype) {
         return <Route path={getRouteConfig(ApplicationType.ukjent).ERROR_PAGE_ROUTE} component={GeneralErrorPage} />;
     }
+    const { logSoknadStartet } = useAmplitudeInstance();
     const routeConfig = getRouteConfig(søknadstype);
 
     const navigateToNextStep = (stepId: StepID) => {
@@ -39,20 +42,18 @@ const ApplicationRoutes = () => {
         });
     };
 
+    const startSoknad = async () => {
+        await logSoknadStartet(getSkjemanavn(søknadstype));
+        setTimeout(() => {
+            navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
+        });
+    };
+
     return (
         <Switch>
             <Route
                 path={routeConfig.WELCOMING_PAGE_ROUTE}
-                render={() => (
-                    <WelcomingPage
-                        søknadstype={søknadstype}
-                        onValidSubmit={() =>
-                            setTimeout(() => {
-                                navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
-                            })
-                        }
-                    />
-                )}
+                render={() => <WelcomingPage søknadstype={søknadstype} onValidSubmit={startSoknad} />}
             />
 
             {isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (

@@ -1,24 +1,25 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import { useFormikContext } from 'formik';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
-import { StepConfigProps, StepID } from '../../config/stepConfig';
-import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
-import { navigateToLoginPage } from '../../utils/navigationUtils';
-import { validateDocuments } from '../../validation/fieldValidations';
-import ApplicationStep from '../ApplicationStep';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import FileUploadErrors from '@navikt/sif-common-core/lib/components/file-upload-errors/FileUploadErrors';
-import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
+import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import PictureScanningGuide from '@navikt/sif-common-core/lib/components/picture-scanning-guide/PictureScanningGuide';
 import {
     getTotalSizeOfAttachments,
     MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { useFormikContext } from 'formik';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
+import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
+import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
+import { StepConfigProps, StepID } from '../../config/stepConfig';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
+import { navigateToLoginPage } from '../../utils/navigationUtils';
+import { validateDocuments } from '../../validation/fieldValidations';
+import ApplicationStep from '../ApplicationStep';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -27,6 +28,13 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const hasPendingUploads: boolean = (values.dokumenter || []).find((a) => a.pending === true) !== undefined;
     const totalSize = getTotalSizeOfAttachments(values.dokumenter);
     const sizeOver24Mb = totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES;
+
+    const { logUserLoggedOut } = useAmplitudeInstance();
+
+    const userLoggedOut = async () => {
+        logUserLoggedOut('Ved opplasting av vedlegg');
+        navigateToLoginPage(søknadstype);
+    };
 
     return (
         <ApplicationStep
@@ -61,7 +69,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                         onFileInputClick={() => {
                             setFilesThatDidntGetUploaded([]);
                         }}
-                        onUnauthorizedOrForbiddenUpload={() => navigateToLoginPage(søknadstype)}
+                        onUnauthorizedOrForbiddenUpload={userLoggedOut}
                         validate={validateDocuments}
                     />
                 </FormBlock>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
+import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import TextareaSummary from '@navikt/sif-common-core/lib/components/textarea-summary/TextareaSummary';
@@ -19,21 +20,22 @@ import { ApplicantData } from '../../types/ApplicantData';
 import { ApplicationApiData } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
+import { getSkjemanavn } from '../../types/skjemanavn';
 import * as apiUtils from '../../utils/apiUtils';
-import { mapFormDataToApiData, mapApiDataToPleiepengerApiData } from '../../utils/mapFormDataToApiData';
+import appSentryLogger from '../../utils/appSentryLogger';
+import { mapApiDataToPleiepengerApiData, mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
-import appSentryLogger from '../../utils/appSentryLogger';
 
 interface Props {
     søknadstype: ApplicationType;
     onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
 }
 
-const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, søknadstype }: Props) => {
+const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
@@ -46,24 +48,30 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent, 
     }
 
     const {
-        person: { fornavn, mellomnavn, etternavn, fødselsnummer }
+        person: { fornavn, mellomnavn, etternavn, fødselsnummer },
     } = søkerdata;
 
     const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
+    const { logSoknadSent, logSoknadFailed, logUserLoggedOut, logInfo } = useAmplitudeInstance();
 
     async function navigate(data: ApplicationApiData, søker: ApplicantData) {
         setSendingInProgress(true);
+        const skjemanavn = getSkjemanavn(søknadstype);
         try {
             if (søknadstype === ApplicationType.omsorgspenger) {
                 await sendApplicationToOmsorgspengerApi(data);
             } else {
                 await sendApplicationToPleiepengerApi(mapApiDataToPleiepengerApiData(data));
             }
+            await logSoknadSent(skjemanavn);
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
+                logUserLoggedOut('Logget ut ved innsending');
+                logInfo({ 'Antall filer': data.vedlegg.length });
                 navigateToLoginPage(søknadstype);
             } else {
+                await logSoknadFailed(skjemanavn);
                 appSentryLogger.logApiError(error);
                 navigateTo(getRouteConfig(søknadstype).ERROR_PAGE_ROUTE, history);
             }

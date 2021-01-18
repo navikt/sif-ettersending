@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
-import { Knapp } from 'nav-frontend-knapper';
+import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { Knapp } from 'nav-frontend-knapper';
 import Step, { StepProps } from '../components/step/Step';
 import { getStepConfig } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { getStepTexts } from '../utils/stepUtils';
 import ApplicationFormComponents from './ApplicationFormComponents';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -25,9 +26,13 @@ type Props = FormikStepProps & StepProps;
 const ApplicationStep = (props: Props) => {
     const intl = useIntl();
     const { søknadstype } = React.useContext(ApplicationTypeContext);
+
     if (!søknadstype) {
         return <div>what?</div>;
     }
+
+    useLogSidevisning(props.id);
+
     const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, customErrorSummary, id } = props;
     const stepConfig = getStepConfig(søknadstype);
     const texts = getStepTexts(intl, id, stepConfig);

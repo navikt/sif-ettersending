@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { AmplitudeProvider } from '@navikt/sif-common-amplitude/lib';
 import AppStatusWrapper from '@navikt/sif-common-core/lib/components/app-status-wrapper/AppStatusWrapper';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import Modal from 'nav-frontend-modal';
@@ -11,6 +12,8 @@ import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/
 import YtelseSwitch from './YtelseSwitch';
 import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 
+export const APPLICATION_KEY = 'ettersending';
+
 appSentryLogger.init();
 
 const localeFromSessionStorage = getLocaleFromSessionStorage();
@@ -21,29 +24,33 @@ const getAppStatusSanityConfig = () => {
     return !projectId || !dataset ? undefined : { projectId, dataset };
 };
 
-const APPLICATION_KEY = 'ettersending';
-
-const App: React.FunctionComponent = () => {
+const App = () => {
     const [locale, setLocale] = React.useState<Locale>(localeFromSessionStorage);
     const appStatusSanityConfig = getAppStatusSanityConfig();
     return (
-        <ApplicationWrapper
-            locale={locale}
-            onChangeLocale={(activeLocale: Locale) => {
-                setLocaleInSessionStorage(activeLocale);
-                setLocale(activeLocale);
-            }}>
-            {appStatusSanityConfig ? (
-                <AppStatusWrapper
-                    applicationKey={APPLICATION_KEY}
-                    sanityConfig={appStatusSanityConfig}
-                    contentRenderer={() => <YtelseSwitch />}
-                    unavailableContentRenderer={() => <UnavailablePage />}
-                />
-            ) : (
-                <YtelseSwitch />
-            )}
-        </ApplicationWrapper>
+        <AmplitudeProvider
+            applicationKey={APPLICATION_KEY}
+            team="sykdom-i-familien"
+            isActive={getEnvironmentVariable('USE_AMPLITUDE') === 'true'}
+            logToConsoleOnly={getEnvironmentVariable('APP_VERSION') === 'dev'}>
+            <ApplicationWrapper
+                locale={locale}
+                onChangeLocale={(activeLocale: Locale) => {
+                    setLocaleInSessionStorage(activeLocale);
+                    setLocale(activeLocale);
+                }}>
+                {appStatusSanityConfig ? (
+                    <AppStatusWrapper
+                        applicationKey={APPLICATION_KEY}
+                        sanityConfig={appStatusSanityConfig}
+                        contentRenderer={() => <YtelseSwitch />}
+                        unavailableContentRenderer={() => <UnavailablePage />}
+                    />
+                ) : (
+                    <YtelseSwitch />
+                )}
+            </ApplicationWrapper>
+        </AmplitudeProvider>
     );
 };
 
