@@ -11,7 +11,7 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { sendApplicationToOmsorgspengerApi, sendApplicationToPleiepengerApi } from '../../api/api';
+import { sendApplication } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
@@ -23,7 +23,7 @@ import { ApplicationType } from '../../types/ApplicationType';
 import { getSkjemanavn } from '../../types/skjemanavn';
 import * as apiUtils from '../../utils/apiUtils';
 import appSentryLogger from '../../utils/appSentryLogger';
-import { mapApiDataToPleiepengerApiData, mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
+import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
@@ -40,7 +40,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     const { values } = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
     const history = useHistory();
-
+    const { logSoknadSent, logSoknadFailed, logUserLoggedOut, logInfo } = useAmplitudeInstance();
     const [sendingInProgress, setSendingInProgress] = useState(false);
 
     if (!søkerdata) {
@@ -52,18 +52,12 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     } = søkerdata;
 
     const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
-    const { logSoknadSent, logSoknadFailed, logUserLoggedOut, logInfo } = useAmplitudeInstance();
 
-    async function navigate(data: ApplicationApiData, søker: ApplicantData) {
-        setSendingInProgress(true);
+    async function sendApiData(data: ApplicationApiData, søker: ApplicantData) {
         const skjemanavn = getSkjemanavn(søknadstype);
         try {
-            if (søknadstype === ApplicationType.omsorgspenger) {
-                await sendApplicationToOmsorgspengerApi(data);
-            } else {
-                await sendApplicationToPleiepengerApi(mapApiDataToPleiepengerApiData(data));
-            }
             await logSoknadSent(skjemanavn);
+            await sendApplication(data);
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
@@ -83,7 +77,8 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
             id={StepID.OPPSUMMERING}
             onValidFormSubmit={() => {
                 setTimeout(() => {
-                    navigate(apiValues, søkerdata); // La view oppdatere seg først
+                    setSendingInProgress(true);
+                    sendApiData(apiValues, søkerdata);
                 });
             }}
             useValidationErrorSummary={true}

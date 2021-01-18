@@ -11,11 +11,3 @@ export interface ApplicationApiData {
     vedlegg: string[];
     søknadstype: ApplicationType;
 }
-export interface ApplicationApiDataPleiepenger {
-    språk: Locale;
-    harForståttRettigheterOgPlikter: boolean;
-    harBekreftetOpplysninger: boolean;
-    beskrivelse: string;
-    vedlegg: string[];
-    søknadstype: ApplicationType;
-}

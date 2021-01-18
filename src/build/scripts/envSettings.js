@@ -6,8 +6,6 @@ function createEnvSettingsFile(settingsFile) {
             settingsFile,
             `window.appSettings = {
                 API_URL: '${process.env.API_URL}',
-                API_URL_OMSORGSPENGER: '${process.env.API_URL_OMSORGSPENGER}',
-                API_URL_PLEIEPENGER: '${process.env.API_URL_PLEIEPENGER}',
                 LOGIN_URL: '${process.env.LOGIN_URL}',
                 NYNORSK: '${process.env.NYNORSK}',
                 PUBLIC_PATH: '${process.env.PUBLIC_PATH}',

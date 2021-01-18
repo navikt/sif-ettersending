@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { FormikValidateFunction } from '@navikt/sif-common-formik/lib';
-import { ArrayHelpers, useFormikContext } from 'formik';
 import { Attachment, PersistedFile } from '@navikt/sif-common-core/lib/types/Attachment';
 import {
     attachmentShouldBeProcessed,
@@ -10,6 +8,8 @@ import {
     isFileObject,
     VALID_EXTENSIONS,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
+import { FormikValidateFunction } from '@navikt/sif-common-formik/lib';
+import { ArrayHelpers, useFormikContext } from 'formik';
 import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
@@ -91,7 +91,7 @@ const FormikFileUploader = ({
         const { file } = attachment;
         if (isFileObject(file)) {
             try {
-                const response = await uploadFile(søknadstype, file);
+                const response = await uploadFile(file);
                 attachment = setAttachmentPendingToFalse(attachment);
                 attachment.url = response.headers.location;
                 attachment.uploaded = true;

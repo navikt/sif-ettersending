@@ -24,7 +24,7 @@ const søkerMock = {
     mellomnavn: undefined,
     etternavn: 'Testesen',
     fødselsnummer: '12345123456',
-    myndig: true
+    myndig: true,
 };
 
 const startServer = () => {
@@ -42,10 +42,6 @@ const startServer = () => {
         setTimeout(() => {
             res.send(søkerMock);
         }, 1000);
-    });
-
-    server.post('/overfor_omsorgsdager', (req, res) => {
-        res.sendStatus(200);
     });
 
     server.post('/ettersend', (req, res) => {
