@@ -56,4 +56,6 @@ spec:
           value: "production"
         - name: NYNORSK
           value: "on"
+        - name: USE_AMPLITUDE
+          value: "true"
 
