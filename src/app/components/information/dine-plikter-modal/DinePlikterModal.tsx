@@ -7,8 +7,12 @@ import { ApplicationType } from '../../../types/ApplicationType';
 
 const bem = bemUtils('dinePlikterModal');
 
-const DinePlikterModal: React.FunctionComponent<ModalProps & { søknadstype: ApplicationType }> = (props) => {
-    const { søknadstype, ...modalProps } = props;
+interface OwnProps {
+    søknadstype: ApplicationType;
+}
+type Props = OwnProps & Omit<ModalProps, 'children'>;
+
+const DinePlikterModal = ({ søknadstype, ...modalProps }: Props) => {
     return (
         <Modal className={bem.block} {...modalProps}>
             <DinePlikterContent søknadstype={søknadstype} />
