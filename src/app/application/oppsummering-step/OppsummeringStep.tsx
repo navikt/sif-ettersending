@@ -58,11 +58,11 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
         try {
             await sendApplication(data);
             await logSoknadSent(skjemanavn);
+            await logInfo({ 'Antall vedlegg sendt': data.vedlegg.length });
             onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
-                logUserLoggedOut('Logget ut ved innsending');
-                logInfo({ 'Antall filer': data.vedlegg.length });
+                await logUserLoggedOut('Logget ut ved innsending');
                 navigateToLoginPage(søknadstype);
             } else {
                 await logSoknadFailed(skjemanavn);

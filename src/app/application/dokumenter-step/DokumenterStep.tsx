@@ -32,7 +32,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const { logUserLoggedOut } = useAmplitudeInstance();
 
     const userLoggedOut = async () => {
-        logUserLoggedOut('Ved opplasting av vedlegg');
+        await logUserLoggedOut('Ved opplasting av vedlegg');
         navigateToLoginPage(søknadstype);
     };
 
