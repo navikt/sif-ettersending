@@ -24,7 +24,7 @@ export interface IntlProviderProps {
     children?: React.ReactNode;
 }
 
-const IntlProvider: React.FunctionComponent<IntlProviderProps> = ({ locale, children, onError }: IntlProviderProps) => {
+const IntlProvider = ({ locale, children, onError }: IntlProviderProps) => {
     const messages = locale === 'nb' ? bokmålstekster : nynorsktekster;
     const localeToUse = locale === 'nb' ? getBokmålLocale() : getNynorskLocale();
     return (

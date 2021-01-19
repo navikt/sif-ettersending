@@ -31,7 +31,7 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
     async function loadAppEssentials() {
         if (søkerdata === undefined && loadState.error === undefined) {
             try {
-                const { data: person } = await getSøker(søknadstype);
+                const { data: person } = await getSøker();
                 setSøkerdata({
                     person: {
                         ...person,

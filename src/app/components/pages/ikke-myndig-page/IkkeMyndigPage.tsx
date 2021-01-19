@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Innholdstittel } from 'nav-frontend-typografi';
+import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import FrontPageBanner from '@navikt/sif-common-core/lib/components/front-page-banner/FrontPageBanner';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { Innholdstittel } from 'nav-frontend-typografi';
 import './ikkeMyndigPage.less';
 
-const IkkeMyndigPage: React.FunctionComponent = () => {
+const IkkeMyndigPage = () => {
     const intl = useIntl();
+    useLogSidevisning('ikkeMyndig');
     return (
         <Page
             className="ikkeMyndigPage"

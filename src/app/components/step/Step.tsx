@@ -29,13 +29,7 @@ interface OwnProps {
 
 type Props = OwnProps & StepProps;
 
-const Step: React.FunctionComponent<Props> = ({
-    id,
-    bannerTitle,
-    stepConfig,
-    useValidationErrorSummary,
-    children,
-}: Props) => {
+const Step = ({ id, bannerTitle, stepConfig, useValidationErrorSummary, children }: Props) => {
     const intl = useIntl();
     const conf = stepConfig[id];
     const stepTexts: StepConfigItemTexts = getStepTexts(intl, id, stepConfig);

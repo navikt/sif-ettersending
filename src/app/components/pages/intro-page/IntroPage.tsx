@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
-import { getTypedFormComponents } from '@navikt/sif-common-formik/lib';
+import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Knappelenke from '@navikt/sif-common-core/lib/components/knappelenke/Knappelenke';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
+import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { getTypedFormComponents } from '@navikt/sif-common-formik/lib';
 import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
 import { ApplicationType } from '../../../types/ApplicationType';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import './introPage.less';
-import Knappelenke from '@navikt/sif-common-core/lib/components/knappelenke/Knappelenke';
 
 const bem = bemUtils('introPage');
 
@@ -24,9 +25,10 @@ interface PageFormValues {
 
 const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
 
-const IntroPage: React.StatelessComponent = () => {
+const IntroPage = () => {
     const intl = useIntl();
     const initialValues = {};
+    useLogSidevisning('intro');
     return (
         <Page
             className={bem.block}
