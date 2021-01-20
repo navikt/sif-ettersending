@@ -30,7 +30,6 @@ const App = () => {
     return (
         <AmplitudeProvider
             applicationKey={APPLICATION_KEY}
-            team="sykdom-i-familien"
             isActive={getEnvironmentVariable('USE_AMPLITUDE') === 'true'}>
             <ApplicationWrapper
                 locale={locale}
