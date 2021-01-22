@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
+import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import CheckmarkIcon from '@navikt/sif-common-core/lib/components/checkmark-icon/CheckmarkIcon';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
@@ -15,7 +15,7 @@ const bem = bemUtils('confirmationPage');
 const ConfirmationPage = () => {
     const intl = useIntl();
 
-    useLogSidevisning('søknad-sendt');
+    useLogSidevisning(SIFCommonPageKey.kvittering);
 
     return (
         <Page title={intlHelper(intl, 'page.confirmation.sidetittel')} className={bem.block}>

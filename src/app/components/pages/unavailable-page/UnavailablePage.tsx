@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
+import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
@@ -12,7 +12,7 @@ const bem = bemUtils('introPage');
 
 const UnavailablePage = () => {
     const title = 'Ettersendelse av dokumenter';
-    useLogSidevisning('ikkeTilgjengelig');
+    useLogSidevisning(SIFCommonPageKey.ikkeTilgjengelig);
     return (
         <Page className={bem.block} title={title} topContentRenderer={() => <StepBanner text={title} />}>
             <Box margin="xxxl">

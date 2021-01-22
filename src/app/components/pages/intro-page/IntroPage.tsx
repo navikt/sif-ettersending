@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
+import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import Knappelenke from '@navikt/sif-common-core/lib/components/knappelenke/Knappelenke';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
@@ -28,7 +28,7 @@ const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
 const IntroPage = () => {
     const intl = useIntl();
     const initialValues = {};
-    useLogSidevisning('intro');
+    useLogSidevisning(SIFCommonPageKey.intro);
     return (
         <Page
             className={bem.block}

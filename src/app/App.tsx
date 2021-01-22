@@ -28,9 +28,7 @@ const App = () => {
     const [locale, setLocale] = React.useState<Locale>(localeFromSessionStorage);
     const appStatusSanityConfig = getAppStatusSanityConfig();
     return (
-        <AmplitudeProvider
-            applicationKey={APPLICATION_KEY}
-            isActive={getEnvironmentVariable('USE_AMPLITUDE') === 'true'}>
+        <AmplitudeProvider applicationKey={APPLICATION_KEY}>
             <ApplicationWrapper
                 locale={locale}
                 onChangeLocale={(activeLocale: Locale) => {

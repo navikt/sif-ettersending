@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
+import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
@@ -27,7 +27,7 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
     const [dialogState, setDialogState] = useState<DialogState>({});
     const intl = useIntl();
 
-    useLogSidevisning('velkommen');
+    useLogSidevisning(SIFCommonPageKey.velkommen);
 
     const { dinePlikterModalOpen, behandlingAvPersonopplysningerModalOpen } = dialogState;
 
