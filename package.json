@@ -51,7 +51,7 @@
         "react": "^17.0.1",
         "react-day-picker": "^7.4.8",
         "react-intl": "^5.10.16",
-        "snyk": "^1.439.0",
+        "snyk": "^1.452.0",
         "svg-sprite-loader": "^5.2.1"
     },
     "devDependencies": {
