@@ -22,7 +22,7 @@
         "testEnvironment": "node"
     },
     "dependencies": {
-        "@formatjs/intl-pluralrules": "^4.0.5",
+        "@formatjs/intl-pluralrules": "^4.0.11",
         "@navikt/sif-common-amplitude": "^1.2.3",
         "@navikt/sif-common-core": "^8.0.3",
         "@navikt/sif-common-formik": "^15.0.1",
