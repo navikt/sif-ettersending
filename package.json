@@ -24,7 +24,7 @@
     "dependencies": {
         "@formatjs/intl-pluralrules": "^4.0.12",
         "@navikt/sif-common-amplitude": "^1.2.5",
-        "@navikt/sif-common-core": "^8.4.3",
+        "@navikt/sif-common-core": "^8.4.7",
         "@navikt/sif-common-formik": "^15.4.0",
         "@navikt/sif-common-sentry": "0.0.14",
         "amplitude-js": "^8.0.0",
