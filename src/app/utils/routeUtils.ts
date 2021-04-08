@@ -24,7 +24,7 @@ export const isAvailable = (
 ) => {
     switch (path) {
         case StepID.DOKUMENTER:
-            return documentsStepIsAvailable(values);
+            return documentsStepIsAvailable(values, søknadstype);
         case StepID.OPPSUMMERING:
             return summaryStepAvailable(values);
         case getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE:

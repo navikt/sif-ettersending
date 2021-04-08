@@ -7,7 +7,7 @@ export interface ApplicationApiData {
     språk: Locale;
     harForståttRettigheterOgPlikter: boolean;
     harBekreftetOpplysninger: boolean;
-    beskrivelse: string;
+    beskrivelse?: string;
     vedlegg: string[];
     søknadstype: ApplicationType;
 }

@@ -96,9 +96,11 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                         </Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.hvaGjelder.header')}>
-                        <TextareaSummary text={apiValues.beskrivelse} />
-                    </SummaryBlock>
+                    {apiValues.beskrivelse && (
+                        <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.hvaGjelder.header')}>
+                            <TextareaSummary text={apiValues.beskrivelse} />
+                        </SummaryBlock>
+                    )}
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.dokumenter.header')}>
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
