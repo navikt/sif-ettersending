@@ -8,14 +8,17 @@ import { ApplicationType } from './types/ApplicationType';
 const YtelseSwitch = () => (
     <Switch>
         <Route path={'/omsorgspenger'} render={() => <Application søknadstype={ApplicationType.omsorgspenger} />} />
-        <Route path={'/OMP_UTV_KS'} render={() => <Application søknadstype={ApplicationType.OMP_UTV_KS} />} />
-        <Route path={'/OMP_UT_SNF'} render={() => <Application søknadstype={ApplicationType.OMP_UT_SNF} />} />
         <Route
-            path={'/OMP_UT_ARBEIDSTAKER'}
-            render={() => <Application søknadstype={ApplicationType.OMP_UT_ARBEIDSTAKER} />}
+            path={'/ekstraomsorgsdager'}
+            render={() => <Application søknadstype={ApplicationType.ekstraomsorgsdager} />}
         />
-        <Route path={'/OMP_UTV_MA'} render={() => <Application søknadstype={ApplicationType.OMP_UTV_MA} />} />
-        <Route path={'/OMP_DELING'} render={() => <Application søknadstype={ApplicationType.OMP_DELING} />} />
+        <Route path={'/utbetaling'} render={() => <Application søknadstype={ApplicationType.utbetaling} />} />
+        <Route
+            path={'/utbetalingarbeidstaker'}
+            render={() => <Application søknadstype={ApplicationType.utbetalingarbeidstaker} />}
+        />
+        <Route path={'/regnetsomalene'} render={() => <Application søknadstype={ApplicationType.regnetsomalene} />} />
+        <Route path={'/deling'} render={() => <Application søknadstype={ApplicationType.deling} />} />
         <Route path={'/pleiepenger'} render={() => <Application søknadstype={ApplicationType.pleiepenger} />} />
         <Route path={'/feil'} component={GeneralErrorPage} />
         <Route component={IntroPage} />

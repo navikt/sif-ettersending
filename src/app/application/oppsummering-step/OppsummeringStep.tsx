@@ -17,7 +17,7 @@ import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
 import { SøkerdataContext } from '../../context/ApplicantDataContext';
 import { ApplicantData } from '../../types/ApplicantData';
-import { ApplicationApiData } from '../../types/ApplicationApiData';
+import { ApplicationApiData, YtelseTypeApi } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import { getSkjemanavn } from '../../types/skjemanavn';
@@ -82,7 +82,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                 });
             }}
             useValidationErrorSummary={true}
-            buttonDisabled={sendingInProgress || apiValues.søknadstype === ApplicationType.ukjent}
+            buttonDisabled={sendingInProgress || apiValues.søknadstype === YtelseTypeApi.ukjent}
             showButtonSpinner={sendingInProgress}>
             <CounsellorPanel>
                 <FormattedMessage id="steg.oppsummering.info" />

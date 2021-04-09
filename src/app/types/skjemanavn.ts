@@ -15,15 +15,15 @@ export const getSkjemanavn = (søknadstype: ApplicationType): SKJEMANAVN => {
     switch (søknadstype) {
         case ApplicationType.pleiepenger:
             return SKJEMANAVN.pleiepenger;
-        case ApplicationType.OMP_UTV_KS:
+        case ApplicationType.ekstraomsorgsdager:
             return SKJEMANAVN.OMP_UTV_KS;
-        case ApplicationType.OMP_UT_SNF:
+        case ApplicationType.utbetaling:
             return SKJEMANAVN.OMP_UT_SNF;
-        case ApplicationType.OMP_UT_ARBEIDSTAKER:
+        case ApplicationType.utbetalingarbeidstaker:
             return SKJEMANAVN.OMP_UT_ARBEIDSTAKER;
-        case ApplicationType.OMP_UTV_MA:
+        case ApplicationType.regnetsomalene:
             return SKJEMANAVN.OMP_UTV_MA;
-        case ApplicationType.OMP_DELING:
+        case ApplicationType.deling:
             return SKJEMANAVN.OMP_DELING;
     }
     return SKJEMANAVN.ukjent;

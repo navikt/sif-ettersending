@@ -6,7 +6,7 @@ export enum StepID {
     'BESKRIVELSE' = 'beskrivelse',
     'DOKUMENTER' = 'dokumenter',
     'OPPSUMMERING' = 'oppsummering',
-    'OMS_TYPE' = 'omsType',
+    'OMS_TYPE' = 'omstype',
 }
 
 export interface StepConfigItemTexts {
