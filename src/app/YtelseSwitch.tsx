@@ -18,7 +18,6 @@ const YtelseSwitch = () => (
             render={() => <Application søknadstype={ApplicationType.utbetalingarbeidstaker} />}
         />
         <Route path={'/regnetsomalene'} render={() => <Application søknadstype={ApplicationType.regnetsomalene} />} />
-        <Route path={'/deling'} render={() => <Application søknadstype={ApplicationType.deling} />} />
         <Route path={'/pleiepenger'} render={() => <Application søknadstype={ApplicationType.pleiepenger} />} />
         <Route path={'/feil'} component={GeneralErrorPage} />
         <Route component={IntroPage} />

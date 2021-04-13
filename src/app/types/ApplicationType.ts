@@ -6,5 +6,4 @@ export enum ApplicationType {
     'utbetaling' = 'utbetaling',
     'utbetalingarbeidstaker' = 'utbetalingarbeidstaker',
     'regnetsomalene' = 'regnetsomalene',
-    'deling' = 'deling',
 }

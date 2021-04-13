@@ -34,10 +34,6 @@ const ValgOmsTypeStep = ({ onValidSubmit }: StepConfigProps) => {
                             value: ApplicationType.regnetsomalene,
                             label: intlHelper(intl, 'step.omstype.radio.label.regnetsomalene'),
                         },
-                        {
-                            value: ApplicationType.deling,
-                            label: intlHelper(intl, 'step.omstype.radio.label.deling'),
-                        },
                     ]}
                 />
             </FormBlock>
