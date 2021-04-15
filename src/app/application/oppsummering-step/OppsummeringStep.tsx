@@ -34,7 +34,6 @@ interface Props {
     søknadstype: ApplicationType;
     onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
 }
-
 const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
@@ -93,6 +92,12 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                         <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
                         <Normaltekst>
                             {intlHelper(intl, 'steg.oppsummering.fødselsnummer')}: {fødselsnummer}
+                        </Normaltekst>
+                    </SummaryBlock>
+
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.typeSøknad.tittel')}>
+                        <Normaltekst>
+                            {intlHelper(intl, `steg.oppsummering.typeSøknad.type.${apiValues.søknadstype}`)}
                         </Normaltekst>
                     </SummaryBlock>
 
