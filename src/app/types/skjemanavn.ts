@@ -7,7 +7,7 @@ export enum SKJEMANAVN {
     OMP_UT_SNF = 'Ettersending omsorgspenger utbetaling SNF ytelse',
     OMP_UT_ARBEIDSTAKER = 'Ettersending omsorgspenger utbetaling arbeidstaker ytelse',
     OMP_UTV_MA = 'Ettersending omsorgspenger utvidet rett - midlertidig alene',
-    OMP_DELE_DAGER = 'Melding om deling av dager med en annen omsorgsperson',
+    OMP_DELE_DAGER = 'Melding om deling av omsorgsdager',
     ukjent = 'Ettersending feil sjemanavn',
 }
 

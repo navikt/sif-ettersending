@@ -115,7 +115,7 @@
     "steg.oppsummering.typeSøknad.type.OMP_UT_SNF": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "steg.oppsummering.typeSøknad.type.OMP_UT_ARBEIDSTAKER": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "steg.oppsummering.typeSøknad.type.OMP_UTV_MA": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
-    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av dager med en annen omsorgsperson",
+    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av omsorgsdager",
 
     "vedleggsliste.fjernKnapp": "Fjern dokumentet",
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokument er lasta opp",

@@ -85,7 +85,7 @@
     "step.omstype.radio.label.utbetaling": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "step.omstype.radio.label.utbetalingarbeidstaker": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "step.omstype.radio.label.regnetsomalene": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
-    "step.omstype.radio.label.deling": "Melding om deling av dager med en annen omsorgsperson",
+    "step.omstype.radio.label.deling": "Melding om deling av omsorgsdager",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Nå skal du laste opp dokumentene dine",
@@ -114,7 +114,7 @@
     "steg.oppsummering.typeSøknad.type.OMP_UT_SNF": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "steg.oppsummering.typeSøknad.type.OMP_UT_ARBEIDSTAKER": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "steg.oppsummering.typeSøknad.type.OMP_UTV_MA": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
-    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av dager med en annen omsorgsperson",
+    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av omsorgsdager",
 
     "vedleggsliste.fjernKnapp": "Fjern dokument",
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokumenter er lastet opp",
