@@ -51,7 +51,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     } = søkerdata;
 
     const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
-
+    console.log(apiValues);
     async function sendApiData(data: ApplicationApiData, søker: ApplicantData) {
         const skjemanavn = getSkjemanavn(søknadstype);
         try {

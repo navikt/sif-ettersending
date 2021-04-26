@@ -7,6 +7,7 @@ export enum SKJEMANAVN {
     OMP_UT_SNF = 'Ettersending omsorgspenger utbetaling SNF ytelse',
     OMP_UT_ARBEIDSTAKER = 'Ettersending omsorgspenger utbetaling arbeidstaker ytelse',
     OMP_UTV_MA = 'Ettersending omsorgspenger utvidet rett - midlertidig alene',
+    OMP_DELE_DAGER = 'Melding om deling av dager med en annen omsorgsperson',
     ukjent = 'Ettersending feil sjemanavn',
 }
 
@@ -22,6 +23,8 @@ export const getSkjemanavn = (søknadstype: ApplicationType): SKJEMANAVN => {
             return SKJEMANAVN.OMP_UT_ARBEIDSTAKER;
         case ApplicationType.regnetsomalene:
             return SKJEMANAVN.OMP_UTV_MA;
+        case ApplicationType.deling:
+            return SKJEMANAVN.OMP_DELE_DAGER;
     }
     return SKJEMANAVN.ukjent;
 };

@@ -23,6 +23,7 @@
     "banner.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.utbetalingarbeidstaker": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.regnetsomalene": "Ettersendelse av dokumentasjon for omsorgspenger",
+    "banner.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
 
     "welcomingPage.title.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
     "welcomingPage.title.omsorgspenger": "Ettersendelse av dokumentasjon for omsorgspenger",
@@ -30,6 +31,7 @@
     "welcomingPage.title.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.utbetalingarbeidstaker": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.regnetsomalene": "Ettersendelse av dokumentasjon for omsorgspenger",
+    "welcomingPage.title.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.counsellor": "Her laster du opp dokumenter som hører til en søknad du har sendt inn tidligere. Har du dokumentene klare?",
     "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
@@ -83,6 +85,7 @@
     "step.omstype.radio.label.utbetaling": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "step.omstype.radio.label.utbetalingarbeidstaker": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "step.omstype.radio.label.regnetsomalene": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
+    "step.omstype.radio.label.deling": "Melding om deling av dager med en annen omsorgsperson",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Nå skal du laste opp dokumentene dine",
@@ -111,6 +114,7 @@
     "steg.oppsummering.typeSøknad.type.OMP_UT_SNF": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "steg.oppsummering.typeSøknad.type.OMP_UT_ARBEIDSTAKER": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "steg.oppsummering.typeSøknad.type.OMP_UTV_MA": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
+    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av dager med en annen omsorgsperson",
 
     "vedleggsliste.fjernKnapp": "Fjern dokument",
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokumenter er lastet opp",

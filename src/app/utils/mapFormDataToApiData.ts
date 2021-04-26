@@ -17,6 +17,8 @@ const getSøknadstypeApi = (søknadstype: ApplicationType): YtelseTypeApi => {
             return YtelseTypeApi.OMP_UT_ARBEIDSTAKER;
         case ApplicationType.regnetsomalene:
             return YtelseTypeApi.OMP_UTV_MA;
+        case ApplicationType.deling:
+            return YtelseTypeApi.OMP_DELE_DAGER;
     }
     return YtelseTypeApi.ukjent;
 };

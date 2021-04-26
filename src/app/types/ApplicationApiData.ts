@@ -9,6 +9,7 @@ export enum YtelseTypeApi {
     'OMP_UT_SNF' = 'OMP_UT_SNF',
     'OMP_UT_ARBEIDSTAKER' = 'OMP_UT_ARBEIDSTAKER',
     'OMP_UTV_MA' = 'OMP_UTV_MA',
+    'OMP_DELE_DAGER' = 'OMP_DELE_DAGER',
     'ukjent' = 'ukjent',
 }
 export interface ApplicationApiData {
