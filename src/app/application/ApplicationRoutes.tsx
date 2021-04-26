@@ -16,6 +16,7 @@ import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/rou
 import BeskrivelseStep from './beskrivelse-step/BeskrivelseStep';
 import DokumenterStep from './dokumenter-step/DokumenterStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
+import ValgOmsTypeStep from './valgOmsType-step/ValgOmsTypeStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -45,7 +46,13 @@ const ApplicationRoutes = () => {
     const startSoknad = async () => {
         await logSoknadStartet(getSkjemanavn(søknadstype));
         setTimeout(() => {
-            navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${StepID.BESKRIVELSE}`, history);
+            const startStep =
+                søknadstype === ApplicationType.pleiepenger
+                    ? StepID.BESKRIVELSE
+                    : søknadstype === ApplicationType.omsorgspenger
+                    ? StepID.OMS_TYPE
+                    : StepID.DOKUMENTER;
+            navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${startStep}`, history);
         });
     };
 
@@ -56,13 +63,24 @@ const ApplicationRoutes = () => {
                 render={() => <WelcomingPage søknadstype={søknadstype} onValidSubmit={startSoknad} />}
             />
 
-            {isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (
+            {søknadstype === ApplicationType.pleiepenger && isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (
                 <Route
                     path={getApplicationRoute(søknadstype, StepID.BESKRIVELSE)}
                     render={() => (
                         <BeskrivelseStep
                             søknadstype={søknadstype}
                             onValidSubmit={() => navigateToNextStep(StepID.BESKRIVELSE)}
+                        />
+                    )}
+                />
+            )}
+            {søknadstype === ApplicationType.omsorgspenger && isAvailable(søknadstype, StepID.OMS_TYPE, values) && (
+                <Route
+                    path={getApplicationRoute(søknadstype, StepID.OMS_TYPE)}
+                    render={() => (
+                        <ValgOmsTypeStep
+                            søknadstype={søknadstype}
+                            onValidSubmit={() => navigateToNextStep(StepID.OMS_TYPE)}
                         />
                     )}
                 />

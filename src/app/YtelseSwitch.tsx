@@ -8,6 +8,17 @@ import { ApplicationType } from './types/ApplicationType';
 const YtelseSwitch = () => (
     <Switch>
         <Route path={'/omsorgspenger'} render={() => <Application søknadstype={ApplicationType.omsorgspenger} />} />
+        <Route
+            path={'/ekstraomsorgsdager'}
+            render={() => <Application søknadstype={ApplicationType.ekstraomsorgsdager} />}
+        />
+        <Route path={'/utbetaling'} render={() => <Application søknadstype={ApplicationType.utbetaling} />} />
+        <Route
+            path={'/utbetalingarbeidstaker'}
+            render={() => <Application søknadstype={ApplicationType.utbetalingarbeidstaker} />}
+        />
+        <Route path={'/regnetsomalene'} render={() => <Application søknadstype={ApplicationType.regnetsomalene} />} />
+        <Route path={'/deling'} render={() => <Application søknadstype={ApplicationType.deling} />} />
         <Route path={'/pleiepenger'} render={() => <Application søknadstype={ApplicationType.pleiepenger} />} />
         <Route path={'/feil'} component={GeneralErrorPage} />
         <Route component={IntroPage} />

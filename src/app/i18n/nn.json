@@ -18,10 +18,21 @@
 
     "banner.intro": "Ettersending av dokumentasjon",
     "banner.pleiepenger": "Ettersending av dokumentasjon til søknad om pleiepengar",
-    "banner.omsorgspenger": "Ettersending av dokumentasjon til søknad om omsorgspengar",
+    "banner.omsorgspenger": "Ettersending av dokumentasjon for omsorgspengar",
+    "banner.OMP_UTV_KS": "Ettersending av dokumentasjon for omsorgspengar",
+    "banner.OMP_UT_SNF": "Ettersending av dokumentasjon for omsorgspengar",
+    "banner.OMP_UT_ARBEIDSTAKER": "Ettersending av dokumentasjon for omsorgspengar",
+    "banner.OMP_UTV_MA": "Ettersending av dokumentasjon for omsorgspengar",
+    "banner.OMP_DELING": "Ettersending av dokumentasjon for omsorgspengar",
 
     "welcomingPage.title.pleiepenger": "Ettersending av dokumentasjon til søknad om pleiepengar",
-    "welcomingPage.title.omsorgspenger": "Ettersending av dokumentasjon til søknad om omsorgspengar",
+    "welcomingPage.title.omsorgspenger": "Ettersending av dokumentasjon for omsorgspengar",
+    "welcomingPage.title.OMP_UTV_KS": "Ettersending av dokumentasjon for omsorgspengar",
+    "welcomingPage.title.OMP_UT_SNF": "Ettersending av dokumentasjon for omsorgspengar",
+    "welcomingPage.title.OMP_UT_ARBEIDSTAKER": "Ettersending av dokumentasjon for omsorgspengar",
+    "welcomingPage.title.OMP_UTV_MA": "Ettersending av dokumentasjon for omsorgspengar",
+    "welcomingPage.title.OMP_DELING": "Ettersending av dokumentasjon for omsorgspengar",
+
     "welcomingPage.counsellor": "Her lastar du opp dokumentasjon til ein søknad du har sendt inn tidlegare. Har du dokumenta klare?",
     "welcomingPage.samtykke.tekst": "Eg stadfestar at eg har lese og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkåra",
@@ -68,6 +79,15 @@
     "step.beskrivelse.intro.2": "Du kan ikkje skrive spørsmål til oss her. Sjå informasjon om korleis du kjem i {kontaktMedOssLink}.",
     "step.beskrivelse.intro.2.1": "kontakt med oss",
 
+    "step.omstype.stepTitle": "Kva skal du ettersenda til?",
+    "step.omstype.pageTitle": "Omsorgspengar type",
+    "step.omstype.stepIndicatorLabel": "Omsorgspengar type",
+    "step.omstype.radio.label.ekstraomsorgsdager": "Søknad om ekstra omsorgsdagar ved kronisk sjukt eller funksjonshemma barn",
+    "step.omstype.radio.label.utbetaling": "Søknad om utbetaling av omsorgspengar for sjølvstendig næringsdrivande og frilansere",
+    "step.omstype.radio.label.utbetalingarbeidstaker": "Søknad om utbetaling av omsorgspengar når arbeidsgivar ikkje utbetaler",
+    "step.omstype.radio.label.regnetsomalene": "Søknad om å bli rekna som at du er åleine om omsorga for barn",
+    "step.omstype.radio.label.deling": "Melding om deling av omsorgsdagar",
+
     "step.dokumenter.pageTitle": "Last opp dokument",
     "step.dokumenter.stepTitle": "Nå skal du laste opp dokumenta dine",
     "step.dokumenter.stepIndicatorLabel": "Last opp dokument",
@@ -89,12 +109,20 @@
     "steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet": "Du må bekrefte opplysningane",
     "steg.oppsummering.fødselsnummer": "Fødselsnummer",
 
+    "steg.oppsummering.typeSøknad.tittel": "Hva skal du ettersende til?",
+    "steg.oppsummering.typeSøknad.type.PLEIEPENGER_SYKT_BARN": "Søknad om pleiepenger",
+    "steg.oppsummering.typeSøknad.type.OMP_UTV_KS": "Søknad om ekstra omsorgsdager ved kronisk sykt eller funksjonshemmet barn",
+    "steg.oppsummering.typeSøknad.type.OMP_UT_SNF": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
+    "steg.oppsummering.typeSøknad.type.OMP_UT_ARBEIDSTAKER": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
+    "steg.oppsummering.typeSøknad.type.OMP_UTV_MA": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
+    "steg.oppsummering.typeSøknad.type.OMP_DELE_DAGER": "Melding om deling av omsorgsdager",
+
     "vedleggsliste.fjernKnapp": "Fjern dokumentet",
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokument er lasta opp",
 
-    "page.intro.hvilkenTypeSøknad": "Kva type søknad gjeld denne ettersendinga?",
-    "page.intro.type.pleiepenger": "Søknad om pleiepengar",
-    "page.intro.type.omsorgspenger": "Søknad om omsorgspengar",
+    "page.intro.hvilkenTypeSøknad": "Kva gjeld denne ettersendinga?",
+    "page.intro.type.pleiepenger": "Pleiepengar",
+    "page.intro.type.omsorgspenger": "Omsorgspengar",
     "page.intro.gåVidere": "Gå vidare",
 
     "page.generalErrorPage.sidetittel": "Feil",

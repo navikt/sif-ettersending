@@ -17,7 +17,7 @@ import { getRouteConfig } from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
 import { SøkerdataContext } from '../../context/ApplicantDataContext';
 import { ApplicantData } from '../../types/ApplicantData';
-import { ApplicationApiData } from '../../types/ApplicationApiData';
+import { ApplicationApiData, YtelseTypeApi } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import { getSkjemanavn } from '../../types/skjemanavn';
@@ -34,7 +34,6 @@ interface Props {
     søknadstype: ApplicationType;
     onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
 }
-
 const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     const intl = useIntl();
     const { values } = useFormikContext<ApplicationFormData>();
@@ -52,7 +51,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     } = søkerdata;
 
     const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
-
+    console.log(apiValues);
     async function sendApiData(data: ApplicationApiData, søker: ApplicantData) {
         const skjemanavn = getSkjemanavn(søknadstype);
         try {
@@ -82,7 +81,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                 });
             }}
             useValidationErrorSummary={true}
-            buttonDisabled={sendingInProgress || apiValues.søknadstype === ApplicationType.ukjent}
+            buttonDisabled={sendingInProgress || apiValues.søknadstype === YtelseTypeApi.ukjent}
             showButtonSpinner={sendingInProgress}>
             <CounsellorPanel>
                 <FormattedMessage id="steg.oppsummering.info" />
@@ -96,9 +95,17 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                         </Normaltekst>
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.hvaGjelder.header')}>
-                        <TextareaSummary text={apiValues.beskrivelse} />
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.typeSøknad.tittel')}>
+                        <Normaltekst>
+                            {intlHelper(intl, `steg.oppsummering.typeSøknad.type.${apiValues.søknadstype}`)}
+                        </Normaltekst>
                     </SummaryBlock>
+
+                    {apiValues.beskrivelse && (
+                        <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.hvaGjelder.header')}>
+                            <TextareaSummary text={apiValues.beskrivelse} />
+                        </SummaryBlock>
+                    )}
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.dokumenter.header')}>
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
