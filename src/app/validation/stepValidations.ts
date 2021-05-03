@@ -1,5 +1,5 @@
 import { ApplicationFormData } from '../types/ApplicationFormData';
-import { hasValue } from './fieldValidations';
+import { hasValue } from '@navikt/sif-common-formik/lib/validation/validationUtils';
 
 export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter }: ApplicationFormData): boolean =>
     harForståttRettigheterOgPlikter === true;

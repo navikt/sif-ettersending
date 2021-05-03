@@ -1,13 +1,14 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import Lenke from 'nav-frontend-lenker';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import bemHelper from '@navikt/sif-common-core/lib/utils/bemUtils';
-import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
+import { Hovedknapp } from 'nav-frontend-knapper';
+import Lenke from 'nav-frontend-lenker';
 import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
 import { ApplicationFormField } from '../../../types/ApplicationFormData';
+import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
 
 interface Props {
     onConfirm: () => void;
@@ -23,19 +24,13 @@ const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPerso
         <ApplicationFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
-            fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
+            formErrorHandler={getIntlFormErrorHandler(intl, 'validation')}>
             <FormBlock>
                 <FormBlock>
                     <ApplicationFormComponents.ConfirmationCheckbox
                         label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
                         name={ApplicationFormField.harForståttRettigheterOgPlikter}
-                        validate={(value) => {
-                            let result;
-                            if (value !== true) {
-                                result = intlHelper(intl, 'welcomingPage.samtykke.harIkkeGodkjentVilkår');
-                            }
-                            return result;
-                        }}>
+                        validate={getCheckedValidator()}>
                         <FormattedMessage
                             id="welcomingPage.samtykke.harForståttLabel"
                             values={{

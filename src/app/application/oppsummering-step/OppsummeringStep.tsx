@@ -29,6 +29,7 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
+import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
 
 interface Props {
     søknadstype: ApplicationType;
@@ -51,7 +52,6 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
     } = søkerdata;
 
     const apiValues = mapFormDataToApiData(values, søknadstype, intl.locale as Locale);
-    console.log(apiValues);
     async function sendApiData(data: ApplicationApiData, søker: ApplicantData) {
         const skjemanavn = getSkjemanavn(søknadstype);
         try {
@@ -117,13 +117,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                 <ApplicationFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
                     name={ApplicationFormField.harBekreftetOpplysninger}
-                    validate={(value) => {
-                        let result;
-                        if (value !== true) {
-                            result = intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet');
-                        }
-                        return result;
-                    }}
+                    validate={getCheckedValidator()}
                 />
             </Box>
         </ApplicationStep>

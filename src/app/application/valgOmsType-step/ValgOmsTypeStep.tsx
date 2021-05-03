@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { getRequiredFieldValidator } from '@navikt/sif-common-formik/lib/validation';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
-import { validateRequiredField } from '../../validation/fieldValidations';
+import { ApplicationType } from '../../types/ApplicationType';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { ApplicationType } from '../../types/ApplicationType';
 
 const ValgOmsTypeStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -16,7 +16,8 @@ const ValgOmsTypeStep = ({ onValidSubmit }: StepConfigProps) => {
             <FormBlock>
                 <ApplicationFormComponents.RadioPanelGroup
                     name={ApplicationFormField.søknadstype}
-                    validate={validateRequiredField}
+                    legend={intlHelper(intl, 'step.omstype.søknadstype.spm')}
+                    validate={getRequiredFieldValidator()}
                     radios={[
                         {
                             value: ApplicationType.ekstraomsorgsdager,
