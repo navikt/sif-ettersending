@@ -20,11 +20,22 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     label={intlHelper(intl, 'step.beskrivelse.hvaSendes.spm')}
                     maxLength={MAX_BESKRIVELSE_LENGTH}
                     autoComplete="off"
-                    validate={getStringValidator({
-                        required: true,
-                        maxLength: MAX_BESKRIVELSE_LENGTH,
-                        minLength: MIN_BESKRIVELSE_LENGTH,
-                    })}
+                    validate={(value) => {
+                        const error = getStringValidator({
+                            required: true,
+                            maxLength: MAX_BESKRIVELSE_LENGTH,
+                            minLength: MIN_BESKRIVELSE_LENGTH,
+                        })(value);
+                        return error
+                            ? {
+                                  key: error,
+                                  values: {
+                                      min: MIN_BESKRIVELSE_LENGTH,
+                                      maks: MAX_BESKRIVELSE_LENGTH,
+                                  },
+                              }
+                            : undefined;
+                    }}
                     description={
                         <div>
                             <p style={{ marginTop: 0 }}>
