@@ -3,11 +3,12 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
-import { validateBeskrivelse, MAX_BESKRIVELSE_LENGTH } from '../../validation/fieldValidations';
+import { MAX_BESKRIVELSE_LENGTH, MIN_BESKRIVELSE_LENGTH } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import Lenke from 'nav-frontend-lenker';
+import { getStringValidator } from '@navikt/sif-common-formik/lib/validation';
 
 const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -19,7 +20,22 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                     label={intlHelper(intl, 'step.beskrivelse.hvaSendes.spm')}
                     maxLength={MAX_BESKRIVELSE_LENGTH}
                     autoComplete="off"
-                    validate={validateBeskrivelse(MAX_BESKRIVELSE_LENGTH)}
+                    validate={(value) => {
+                        const error = getStringValidator({
+                            required: true,
+                            maxLength: MAX_BESKRIVELSE_LENGTH,
+                            minLength: MIN_BESKRIVELSE_LENGTH,
+                        })(value);
+                        return error
+                            ? {
+                                  key: error,
+                                  values: {
+                                      min: MIN_BESKRIVELSE_LENGTH,
+                                      maks: MAX_BESKRIVELSE_LENGTH,
+                                  },
+                              }
+                            : undefined;
+                    }}
                     description={
                         <div>
                             <p style={{ marginTop: 0 }}>

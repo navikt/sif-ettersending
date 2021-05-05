@@ -33,8 +33,7 @@
     "welcomingPage.title.regnetsomalene": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.counsellor": "Her laster du opp dokumenter som hører til en søknad du har sendt inn tidligere. Har du dokumentene klare?",
-    "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
-    "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
+    "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",    
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre til opplasting av dokumenter, må du bekrefte at du har lest og forstått {plikterLink}.",
     "welcomingPage.samtykke.harForståttLabel.lenketekst": "dine plikter",
     "welcomingPage.personopplysninger.lenketekst": "Les om hvordan NAV behandler personopplysningene dine",
@@ -86,6 +85,7 @@
     "step.omstype.radio.label.utbetalingarbeidstaker": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
     "step.omstype.radio.label.regnetsomalene": "Søknad om å bli regnet som at du er alene om omsorgen for barn",
     "step.omstype.radio.label.deling": "Melding om deling av omsorgsdager",
+    "step.omstype.søknadstype.spm": "Velg hva denne ettersendingen gjelder",
 
     "step.dokumenter.pageTitle": "Last opp dokumenter",
     "step.dokumenter.stepTitle": "Nå skal du laste opp dokumentene dine",
@@ -105,7 +105,6 @@
     "steg.oppsummering.hvaGjelder.header": "Hva gjelder ettersendelsen?",
     "steg.oppsummering.dokumenter.header": "Dokumenter",
     "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min sak.",
-    "steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet": "Du må bekrefte opplysningene",
     "steg.oppsummering.fødselsnummer": "Fødselsnummer",
 
     "steg.oppsummering.typeSøknad.tittel": "Hva skal du ettersende til?",
@@ -144,13 +143,15 @@
     "page.confirmation.check.3.1": "Når søknaden er ferdig behandlet, får du et svarbrev fra oss. Du kan se",
     "page.confirmation.check.3.2": "saksbehandlingstiden for ditt fylke her",
 
-    "fieldvalidation.påkrevd": "Feltet er påkrevd",
-    "fieldvalidation.for_lang_beskrivelse": "Beskrivelsen kan ikke inneholde med enn 250 tegn",
-    "fieldvalidation.for_kort_beskrivelse": "Beskrivelsen må inneholde minst 5 tegn",
-    "fieldvalidation.ingen_dokumenter": "Ingen dokumenter er lastet opp",
-    "fieldvalidation.for_mange_dokumenter": "For mange dokumenter er lastet opp",
-    "fileUploadErrors.part1": "Det har dessverre skjedd en feil under opplasting av følgende vedlegg:",
-    "fieldvalidation.samlet_storrelse_for_hoy": "Total samlet størrelse for dokumentene du har lastet opp overstiger grensen på 24Mb.",
+    "validation.harForståttRettigheterOgPlikter.notChecked": "Du må bekrefte at du har lest og forstått dine plikter",
+    "validation.ingen_dokumenter": "Ingen dokumenter er lastet opp",
+    "validation.for_mange_dokumenter": "For mange dokumenter er lastet opp",
+    "validation.samlet_storrelse_for_hoy": "Total samlet størrelse for dokumentene du har lastet opp overstiger grensen på 24Mb.",
+    "validation.beskrivelse.stringHasNoValue": "Beskriv ettersendelsen",
+    "validation.beskrivelse.stringIsTooLong": "Beskrivelsen kan ikke inneholde mer enn {maks} tegn",
+    "validation.beskrivelse.stringIsTooShort": "Beskrivelsen må inneholde minst {min} tegn",
+    "validation.søknadstype.noValue": "Du må velge hva denne ettersendingen gjelder",
+    "validation.harBekreftetOpplysninger.notChecked": "Du må bekrefte opplysningene",
 
     "ekspanderbarPSG.title": "Slik tar du et godt bilde av dokumentet"
 }
