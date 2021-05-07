@@ -12,6 +12,7 @@ import {
     userIsCurrentlyOnErrorPage,
 } from '../utils/navigationUtils';
 import appSentryLogger from '../utils/appSentryLogger';
+import { useHistory } from 'react-router';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
@@ -26,6 +27,7 @@ interface LoadState {
 const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Props) => {
     const [loadState, setLoadState] = useState<LoadState>({ isLoading: true });
     const [søkerdata, setSøkerdata] = useState<ApplicantData | undefined>();
+    const history = useHistory();
 
     // TODO: Vedleggsopplastings status vil ikke virke hvis mellomlagring blir lagt på.
     async function loadAppEssentials() {
@@ -46,7 +48,7 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
                     navigateToLoginPage(søknadstype);
                 } else if (!userIsCurrentlyOnErrorPage(søknadstype)) {
                     appSentryLogger.logApiError(error);
-                    navigateToErrorPage(søknadstype);
+                    navigateToErrorPage(søknadstype, history);
                 }
                 // this timeout is set because if isLoading is updated in the state too soon,
                 // the contentLoadedRenderer() will be called while the user is still on the wrong route,
