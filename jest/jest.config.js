@@ -9,6 +9,7 @@ module.exports = {
         'nav-(.*)-style': '<rootDir>/node_modules/jest-css-modules',
         '^app/(.*)': '<rootDir>/src/app/$1',
     },
+    testEnvironment: 'jsdom',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     transformIgnorePatterns: ['node_modules/(?!(nav-frontend-spinner-style)/)'],
     globals: {

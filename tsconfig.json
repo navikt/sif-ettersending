@@ -18,12 +18,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
         "baseUrl": "./src",
-        "paths": {},
-
-        "typeRoots": ["./node_modules/@types", "./src/@types"]
-    },
-    "awesomeTypescriptLoaderOptions": {
-        "useCache": false
+        "esModuleInterop": true
     },
     "exclude": ["node_modules", "src/build", "**.js", "dist"]
 }
