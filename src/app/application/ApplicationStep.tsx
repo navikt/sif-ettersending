@@ -41,19 +41,22 @@ const ApplicationStep = (props: Props) => {
             <ApplicationFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
-                formErrorHandler={getIntlFormErrorHandler(intl, 'validation')}>
+                includeValidationSummary={true}
+                formErrorHandler={getIntlFormErrorHandler(intl, 'validation')}
+                formFooter={
+                    <FormBlock>
+                        <Knapp
+                            type="hoved"
+                            htmlType="submit"
+                            className={'step__button'}
+                            spinner={showButtonSpinner || false}
+                            disabled={buttonDisabled || false}>
+                            {texts.nextButtonLabel}
+                        </Knapp>
+                    </FormBlock>
+                }>
                 {children}
                 {customErrorSummary && <FormBlock>{customErrorSummary()}</FormBlock>}
-                <FormBlock>
-                    <Knapp
-                        type="hoved"
-                        htmlType="submit"
-                        className={'step__button'}
-                        spinner={showButtonSpinner || false}
-                        disabled={buttonDisabled || false}>
-                        {texts.nextButtonLabel}
-                    </Knapp>
-                </FormBlock>
             </ApplicationFormComponents.Form>
         </Step>
     );
