@@ -10,6 +10,7 @@
     "gotoApplicationLink.lenketekst": "Gå til den digitale søknaden",
     "backlink.label": "Tilbake",
     "step.button.gåVidere": "Gå videre",
+    "page.form.ubesvarteSpørsmålInfo": "For å komme videre, må du svare på alle spørsmålene ovenfor",
 
     "banner.title": "Ettersending av dokumenter",
 
@@ -33,7 +34,7 @@
     "welcomingPage.title.regnetsomalene": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.counsellor": "Her laster du opp dokumenter som hører til en søknad du har sendt inn tidligere. Har du dokumentene klare?",
-    "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",    
+    "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre til opplasting av dokumenter, må du bekrefte at du har lest og forstått {plikterLink}.",
     "welcomingPage.samtykke.harForståttLabel.lenketekst": "dine plikter",
     "welcomingPage.personopplysninger.lenketekst": "Les om hvordan NAV behandler personopplysningene dine",

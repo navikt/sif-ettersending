@@ -2,16 +2,15 @@ import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import Knappelenke from '@navikt/sif-common-core/lib/components/knappelenke/Knappelenke';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { getTypedFormComponents } from '@navikt/sif-common-formik/lib';
+import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik/lib';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
 import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
-import { getRouteConfig, getRouteUrl } from '../../../config/routeConfig';
 import { ApplicationType } from '../../../types/ApplicationType';
+import { navigateToWelcomePage } from '../../../utils/navigationUtils';
 import './introPage.less';
 
 const bem = bemUtils('introPage');
@@ -36,45 +35,47 @@ const IntroPage = () => {
             title={intlHelper(intl, 'banner.intro')}
             topContentRenderer={() => <StepBanner tag="h1" text={intlHelper(intl, 'banner.intro')} />}>
             <PageForm.FormikWrapper
-                onSubmit={() => null}
+                onSubmit={({ søknadstype }) => {
+                    if (søknadstype) {
+                        setTimeout(() => {
+                            navigateToWelcomePage(søknadstype);
+                        });
+                    }
+                }}
                 initialValues={initialValues}
-                renderForm={({ values: { søknadstype } }) => (
-                    <PageForm.Form formErrorHandler={getIntlFormErrorHandler(intl)} includeButtons={false}>
-                        <Box margin="xl">
-                            <PageForm.RadioPanelGroup
-                                name={PageFormField.søknadstype}
-                                legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
-                                radios={[
-                                    {
-                                        value: ApplicationType.pleiepenger,
-                                        label: intlHelper(intl, 'page.intro.type.pleiepenger'),
-                                    },
-                                    {
-                                        value: ApplicationType.omsorgspenger,
-                                        label: intlHelper(intl, 'page.intro.type.omsorgspenger'),
-                                    },
-                                ]}
-                            />
-                        </Box>
-                        {søknadstype && (
-                            <Box margin="xl" textAlignCenter={true}>
-                                <Box
-                                    margin="xl"
-                                    textAlignCenter={true}
-                                    className={bem.element('gaTilSoknadenKnappelenkeWrapper')}>
-                                    <Knappelenke
-                                        type={'hoved'}
-                                        href={getRouteUrl(
-                                            søknadstype,
-                                            getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE
-                                        )}>
-                                        <FormattedMessage id="page.intro.gåVidere" />
-                                    </Knappelenke>
-                                </Box>
+                renderForm={({ values: { søknadstype } }) => {
+                    const kanFortsette: boolean = søknadstype ? true : false;
+                    return (
+                        <PageForm.Form
+                            formErrorHandler={getIntlFormErrorHandler(intl)}
+                            submitButtonLabel={intlHelper(intl, 'step.button.gåVidere')}
+                            includeButtons={kanFortsette}
+                            noButtonsContentRenderer={() =>
+                                kanFortsette ? undefined : (
+                                    <UnansweredQuestionsInfo>
+                                        <FormattedMessage id="page.form.ubesvarteSpørsmålInfo" />
+                                    </UnansweredQuestionsInfo>
+                                )
+                            }>
+                            <Box margin="xl">
+                                <PageForm.RadioPanelGroup
+                                    name={PageFormField.søknadstype}
+                                    legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
+                                    radios={[
+                                        {
+                                            value: ApplicationType.pleiepenger,
+                                            label: intlHelper(intl, 'page.intro.type.pleiepenger'),
+                                        },
+                                        {
+                                            value: ApplicationType.omsorgspenger,
+                                            label: intlHelper(intl, 'page.intro.type.omsorgspenger'),
+                                        },
+                                    ]}
+                                />
                             </Box>
-                        )}
-                    </PageForm.Form>
-                )}
+                        </PageForm.Form>
+                    );
+                }}
             />
         </Page>
     );

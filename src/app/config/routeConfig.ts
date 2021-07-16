@@ -19,8 +19,4 @@ export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
     };
 };
 
-export const getRouteUrl = (søknadstype: ApplicationType | undefined, route: string): string => {
-    return søknadstype
-        ? `${getEnvironmentVariable('PUBLIC_PATH')}/${søknadstype}${route}`
-        : `${getEnvironmentVariable('PUBLIC_PATH')}${route}`;
-};
+export const getRouteUrl = (route: string): string => `${getEnvironmentVariable('PUBLIC_PATH')}${route}`;
