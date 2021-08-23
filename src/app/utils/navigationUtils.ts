@@ -12,11 +12,11 @@ export const navigateToErrorPage = (søknadstype: ApplicationType, history?: His
     if (history) {
         history.push(routeConfig.ERROR_PAGE_ROUTE);
     } else {
-        window.location.assign(getRouteUrl(undefined, routeConfig.ERROR_PAGE_ROUTE));
+        window.location.assign(getRouteUrl(routeConfig.ERROR_PAGE_ROUTE));
     }
 };
 export const navigateToLoginPage = (søknadstype: ApplicationType) => window.location.assign(getLoginUrl(søknadstype));
 export const navigateToWelcomePage = (søknadstype: ApplicationType) =>
-    window.location.assign(getRouteUrl(søknadstype, getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE));
+    window.location.assign(getRouteUrl(getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE));
 export const userIsCurrentlyOnErrorPage = (søknadstype: ApplicationType) =>
-    window.location.pathname === getRouteUrl(undefined, getRouteConfig(søknadstype).ERROR_PAGE_ROUTE);
+    window.location.pathname === getRouteUrl(getRouteConfig(søknadstype).ERROR_PAGE_ROUTE);

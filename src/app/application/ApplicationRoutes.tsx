@@ -105,10 +105,7 @@ const ApplicationRoutes = () => {
                         <OppsummeringStep
                             søknadstype={søknadstype}
                             onApplicationSent={() => {
-                                window.location.href = getRouteUrl(
-                                    undefined,
-                                    getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE
-                                ); // Ensures history is lost
+                                window.location.href = getRouteUrl(getRouteConfig(søknadstype).APPLICATION_SENDT_ROUTE); // Ensures history is lost
                             }}
                         />
                     )}
