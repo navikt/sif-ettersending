@@ -97,7 +97,7 @@
     "steg.dokumenter.infopanel.3": "Du kan laste opp så mange dokumenter du vil, men den totale størrelsen på alle dokumentene kan ikke overstige 24 Mb. Vi varsler deg hvis du når denne grensen.",
     "steg.dokumenter.advarsel.totalstørrelse": "Du har totalt lastet opp mer enn grensen på 24 Mb. Det betyr at du må fjerne noe av det du har lastet opp. Hvis det betyr at du ikke får plass til alt du ønsker å sende nå, kan du sende inn en ny ettersendelse når du er ferdig med denne.",
 
-    "step.oppsummering.pageTitle": "Pleiepengesøknad - oppsummering",
+    "step.oppsummering.pageTitle": "Oppsummering",
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.stepIndicatorLabel": "Oppsummering",
     "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn dokumentene. Hvis du vil gjøre endringer, kan du gå tilbake.",
