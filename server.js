@@ -5,6 +5,7 @@ const Promise = require('promise');
 const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
+const envSettings = require('./envSettings');
 
 const server = express();
 server.use(
