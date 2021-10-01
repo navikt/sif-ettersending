@@ -39,7 +39,7 @@
         "fs-extra": "^10.0.0",
         "helmet": "^4.6.0",
         "http-status-codes": "^2.1.4",
-        "i": "^0.3.6",
+        "i": "^0.3.7",
         "intl": "^1.2.5",
         "jsdom": "^16.6.0",
         "mini-css-extract-plugin": "^1.6.0",
