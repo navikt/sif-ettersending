@@ -9,10 +9,17 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import Lenke from 'nav-frontend-lenker';
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
 import './confirmationPage.less';
+import getLenker from '../../../lenker';
+import { ApplicationType } from '../../../types/ApplicationType';
+
+interface Props {
+    søknadstype: ApplicationType;
+}
+ApplicationType;
 
 const bem = bemUtils('confirmationPage');
 
-const ConfirmationPage = () => {
+const ConfirmationPage = ({ søknadstype }: Props) => {
     const intl = useIntl();
 
     useLogSidevisning(SIFCommonPageKey.kvittering);
@@ -32,9 +39,19 @@ const ConfirmationPage = () => {
                     <FormattedMessage id="page.confirmation.undertittel" />
                 </Ingress>
                 <ul className="checklist">
-                    <li>
-                        <FormattedMessage id="page.confirmation.check.1" />
-                    </li>
+                    {søknadstype === ApplicationType.pleiepenger && (
+                        <li>
+                            <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
+                            <Lenke href={getLenker().INNSYN_PP} target="_blank">
+                                <FormattedMessage id="page.confirmation.check.1.pp.lenke" />
+                            </Lenke>
+                        </li>
+                    )}
+                    {søknadstype !== ApplicationType.pleiepenger && (
+                        <li>
+                            <FormattedMessage id="page.confirmation.check.1" />{' '}
+                        </li>
+                    )}
                     <li>
                         <FormattedMessage id="page.confirmation.check.2" />
                     </li>

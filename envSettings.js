@@ -6,6 +6,8 @@ const envSettings = () => {
     const PUBLIC_PATH = process.env.PUBLIC_PATH;
     const LOGIN_URL = process.env.LOGIN_URL;
     const NYNORSK = process.env.NYNORSK;
+    const INNSYN_PP = process.env.INNSYN_PP;
+    const DITT_NAV_URL = process.env.DITT_NAV_URL;
     const APPSTATUS_PROJECT_ID = process.env.APPSTATUS_PROJECT_ID;
     const APPSTATUS_DATASET = process.env.APPSTATUS_DATASET;
     const USE_AMPLITUDE = process.env.USE_AMPLITUDE;
@@ -16,6 +18,8 @@ const envSettings = () => {
          PUBLIC_PATH: '${PUBLIC_PATH}',
          LOGIN_URL: '${LOGIN_URL}',
          NYNORSK: '${NYNORSK}',
+         INNSYN_PP: '${INNSYN_PP}',
+         DITT_NAV_URL: '${DITT_NAV_URL}',
          APPSTATUS_PROJECT_ID: '${APPSTATUS_PROJECT_ID}',
          APPSTATUS_DATASET: '${APPSTATUS_DATASET}',
          USE_AMPLITUDE: '${USE_AMPLITUDE}',

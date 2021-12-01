@@ -112,7 +112,10 @@ const ApplicationRoutes = () => {
                 />
             )}
 
-            <Route path={routeConfig.APPLICATION_SENDT_ROUTE} render={() => <ConfirmationPage />} />
+            <Route
+                path={routeConfig.APPLICATION_SENDT_ROUTE}
+                render={() => <ConfirmationPage søknadstype={søknadstype} />}
+            />
 
             <Route path={routeConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
             <Redirect to={routeConfig.WELCOMING_PAGE_ROUTE} />
