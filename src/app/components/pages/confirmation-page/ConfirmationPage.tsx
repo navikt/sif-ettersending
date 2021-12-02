@@ -48,22 +48,24 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                         </li>
                     )}
                     {søknadstype !== ApplicationType.pleiepenger && (
-                        <li>
-                            <FormattedMessage id="page.confirmation.check.1" />{' '}
-                        </li>
+                        <>
+                            <li>
+                                <FormattedMessage id="page.confirmation.check.1" />{' '}
+                            </li>
+                            <li>
+                                <FormattedMessage id="page.confirmation.check.2" />
+                            </li>
+                            <li>
+                                <FormattedMessage id="page.confirmation.check.3.1" />{' '}
+                                <Lenke
+                                    href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
+                                    target="_blank">
+                                    <FormattedMessage id="page.confirmation.check.3.2" />
+                                </Lenke>
+                                .
+                            </li>
+                        </>
                     )}
-                    <li>
-                        <FormattedMessage id="page.confirmation.check.2" />
-                    </li>
-                    <li>
-                        <FormattedMessage id="page.confirmation.check.3.1" />{' '}
-                        <Lenke
-                            href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
-                            target="_blank">
-                            <FormattedMessage id="page.confirmation.check.3.2" />
-                        </Lenke>
-                        .
-                    </li>
                 </ul>
             </Box>
         </Page>
