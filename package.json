@@ -28,7 +28,7 @@
         "@navikt/sif-common-formik": "^19.6.0",
         "@navikt/sif-common-sentry": "^0.2.1",
         "amplitude-js": "^8.13.0",
-        "axios": "^0.21.4",
+        "axios": "^0.24.0",
         "busboy": "^0.3.1",
         "classnames": "^2.3.1",
         "compression": "^1.7.4",
