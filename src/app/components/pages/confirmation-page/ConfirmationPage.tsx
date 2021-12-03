@@ -35,9 +35,6 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                 </Box>
             </div>
             <Box margin="xl">
-                <Ingress>
-                    <FormattedMessage id="page.confirmation.undertittel" />
-                </Ingress>
                 <ul className="checklist">
                     {søknadstype === ApplicationType.pleiepenger && (
                         <li>
@@ -49,6 +46,9 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                     )}
                     {søknadstype !== ApplicationType.pleiepenger && (
                         <>
+                            <Ingress>
+                                <FormattedMessage id="page.confirmation.undertittel" />
+                            </Ingress>
                             <li>
                                 <FormattedMessage id="page.confirmation.check.1" />{' '}
                             </li>
