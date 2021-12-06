@@ -4,7 +4,15 @@ const Busboy = require('busboy');
 const server = express();
 
 server.use((req, res, next) => {
-    const allowedOrigins = ['https://omsorgspengesoknad-mock.nais.oera.no', 'http://localhost:8085'];
+    const allowedOrigins = [
+        'https://omsorgspengesoknad-mock.nais.oera.no',
+        'http://localhost:8080',
+        'http://localhost:8081',
+        'http://localhost:8082',
+        'http://localhost:8083',
+        'http://localhost:8084',
+        'http://localhost:8085',
+    ];
     const requestOrigin = req.headers.origin;
     if (allowedOrigins.indexOf(requestOrigin) >= 0) {
         res.set('Access-Control-Allow-Origin', requestOrigin);
