@@ -42,6 +42,7 @@ const renderApp = (decoratorFragments) =>
     });
 
 const startServer = async (html) => {
+    await Promise.all([initIdporten(), initTokenX()]);
     server.use(`${process.env.PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
     server.use(`${process.env.PUBLIC_PATH}/dist/css`, express.static(path.resolve(__dirname, 'dist/css')));
     server.get(`${process.env.PUBLIC_PATH}/health/isAlive`, (req, res) => res.sendStatus(200));
@@ -51,12 +52,11 @@ const startServer = async (html) => {
         res.send(`${envSettings()}`);
     });
 
+    server.use(proxy);
+
     server.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
         res.send(html);
     });
-
-    await Promise.all([initIdporten(), initTokenX()]);
-    server.use(proxy);
 
     const port = process.env.PORT || 8080;
     server.listen(port, () => {
