@@ -19,6 +19,7 @@
         "DITT_NAV_URL": "https://www.nav.no/person/dittnav",
         "APPSTATUS_PROJECT_ID": "ryujtq87",
         "APPSTATUS_DATASET": "production",
-        "USE_AMPLITUDE": "true"
+        "USE_AMPLITUDE": "true",
+        "NODE_ENV_LOCAL": "false"
     }
 }
