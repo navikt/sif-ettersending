@@ -12,8 +12,9 @@
     "env": {
         "DEKORATOR_URL": "https://dekoratoren.dev.nav.no/?simple=true&chatbot=false",
         "API_URL": "https://k9-ettersending-api.dev.nav.no",
+        "FRONTEND_API_PATH": "/familie/sykdom-i-familien/soknad/ettersending/api",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/ettersending",
-        "LOGIN_URL": "https://loginservice.dev.nav.no/login?redirect=https://k9-ettersending-soknad.dev.nav.no/familie/sykdom-i-familien/soknad/ettersending",
+        "LOGIN_URL": "https://k9-ettersending-soknad.dev.nav.no/oauth2/login?redirect=/familie/sykdom-i-familien/soknad/ettersending",
         "NYNORSK": "on",
         "INNSYN_PP": "https://sif-innsyn.dev.nav.no/familie/sykdom-i-familien/soknad/innsyn/dine-pleiepenger",
         "DITT_NAV_URL": "https://www.dev.nav.no/person/dittnav/",

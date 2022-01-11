@@ -6,6 +6,9 @@ const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
+const { initIdporten } = require('./idporten');
+const { initTokenX } = require('./tokenx');
+const proxy = require('./proxy');
 
 const server = express();
 server.use(
@@ -51,6 +54,8 @@ const startServer = (html) => {
         res.send(html);
     });
 
+    await Promise.all([initIdporten(), initTokenX()]);
+    server.use(proxy);
     const port = process.env.PORT || 8080;
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
