@@ -17,7 +17,7 @@ const configureDevServer = (decoratorFragments) => ({
             res.set('content-type', 'application/javascript');
             res.send(`${envSettings()}`);
         });
-        devServer.app.get(/^\/(?!.*dist).*$/, (req, res) => {
+        devServer.app.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
             res.render('index.html', Object.assign(decoratorFragments));
         });
     },
