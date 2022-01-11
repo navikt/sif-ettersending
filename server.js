@@ -50,11 +50,13 @@ const startServer = async (html) => {
         res.set('content-type', 'application/javascript');
         res.send(`${envSettings()}`);
     });
-    await Promise.all([initIdporten(), initTokenX()]);
-    server.use(proxy);
+
     server.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
         res.send(html);
     });
+
+    await Promise.all([initIdporten(), initTokenX()]);
+    server.use(proxy);
 
     const port = process.env.PORT || 8080;
     server.listen(port, () => {

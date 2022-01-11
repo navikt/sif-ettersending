@@ -2,13 +2,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const { exchangeToken } = require('./tokenx');
 
 const API_URL = process.env.API_URL;
-const FRONTEND_API_PATH = process.env.FRONTEND_API_PATH;
 
 const proxyConfig = {
     target: API_URL,
     changeOrigin: true,
     pathRewrite: (path) => {
-        return path.replace(FRONTEND_API_PATH, '/');
+        return path.replace(/^\/(?!.*\/soker)(?!.*\/vedlegg)(?!.*\/ettersend).*$/, '');
     },
     router: async (req) => {
         const tokenSet = await exchangeToken(req);
@@ -22,6 +21,6 @@ const proxyConfig = {
     logLevel: 'info',
 };
 
-const proxy = createProxyMiddleware(FRONTEND_API_PATH, proxyConfig);
+const proxy = createProxyMiddleware('/api', proxyConfig);
 
 module.exports = proxy;
