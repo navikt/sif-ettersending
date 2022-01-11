@@ -52,7 +52,7 @@ const startServer = async (html) => {
         res.send(`${envSettings()}`);
     });
 
-    server.use(proxy);
+    server.get('/api', proxy);
 
     server.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
         res.send(html);
