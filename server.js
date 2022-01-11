@@ -7,7 +7,7 @@ const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
 const { initIdporten } = require('./idporten');
-const { initTokenX } = require('./tokenx');
+const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const server = express();
@@ -52,7 +52,7 @@ const startServer = async (html) => {
         res.send(`${envSettings()}`);
     });
 
-    app.use(
+    server.use(
         '/api',
         createProxyMiddleware({
             target: 'https://k9-ettersending-api.dev.nav.no',
@@ -60,6 +60,16 @@ const startServer = async (html) => {
             pathRewrite: (path) => {
                 return path.replace('/api', '');
             },
+            router: async (req) => {
+                const tokenSet = await exchangeToken(req);
+                if (!tokenSet?.expired() && tokenSet?.access_token) {
+                    req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                }
+                return undefined;
+            },
+            secure: true,
+            xfwd: true,
+            logLevel: 'info',
         })
     );
 
