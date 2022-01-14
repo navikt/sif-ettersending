@@ -20,6 +20,7 @@
         "DITT_NAV_URL": "https://www.dev.nav.no/person/dittnav/",
         "APPSTATUS_PROJECT_ID": "ryujtq87",
         "APPSTATUS_DATASET": "staging",
-        "USE_AMPLITUDE": "true"
+        "USE_AMPLITUDE": "true",
+        "TOKENX_AUDIENCE": "https://tokendings.dev-gcp.nais.io"
     }
 }
