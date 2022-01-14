@@ -24,7 +24,7 @@ async function getTokenXToken(token, additionalClaims) {
                 grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
                 client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
                 subject_token_type: 'urn:ietf:params:oauth:token-type:jwt',
-                audience: process.env.TOKENX_AUDIENCE,
+                audience: process.env.API_TOKENX_AUDIENCE,
                 subject_token: token,
             },
             additionalClaims

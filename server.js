@@ -55,7 +55,7 @@ const startServer = async (html) => {
     server.use(
         '/api',
         createProxyMiddleware({
-            target: 'https://k9-ettersending-api.dev.nav.no',
+            target: process.env.API_URL,
             changeOrigin: true,
             pathRewrite: (path) => {
                 return path.replace('/api', '');
