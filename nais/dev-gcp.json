@@ -21,6 +21,6 @@
         "APPSTATUS_PROJECT_ID": "ryujtq87",
         "APPSTATUS_DATASET": "staging",
         "USE_AMPLITUDE": "true",
-        "TOKENX_AUDIENCE": "https://tokendings.dev-gcp.nais.io/token"
+        "TOKENX_AUDIENCE": "dev-gcp:dusseldorf:k9-ettersending-api"
     }
 }
