@@ -62,8 +62,8 @@ const startServer = async (html) => {
             },
             router: async (req) => {
                 const tokenSet = await exchangeToken(req);
-                if (!tokenSet?.expired() && tokenSet?.id_token) {
-                    req.headers['authorization'] = `Bearer ${tokenSet.id_token}`;
+                if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
+                    req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
                 }
                 return undefined;
             },

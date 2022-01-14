@@ -11,7 +11,7 @@ const proxyConfig = {
     },
     router: async (req) => {
         const tokenSet = await exchangeToken(req);
-        if (!tokenSet?.expired() && tokenSet?.access_token) {
+        if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
             req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
         }
         return undefined;
