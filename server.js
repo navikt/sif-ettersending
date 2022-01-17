@@ -61,10 +61,16 @@ const startServer = async (html) => {
                 return path.replace(process.env.FRONTEND_API_PATH, '');
             },
 
-            router: async (req) => {
+            router: async (req, res) => {
                 const tokenSet = await exchangeToken(req);
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
                     req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                    if (!req.cookies['selvbetjening-idtoken']) {
+                        res.cookie('selvbetjening-idtoken', tokenSet.access_token, {
+                            cookiedomain: 'dev.nav.no',
+                            secureCookie: true,
+                        });
+                    }
                 }
                 return undefined;
             },
