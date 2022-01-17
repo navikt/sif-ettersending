@@ -6,7 +6,6 @@ COPY dist ./dist
 COPY server.js .
 COPY idporten.js .
 COPY tokenx.js .
-COPY proxy.js .
 COPY node_modules ./node_modules
 COPY package.json .
 COPY src/build/scripts/decorator.js ./src/build/scripts/decorator.js
