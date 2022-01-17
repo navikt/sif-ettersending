@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const { JSDOM } = jsdom;
 
-const requestDecorator = (callback) => request(`${process.env.DEKORATOR_URL}`, callback);
+const requestDecorator = (callback) => request(`${process.env.DEKORATOR_PROXY_PATH}`, callback);
 
 const getDecorator = () =>
     new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ const getDecorator = () =>
                     NAV_STYLES: document.getElementById('styles')[prop],
                     NAV_HEADING: document.getElementById('header-withmenu')[prop],
                     NAV_FOOTER: document.getElementById('footer-withmenu')[prop],
-                    PUBLIC_PATH: `${process.env.PUBLIC_PATH}`
+                    PUBLIC_PATH: `${process.env.PUBLIC_PATH}`,
                 };
                 resolve(data);
             } else {

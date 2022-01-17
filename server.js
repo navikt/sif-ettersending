@@ -74,7 +74,29 @@ const startServer = async (html) => {
         })
     );
 
-    server.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
+    server.use(
+        '/dekorator',
+        createProxyMiddleware({
+            target: process.env.DEKORATOR_URL,
+            changeOrigin: true,
+            pathRewrite: (path) => {
+                return path.replace('/dekorator', '');
+            },
+
+            router: async (req) => {
+                const tokenSet = await exchangeToken(req);
+                if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
+                    req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                }
+                return undefined;
+            },
+            secure: true,
+            xfwd: true,
+            logLevel: 'info',
+        })
+    );
+
+    server.get(/^\/(?!.*api)(?!.*dekorator)(?!.*dist).*$/, (req, res) => {
         res.send(html);
     });
 
