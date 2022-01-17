@@ -58,8 +58,9 @@ const startServer = async (html) => {
             target: process.env.API_URL,
             changeOrigin: true,
             pathRewrite: (path) => {
-                return path.replace('/api', '');
+                return path.replace(process.env.FRONTEND_API_PATH, '');
             },
+
             router: async (req) => {
                 const tokenSet = await exchangeToken(req);
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {

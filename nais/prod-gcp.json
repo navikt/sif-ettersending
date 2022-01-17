@@ -12,6 +12,7 @@
     "env": {
         "DEKORATOR_URL": "https://www.nav.no/dekoratoren/?simple=true&chatbot=false",
         "API_URL": "https://k9-ettersending-api.nav.no",
+        "FRONTEND_API_PATH": "/familie/sykdom-i-familien/soknad/ettersending/api",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/ettersending",
         "LOGIN_URL": "https://k9-ettersending-soknad.nav.no/oauth2/login?redirect=/familie/sykdom-i-familien/soknad/ettersending",
         "NYNORSK": "off",
