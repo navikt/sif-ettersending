@@ -87,6 +87,7 @@ const startServer = async (html) => {
                 const tokenSet = await exchangeToken(req);
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
                     req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                    req.headers.cookie['selvbetjening-idtoken'] = tokenSet.access_token;
                 }
                 return undefined;
             },
