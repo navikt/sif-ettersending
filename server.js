@@ -65,10 +65,11 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const tokenSet = await exchangeToken(req);
+                const session = req.session;
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
                     req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
                     if (!req.cookies['selvbetjening-idtoken']) {
-                        res.cookie('selvbetjening-idtoken', tokenSet.access_token, {
+                        res.cookie('selvbetjening-idtoken', tokenSet.id_token, {
                             cookiedomain: 'dev.nav.no',
                             secureCookie: true,
                         });
