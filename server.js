@@ -55,7 +55,7 @@ const startServer = async (html) => {
     });
 
     server.use(async function (req, res, next) {
-        if (req.cookies['selvbetjening-idtoken'] === undefined) {
+        if (req.cookies['selvbetjening-idtoken1'] === undefined) {
             const tokenSet = await exchangeToken(req);
             if (tokenSet != null && !tokenSet.expired() && tokenSet.id_token) {
                 res.cookie('selvbetjening-idtoken', tokenSet.id_token, {
@@ -69,8 +69,8 @@ const startServer = async (html) => {
 
     server.use(function (req, res, next) {
         res.cookie('teste_cookie', 'tokenSet.id_token', {
-            cookiedomain: 'dev.nav.no',
-            secureCookie: true,
+            domain: 'dev.nav.no',
+            secure: true,
         });
 
         next();
