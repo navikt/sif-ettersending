@@ -55,15 +55,21 @@ const startServer = async (html) => {
     });
 
     server.use(async function (req, res, next) {
-        if (req.cookies['selvbetjening-idtoken1'] === undefined) {
-            const tokenSet = await exchangeToken(req);
-            if (tokenSet != null && !tokenSet.expired() && tokenSet.id_token) {
-                res.cookie('selvbetjening-idtoken1', tokenSet.id_token, {
-                    cookiedomain: 'dev.nav.no',
-                    secureCookie: true,
-                });
-            }
+        const tokenSet = await exchangeToken(req);
+        if (tokenSet != null && !tokenSet.expired() && tokenSet.id_token) {
+            res.cookie('selvbetjening-idtoken1', tokenSet.id_token, {
+                domain: 'dev.nav.no',
+                secure: true,
+                httpOnly: true,
+            });
+        } else {
+            res.cookie('feil-selvbetjening-idtoken1', 'feil', {
+                domain: 'dev.nav.no',
+                secure: true,
+                httpOnly: true,
+            });
         }
+
         next(); // <-- important!
     });
 
@@ -71,6 +77,7 @@ const startServer = async (html) => {
         res.cookie('teste_cookie', 'tokenSet.id_token', {
             domain: 'dev.nav.no',
             secure: true,
+            httpOnly: true,
         });
 
         next();
