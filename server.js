@@ -53,6 +53,19 @@ const startServer = async (html) => {
         res.set('content-type', 'application/javascript');
         res.send(`${envSettings()}`);
     });
+    server.use(cookieParser());
+    server.use(async function (req, res, next) {
+        if (req.cookies['selvbetjening-idtoken'] === undefined) {
+            const tokenSet = await exchangeToken(req);
+            if (tokenSet != null && !tokenSet.expired() && tokenSet.id_token) {
+                res.cookie('selvbetjening-idtoken', tokenSet.id_token, {
+                    cookiedomain: 'dev.nav.no',
+                    secureCookie: true,
+                });
+            }
+        }
+        next(); // <-- important!
+    });
 
     server.use(
         '/api',
@@ -65,15 +78,8 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const tokenSet = await exchangeToken(req);
-                const session = req.session;
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
                     req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
-                    if (!req.cookies['selvbetjening-idtoken']) {
-                        res.cookie('selvbetjening-idtoken', tokenSet.id_token, {
-                            cookiedomain: 'dev.nav.no',
-                            secureCookie: true,
-                        });
-                    }
                 }
                 return undefined;
             },
