@@ -9,6 +9,7 @@ const envSettings = require('./envSettings');
 const { initIdporten } = require('./idporten');
 const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const cookieParser = require('cookie-parser');
 
 const server = express();
 server.use(
@@ -17,6 +18,7 @@ server.use(
     })
 );
 server.use(compression());
+server.use(cookieParser);
 server.set('views', `${__dirname}/dist`);
 server.set('view engine', 'mustache');
 server.engine('html', mustacheExpress());
