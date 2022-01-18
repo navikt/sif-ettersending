@@ -74,7 +74,7 @@ const startServer = async (html) => {
     });
 
     server.use(function (req, res, next) {
-        res.cookie('teste_cookie', req.headers, {
+        res.cookie('teste_cookie', 'req.headers', {
             domain: 'dev.nav.no',
             secure: true,
             httpOnly: true,
