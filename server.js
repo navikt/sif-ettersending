@@ -53,7 +53,7 @@ const startServer = async (html) => {
         res.set('content-type', 'application/javascript');
         res.send(`${envSettings()}`);
     });
-    server.use(cookieParser());
+
     server.use(async function (req, res, next) {
         if (req.cookies['selvbetjening-idtoken'] === undefined) {
             const tokenSet = await exchangeToken(req);
@@ -65,6 +65,15 @@ const startServer = async (html) => {
             }
         }
         next(); // <-- important!
+    });
+
+    server.use(function (req, res, next) {
+        res.cookie('teste_cookie', 'tokenSet.id_token', {
+            cookiedomain: 'dev.nav.no',
+            secureCookie: true,
+        });
+
+        next();
     });
 
     server.use(
@@ -80,6 +89,10 @@ const startServer = async (html) => {
                 const tokenSet = await exchangeToken(req);
                 if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
                     req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                    res.cookie('teste_cookie2', 'tokenSet.id_token', {
+                        cookiedomain: 'dev.nav.no',
+                        secureCookie: true,
+                    });
                 }
                 return undefined;
             },
