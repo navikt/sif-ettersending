@@ -8,8 +8,9 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const configureDevServer = (decoratorFragments) => ({
     onBeforeSetupMiddleware: (devServer) => {
         devServer.app.engine('html', mustacheExpress());
-        devServer.app.set('views', `${__dirname}/../../../dist/dev`);
         devServer.app.set('view engine', 'mustache');
+        devServer.app.set('views', `${__dirname}/../../../dist/dev`);
+
         devServer.app.get(`${process.env.PUBLIC_PATH}/dist/settings.js`, (req, res) => {
             res.set('content-type', 'application/javascript');
             res.send(`${envSettings()}`);

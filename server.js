@@ -18,7 +18,7 @@ server.use(
     })
 );
 server.use(compression());
-server.use(cookieParser);
+server.use(cookieParser());
 server.set('views', `${__dirname}/dist`);
 server.set('view engine', 'mustache');
 server.engine('html', mustacheExpress());
