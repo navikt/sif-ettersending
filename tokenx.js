@@ -1,6 +1,5 @@
 const { Issuer, TokenSet } = require('openid-client');
 const { verifiserAccessToken } = require('./idporten');
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 let tokenxClient;
 
 async function initTokenX() {

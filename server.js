@@ -63,7 +63,7 @@ const startServer = async (html) => {
                 httpOnly: true,
             });
         } else {
-            res.cookie('feil-selvbetjening-idtoken1', 'feil', {
+            res.cookie('feil-selvbetjening-idtoken', req.headers.authorization?.split(' ')[1], {
                 domain: 'dev.nav.no',
                 secure: true,
                 httpOnly: true,
