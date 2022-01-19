@@ -20,17 +20,7 @@ const configureDevServer = (decoratorFragments) => ({
             res.send(`${envSettings()}`);
         });
 
-        devServer.app.use(
-            '/api',
-            createProxyMiddleware({
-                target: process.env.API_URL,
-                changeOrigin: true,
-                pathRewrite: (path) => {
-                    return path.replace('/api', '');
-                },
-            })
-        );
-        devServer.app.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
+        devServer.app.get(/^\/(?!.*dist).*$/, (req, res) => {
             res.render('index.html', Object.assign(decoratorFragments));
         });
     },

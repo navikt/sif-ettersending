@@ -55,31 +55,11 @@ const startServer = async (html) => {
     });
 
     server.use(async function (req, res, next) {
-        const tokenSet = await exchangeToken(req);
-        if (tokenSet != null && !tokenSet.expired() && tokenSet.id_token) {
-            res.cookie('selvbetjening-idtoken1', tokenSet.id_token, {
-                domain: 'dev.nav.no',
-                secure: true,
-                httpOnly: true,
-            });
-        } else {
-            res.cookie('feil-selvbetjening-idtoken', req.headers['authorization'], {
-                domain: 'dev.nav.no',
-                secure: true,
-                httpOnly: true,
-            });
-        }
-
-        next(); // <-- important!
-    });
-
-    server.use(function (req, res, next) {
-        res.cookie('teste_cookie', 'req.headers', {
+        res.cookie('selvbetjening-idtoken', req.headers['authorization'].replace(`Bearer `, ''), {
             domain: 'dev.nav.no',
             secure: true,
             httpOnly: true,
         });
-
         next();
     });
 
