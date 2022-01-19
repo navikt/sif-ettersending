@@ -63,7 +63,7 @@ const startServer = () => {
         res.set('Access-Control-Expose-Headers', 'Location');
         res.set('Location', 'nav.no');
         const busboy = busboyCons({ headers: req.headers });
-        .on('finish', () => {
+        busboy.on('finish', () => {
             res.writeHead(200, { Location: '/vedlegg' });
             res.end();
         });
