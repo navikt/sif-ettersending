@@ -55,11 +55,14 @@ const startServer = async (html) => {
     });
 
     server.use(async function (req, res, next) {
-        res.cookie('selvbetjening-idtoken', req.headers['authorization'].replace(`Bearer `, ''), {
-            domain: 'dev.nav.no',
-            secure: true,
-            httpOnly: true,
-        });
+        if (req.headers['authorization'] !== undefined) {
+            res.cookie('selvbetjening-idtoken', req.headers['authorization'].replace(`Bearer `, ''), {
+                domain: 'dev.nav.no',
+                secure: true,
+                httpOnly: true,
+            });
+        }
+
         next();
     });
 
