@@ -34,24 +34,40 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
     };
 };
 
-const getbackLinkHrefDok = (søknadstype: ApplicationType): string | undefined =>
-    søknadstype === ApplicationType.pleiepenger
-        ? getApplicationRoute(søknadstype, StepID.BESKRIVELSE)
-        : søknadstype === ApplicationType.omsorgspenger
-        ? getApplicationRoute(søknadstype, StepID.OMS_TYPE)
-        : getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE;
+export const getFirstStep = (applicationType: ApplicationType): StepID => {
+    switch (applicationType) {
+        case ApplicationType.pleiepengerBarn:
+        case ApplicationType.pleiepengerLivetsSluttfase:
+            return StepID.BESKRIVELSE;
+        case ApplicationType.omsorgspenger:
+            return StepID.OMS_TYPE;
+        default:
+            return StepID.DOKUMENTER;
+    }
+};
 
+const getbackLinkHrefDok = (søknadstype: ApplicationType): string => {
+    switch (søknadstype) {
+        case ApplicationType.pleiepengerBarn:
+        case ApplicationType.pleiepengerLivetsSluttfase:
+            return getApplicationRoute(søknadstype, StepID.BESKRIVELSE);
+        case ApplicationType.omsorgspenger:
+            return getApplicationRoute(søknadstype, StepID.OMS_TYPE);
+        default:
+            return getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE;
+    }
+};
 export const getStepConfig = (søknadstype: ApplicationType): StepConfigInterface => {
     let idx = 0;
     let config = {};
 
     switch (søknadstype) {
-        case ApplicationType.pleiepenger:
+        case ApplicationType.pleiepengerBarn:
+        case ApplicationType.pleiepengerLivetsSluttfase:
             config[StepID.BESKRIVELSE] = {
                 ...getStepConfigItemTextKeys(StepID.BESKRIVELSE),
                 index: idx++,
                 nextStep: StepID.DOKUMENTER,
-                backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE,
             };
             break;
         case ApplicationType.omsorgspenger:
@@ -59,7 +75,6 @@ export const getStepConfig = (søknadstype: ApplicationType): StepConfigInterfac
                 ...getStepConfigItemTextKeys(StepID.OMS_TYPE),
                 index: idx++,
                 nextStep: StepID.DOKUMENTER,
-                backLinkHref: getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE,
             };
             break;
         default:

@@ -36,7 +36,7 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
             </div>
             <Box margin="xl">
                 <ul className="checklist">
-                    {søknadstype === ApplicationType.pleiepenger && (
+                    {søknadstype === ApplicationType.pleiepengerBarn && (
                         <li>
                             <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
                             <Lenke href={getLenker().INNSYN_PP} target="_blank">
@@ -44,7 +44,7 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                             </Lenke>
                         </li>
                     )}
-                    {søknadstype !== ApplicationType.pleiepenger && (
+                    {søknadstype !== ApplicationType.pleiepengerBarn && (
                         <>
                             <Ingress>
                                 <FormattedMessage id="page.confirmation.undertittel" />

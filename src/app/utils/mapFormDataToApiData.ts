@@ -7,8 +7,10 @@ import { ApplicationType } from '../types/ApplicationType';
 
 const getSøknadstypeApi = (søknadstype: ApplicationType): YtelseTypeApi => {
     switch (søknadstype) {
-        case ApplicationType.pleiepenger:
+        case ApplicationType.pleiepengerBarn:
             return YtelseTypeApi.PLEIEPENGER_SYKT_BARN;
+        case ApplicationType.pleiepengerLivetsSluttfase:
+            return YtelseTypeApi.PLEIEPENGER_LIVETS_SLUTTFASE;
         case ApplicationType.ekstraomsorgsdager:
             return YtelseTypeApi.OMP_UTV_KS;
         case ApplicationType.utbetaling:

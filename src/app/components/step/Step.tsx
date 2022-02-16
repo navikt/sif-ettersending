@@ -43,15 +43,19 @@ const Step = ({ id, bannerTitle, stepConfig, useValidationErrorSummary, children
                     {useValidationErrorSummary !== false && <FormikValidationErrorSummary />}
                 </>
             )}>
-            <BackLink
-                href={conf.backLinkHref!}
-                className={bem.element('backLink')}
-                onClick={(nextHref: string, history: History, event: React.SyntheticEvent) => {
-                    event.preventDefault();
-                    history.push(nextHref);
-                }}
-            />
-            <StepIndicator stepConfig={stepConfig} activeStep={conf.index} />
+            {conf.backLinkHref && (
+                <BackLink
+                    href={conf.backLinkHref}
+                    className={bem.element('backLink')}
+                    onClick={(nextHref: string, history: History, event: React.SyntheticEvent) => {
+                        event.preventDefault();
+                        history.push(nextHref);
+                    }}
+                />
+            )}
+            <div className={bem.element('stepIndicator')}>
+                <StepIndicator stepConfig={stepConfig} activeStep={conf.index} />
+            </div>
             <Box margin="xxl">
                 <Systemtittel className={bem.element('title')}>{stepTexts.stepTitle}</Systemtittel>
             </Box>

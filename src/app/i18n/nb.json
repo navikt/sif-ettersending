@@ -19,6 +19,7 @@
 
     "banner.intro": "Ettersendelse av dokumentasjon",
     "banner.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
+    "banner.pleiepengerLivetsSluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
     "banner.omsorgspenger": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.ekstraomsorgsdager": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
@@ -27,6 +28,7 @@
     "banner.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
 
     "welcomingPage.title.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
+    "welcomingPage.title.pleiepengerLivetsSluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
     "welcomingPage.title.omsorgspenger": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.ekstraomsorgsdager": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
@@ -120,8 +122,9 @@
     "vedleggsliste.ingenVedleggLastetOpp": "Ingen dokumenter er lastet opp",
 
     "page.intro.hvilkenTypeSøknad": "Hva gjelder denne ettersendelsen?",
-    "page.intro.type.pleiepenger": "Pleiepenger",
+    "page.intro.type.pleiepenger": "Pleiepenger barn",
     "page.intro.type.omsorgspenger": "Omsorgspenger",
+    "page.intro.type.pleiepenger_livets_sluttfase": "Pleiepenger i livets sluttfase",
     "page.intro.gåVidere": "Gå videre",
 
     "page.generalErrorPage.sidetittel": "Feil",

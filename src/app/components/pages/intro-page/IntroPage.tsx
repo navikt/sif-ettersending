@@ -63,8 +63,12 @@ const IntroPage = () => {
                                     legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
                                     radios={[
                                         {
-                                            value: ApplicationType.pleiepenger,
+                                            value: ApplicationType.pleiepengerBarn,
                                             label: intlHelper(intl, 'page.intro.type.pleiepenger'),
+                                        },
+                                        {
+                                            value: ApplicationType.pleiepengerLivetsSluttfase,
+                                            label: intlHelper(intl, 'page.intro.type.pleiepenger_livets_sluttfase'),
                                         },
                                         {
                                             value: ApplicationType.omsorgspenger,
