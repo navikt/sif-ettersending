@@ -28,13 +28,9 @@ async function getTokenXToken(token, additionalClaims) {
             additionalClaims
         );
     } catch (err) {
-        console.error(
-            `Noe gikk galt med token exchange mot TokenX.
-            Feilmelding fra openid-client: (${err}).
-            HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage})
-            Body fra TokenX:`,
-            err.response.body
-        );
+        console.error(`Noe gikk galt med token exchange mot TokenX. Feilmelding fra openid-client: (${err}).
+            HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage}).
+            Body fra TokenX:`, err.response.body);
     }
     return tokenSet;
 }
