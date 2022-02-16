@@ -53,18 +53,6 @@ const startServer = async (html) => {
         res.send(`${envSettings()}`);
     });
 
-    server.use(async function (req, res, next) {
-        if (req.headers['authorization'] !== undefined) {
-            res.cookie('selvbetjening-idtoken', req.headers['authorization'].replace(`Bearer `, ''), {
-                domain: 'dev.nav.no',
-                secure: true,
-                httpOnly: true,
-            });
-        }
-
-        next();
-    });
-
     server.use(
         '/api',
         createProxyMiddleware({
