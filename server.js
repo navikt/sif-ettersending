@@ -6,8 +6,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
-const { initTokenX, exchangeToken } = require('./tokenx');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const {initTokenX, exchangeToken} = require('./tokenx');
+const {createProxyMiddleware} = require('http-proxy-middleware');
 const cookieParser = require('cookie-parser');
 
 const server = express();
@@ -64,9 +64,7 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
-                console.log('Hentet ut selvbetjening-idtoken', selvbetjeningIdtoken)
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
-                console.log('utvekslet token', exchangedToken)
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
                     req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
                 }
@@ -89,12 +87,11 @@ const startServer = async (html) => {
 
     // returns an object with the cookies' name as keys
     const getAppCookies = (req) => {
-        // We extract the raw cookies from the request headers
         const rawCookies = req.headers.cookie.split('; ');
         // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
 
         const parsedCookies = {};
-        rawCookies.forEach(rawCookie=>{
+        rawCookies.forEach(rawCookie => {
             const parsedCookie = rawCookie.split('=');
             // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
             parsedCookies[parsedCookie[0]] = parsedCookie[1];
