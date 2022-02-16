@@ -19,7 +19,7 @@
 
     "banner.intro": "Ettersendelse av dokumentasjon",
     "banner.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
-    "banner.pleiepengerLivetsSluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
+    "banner.pleiepenger-livets-sluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
     "banner.omsorgspenger": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.ekstraomsorgsdager": "Ettersendelse av dokumentasjon for omsorgspenger",
     "banner.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
@@ -28,7 +28,7 @@
     "banner.deling": "Ettersendelse av dokumentasjon for omsorgspenger",
 
     "welcomingPage.title.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
-    "welcomingPage.title.pleiepengerLivetsSluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
+    "welcomingPage.title.pleiepenger-livets-sluttfase": "Ettersendelse av dokumentasjon til søknad om pleiepenger livets sluttfase",
     "welcomingPage.title.omsorgspenger": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.ekstraomsorgsdager": "Ettersendelse av dokumentasjon for omsorgspenger",
     "welcomingPage.title.utbetaling": "Ettersendelse av dokumentasjon for omsorgspenger",
