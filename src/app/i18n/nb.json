@@ -112,6 +112,7 @@
 
     "steg.oppsummering.typeSøknad.tittel": "Hva skal du ettersende til?",
     "steg.oppsummering.typeSøknad.type.PLEIEPENGER_SYKT_BARN": "Søknad om pleiepenger",
+    "steg.oppsummering.typeSøknad.type.PLEIEPENGER_LIVETS_SLUTTFASE": "Søknad om pleiepenger livets sluttfase",
     "steg.oppsummering.typeSøknad.type.OMP_UTV_KS": "Søknad om ekstra omsorgsdager ved kronisk sykt eller funksjonshemmet barn",
     "steg.oppsummering.typeSøknad.type.OMP_UT_SNF": "Søknad om utbetaling av omsorgspenger for selvstendig næringsdrivende og frilansere",
     "steg.oppsummering.typeSøknad.type.OMP_UT_ARBEIDSTAKER": "Søknad om utbetaling av omsorgspenger når arbeidsgiver ikke utbetaler",
