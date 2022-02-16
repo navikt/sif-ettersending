@@ -1,5 +1,4 @@
 const { Issuer, TokenSet } = require('openid-client');
-const { verifiserAccessToken } = require('./idporten');
 let tokenxClient;
 
 async function initTokenX() {
@@ -40,13 +39,12 @@ async function getTokenXToken(token, additionalClaims) {
     return tokenSet;
 }
 
-async function exchangeToken(req) {
-    let token = req.headers.authorization?.split(' ')[1];
+async function exchangeToken(token) {
     if (!token) {
         // Brukeren er ikke autorisert
         return;
     }
-    await verifiserAccessToken(token);
+
     const additionalClaims = {
         clientAssertionPayload: {
             nbf: Math.floor(Date.now() / 1000),

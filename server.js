@@ -76,9 +76,12 @@ const startServer = async (html) => {
             },
 
             router: async (req, res) => {
-                const tokenSet = await exchangeToken(req);
-                if (tokenSet != null && !tokenSet.expired() && tokenSet.access_token) {
-                    req.headers['authorization'] = `Bearer ${tokenSet.access_token}`;
+                const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+                console.log('Hentet ut selvbetjening-idtoken', selvbetjeningIdtoken)
+                const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
+                console.log('utvekslet token', exchangedToken)
+                if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
+                    req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
                 }
                 return undefined;
             },
@@ -96,6 +99,21 @@ const startServer = async (html) => {
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
     });
+
+    // returns an object with the cookies' name as keys
+    const getAppCookies = (req) => {
+        // We extract the raw cookies from the request headers
+        const rawCookies = req.headers.cookie.split('; ');
+        // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+
+        const parsedCookies = {};
+        rawCookies.forEach(rawCookie=>{
+            const parsedCookie = rawCookie.split('=');
+            // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+            parsedCookies[parsedCookie[0]] = parsedCookie[1];
+        });
+        return parsedCookies;
+    };
 };
 
 const logError = (errorMessage, details) => console.log(errorMessage, details);
