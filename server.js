@@ -54,7 +54,7 @@ const startServer = async (html) => {
     });
 
     server.use(
-        '/api',
+        process.env.FRONTEND_API_PATH,
         createProxyMiddleware({
             target: process.env.API_URL,
             changeOrigin: true,
