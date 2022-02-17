@@ -1,11 +1,10 @@
 const express = require('express');
-const Busboy = require('busboy');
+const busboyCons = require('busboy');
 
 const server = express();
 
 server.use((req, res, next) => {
     const allowedOrigins = [
-        'https://omsorgspengesoknad-mock.nais.oera.no',
         'http://localhost:8080',
         'http://localhost:8081',
         'http://localhost:8082',
@@ -63,7 +62,7 @@ const startServer = () => {
     server.post('/vedlegg', (req, res) => {
         res.set('Access-Control-Expose-Headers', 'Location');
         res.set('Location', 'nav.no');
-        const busboy = new Busboy({ headers: req.headers });
+        const busboy = busboyCons({ headers: req.headers });
         busboy.on('finish', () => {
             res.writeHead(200, { Location: '/vedlegg' });
             res.end();

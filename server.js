@@ -6,6 +6,9 @@ const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
+const {initTokenX, exchangeToken} = require('./tokenx');
+const {createProxyMiddleware} = require('http-proxy-middleware');
+const cookieParser = require('cookie-parser');
 
 const server = express();
 server.use(
@@ -14,6 +17,7 @@ server.use(
     })
 );
 server.use(compression());
+server.use(cookieParser());
 server.set('views', `${__dirname}/dist`);
 server.set('view engine', 'mustache');
 server.engine('html', mustacheExpress());
@@ -38,7 +42,8 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
-const startServer = (html) => {
+const startServer = async (html) => {
+    await Promise.all([initTokenX()]);
     server.use(`${process.env.PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
     server.use(`${process.env.PUBLIC_PATH}/dist/css`, express.static(path.resolve(__dirname, 'dist/css')));
     server.get(`${process.env.PUBLIC_PATH}/health/isAlive`, (req, res) => res.sendStatus(200));
@@ -47,7 +52,31 @@ const startServer = (html) => {
         res.set('content-type', 'application/javascript');
         res.send(`${envSettings()}`);
     });
-    server.get(/^\/(?!.*dist).*$/, (req, res) => {
+
+    server.use(
+        '/api',
+        createProxyMiddleware({
+            target: process.env.API_URL,
+            changeOrigin: true,
+            pathRewrite: (path) => {
+                return path.replace(process.env.FRONTEND_API_PATH, '');
+            },
+
+            router: async (req, res) => {
+                const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+                const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
+                if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
+                    req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
+                }
+                return undefined;
+            },
+            secure: true,
+            xfwd: true,
+            logLevel: 'info',
+        })
+    );
+
+    server.get(/^\/(?!.*api)(?!.*dist).*$/, (req, res) => {
         res.send(html);
     });
 
@@ -55,6 +84,20 @@ const startServer = (html) => {
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
     });
+
+    // returns an object with the cookies' name as keys
+    const getAppCookies = (req) => {
+        const rawCookies = req.headers.cookie.split('; ');
+        // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
+
+        const parsedCookies = {};
+        rawCookies.forEach(rawCookie => {
+            const parsedCookie = rawCookie.split('=');
+            // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
+            parsedCookies[parsedCookie[0]] = parsedCookie[1];
+        });
+        return parsedCookies;
+    };
 };
 
 const logError = (errorMessage, details) => console.log(errorMessage, details);
