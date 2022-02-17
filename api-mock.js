@@ -5,7 +5,6 @@ const server = express();
 
 server.use((req, res, next) => {
     const allowedOrigins = [
-        'https://omsorgspengesoknad-mock.nais.oera.no',
         'http://localhost:8080',
         'http://localhost:8081',
         'http://localhost:8082',

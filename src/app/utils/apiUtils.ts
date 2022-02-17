@@ -13,4 +13,5 @@ export const isForbidden = ({ response }: AxiosError) =>
 export const isUnauthorized = ({ response }: AxiosError) =>
     response !== undefined && response.status === HttpStatus.UNAUTHORIZED;
 
-export const getApiUrl = (resourceType: ResourceType) => `${getEnvironmentVariable('API_URL')}/${resourceType}`;
+export const getApiUrl = (resourceType: ResourceType) =>
+    `${getEnvironmentVariable('FRONTEND_API_PATH')}/${resourceType}`;
