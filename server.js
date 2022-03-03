@@ -6,8 +6,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
-const {initTokenX, exchangeToken} = require('./tokenx');
-const {createProxyMiddleware} = require('http-proxy-middleware');
+const { initTokenX, exchangeToken } = require('./tokenx');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const cookieParser = require('cookie-parser');
 
 const server = express();
@@ -91,7 +91,7 @@ const startServer = async (html) => {
         // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
 
         const parsedCookies = {};
-        rawCookies.forEach(rawCookie => {
+        rawCookies.forEach((rawCookie) => {
             const parsedCookie = rawCookie.split('=');
             // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
             parsedCookies[parsedCookie[0]] = parsedCookie[1];

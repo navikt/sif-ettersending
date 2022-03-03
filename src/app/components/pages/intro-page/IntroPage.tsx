@@ -9,7 +9,9 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik/lib';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
 import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
+import { RadioPanelProps } from 'nav-frontend-skjema';
 import { ApplicationType } from '../../../types/ApplicationType';
+import { Feature, isFeatureEnabled } from '../../../utils/featureToggleUtils';
 import { navigateToWelcomePage } from '../../../utils/navigationUtils';
 import './introPage.less';
 
@@ -28,6 +30,28 @@ const PageForm = getTypedFormComponents<PageFormField, PageFormValues, Validatio
 const IntroPage = () => {
     const intl = useIntl();
     const initialValues = {};
+
+    const livetsSluttfaseIsEnabled = isFeatureEnabled(Feature.LIVETS_SLUTTFASE);
+
+    const søknadstyper: RadioPanelProps[] = [
+        {
+            value: ApplicationType.pleiepengerBarn,
+            label: intlHelper(intl, 'page.intro.type.pleiepenger'),
+        },
+        ...(livetsSluttfaseIsEnabled
+            ? [
+                  {
+                      value: ApplicationType.pleiepengerLivetsSluttfase,
+                      label: intlHelper(intl, 'page.intro.type.pleiepenger_livets_sluttfase'),
+                  },
+              ]
+            : []),
+        {
+            value: ApplicationType.omsorgspenger,
+            label: intlHelper(intl, 'page.intro.type.omsorgspenger'),
+        },
+    ];
+
     useLogSidevisning(SIFCommonPageKey.intro);
     return (
         <Page
@@ -61,20 +85,7 @@ const IntroPage = () => {
                                 <PageForm.RadioPanelGroup
                                     name={PageFormField.søknadstype}
                                     legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
-                                    radios={[
-                                        {
-                                            value: ApplicationType.pleiepengerBarn,
-                                            label: intlHelper(intl, 'page.intro.type.pleiepenger'),
-                                        },
-                                        {
-                                            value: ApplicationType.pleiepengerLivetsSluttfase,
-                                            label: intlHelper(intl, 'page.intro.type.pleiepenger_livets_sluttfase'),
-                                        },
-                                        {
-                                            value: ApplicationType.omsorgspenger,
-                                            label: intlHelper(intl, 'page.intro.type.omsorgspenger'),
-                                        },
-                                    ]}
+                                    radios={søknadstyper}
                                 />
                             </Box>
                         </PageForm.Form>
