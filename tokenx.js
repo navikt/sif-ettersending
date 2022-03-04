@@ -1,4 +1,4 @@
-const { Issuer, TokenSet } = require('openid-client');
+const {Issuer, TokenSet} = require('openid-client');
 let tokenxClient;
 
 async function initTokenX() {
@@ -28,9 +28,14 @@ async function getTokenXToken(token, additionalClaims) {
             additionalClaims
         );
     } catch (err) {
-        console.error(`Noe gikk galt med token exchange mot TokenX. Feilmelding fra openid-client: (${err}).
-            HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage}).
-            Body fra TokenX:`, err.response.body);
+        if (err.statusCode !== undefined) {
+            console.error(
+                'Noe gikk galt med token exchange mot TokenX. Feilmelding fra openid-client.',
+                `HTTP Status fra TokenX: (${err.response.statusCode} ${err.response.statusMessage}).`,
+                'Error:', err);
+        } else {
+            console.error("Noe gikk galt ved exchange token", err)
+        }
     }
     return tokenSet;
 }
