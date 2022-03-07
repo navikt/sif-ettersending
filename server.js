@@ -6,8 +6,8 @@ const compression = require('compression');
 const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
-const {initTokenX, exchangeToken} = require('./tokenx');
-const {createProxyMiddleware} = require('http-proxy-middleware');
+const { initTokenX, exchangeToken } = require('./tokenx');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const cookieParser = require('cookie-parser');
 
 const server = express();
@@ -42,6 +42,26 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
+const checkSelvbetjeningIdtokenIsExpired = (token) => {
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(
+            Buffer.from(base64, 'base64')
+                .toString()
+                .split('')
+                .map(function (c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                })
+                .join('')
+        );
+        return Date.now() >= JSON.parse(jsonPayload).exp * 1000;
+    } catch (err) {
+        console.error('checkSelvbetjeningIdtokenIsExpired Error: ', err);
+        return true;
+    }
+};
+
 const startServer = async (html) => {
     await Promise.all([initTokenX()]);
     server.use(`${process.env.PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
@@ -64,10 +84,15 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
-                const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
-                if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
-                    req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
+                if (checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)) {
+                    res.sendStatus(401);
+                } else {
+                    const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
+                    if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
+                        req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
+                    }
                 }
+
                 return undefined;
             },
             secure: true,
@@ -91,7 +116,7 @@ const startServer = async (html) => {
         // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
 
         const parsedCookies = {};
-        rawCookies.forEach(rawCookie => {
+        rawCookies.forEach((rawCookie) => {
             const parsedCookie = rawCookie.split('=');
             // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
             parsedCookies[parsedCookie[0]] = parsedCookie[1];
