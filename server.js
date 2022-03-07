@@ -85,7 +85,7 @@ const startServer = async (html) => {
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
                 if (checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)) {
-                    res.sendStatus(401);
+                    res.writeHead(401);
                 } else {
                     const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                     if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
