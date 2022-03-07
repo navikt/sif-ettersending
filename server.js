@@ -9,6 +9,7 @@ const envSettings = require('./envSettings');
 const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cookieParser = require('cookie-parser');
+const jose = require('jose');
 
 const server = express();
 server.use(
@@ -43,23 +44,8 @@ const renderApp = (decoratorFragments) =>
     });
 
 const checkSelvbetjeningIdtokenIsExpired = (token) => {
-    try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(
-            Buffer.from(base64, 'base64')
-                .toString()
-                .split('')
-                .map(function (c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join('')
-        );
-        return Date.now() >= JSON.parse(jsonPayload).exp * 1000;
-    } catch (err) {
-        console.error('checkSelvbetjeningIdtokenIsExpired Error: ', err);
-        return true;
-    }
+    const exp = jose.decodeJwt(token).exp;
+    return Date.now() >= exp * 1000;
 };
 
 const startServer = async (html) => {
@@ -84,6 +70,10 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+                console.log(
+                    'checkSelvbetjeningIdtokenIsExpired: ',
+                    checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)
+                );
                 if (checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)) {
                     return undefined;
                 }
