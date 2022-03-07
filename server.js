@@ -85,12 +85,11 @@ const startServer = async (html) => {
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
                 if (checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)) {
-                    res.writeHead(401);
-                } else {
-                    const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
-                    if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
-                        req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
-                    }
+                    return undefined;
+                }
+                const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
+                if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
+                    req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
                 }
 
                 return undefined;
