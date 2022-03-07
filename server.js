@@ -44,8 +44,11 @@ const renderApp = (decoratorFragments) =>
     });
 
 const isExpired = (token) => {
-    const exp = jose.decodeJwt(token).exp;
-    return Date.now() >= exp * 1000;
+    if (token) {
+        const exp = jose.decodeJwt(token).exp;
+        return Date.now() >= exp * 1000;
+    }
+    return true;
 };
 
 const startServer = async (html) => {
