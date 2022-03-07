@@ -43,7 +43,7 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
-const checkSelvbetjeningIdtokenIsExpired = (token) => {
+const isExpired = (token) => {
     const exp = jose.decodeJwt(token).exp;
     return Date.now() >= exp * 1000;
 };
@@ -70,11 +70,8 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
-                console.log(
-                    'checkSelvbetjeningIdtokenIsExpired: ',
-                    checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)
-                );
-                if (checkSelvbetjeningIdtokenIsExpired(selvbetjeningIdtoken)) {
+                console.log('isExpired: ', isExpired(selvbetjeningIdtoken));
+                if (isExpired(selvbetjeningIdtoken)) {
                     return undefined;
                 }
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
