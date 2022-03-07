@@ -45,8 +45,13 @@ const renderApp = (decoratorFragments) =>
 
 const isExpired = (token) => {
     if (token) {
-        const exp = jose.decodeJwt(token).exp;
-        return Date.now() >= exp * 1000;
+        try {
+            const exp = jose.decodeJwt(token).exp;
+            return Date.now() >= exp * 1000;
+        } catch (err) {
+            console.error('Feilet med dekoding av token: ', err);
+            return true;
+        }
     }
     return true;
 };
