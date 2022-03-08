@@ -21,7 +21,8 @@ const localeFromSessionStorage = getLocaleFromSessionStorage();
 const getAppStatusSanityConfig = () => {
     const projectId = getEnvironmentVariable('APPSTATUS_PROJECT_ID');
     const dataset = getEnvironmentVariable('APPSTATUS_DATASET');
-    return !projectId || !dataset ? undefined : { projectId, dataset };
+    const apiVersion = '2022-03-07';
+    return !projectId || !dataset ? undefined : { projectId, dataset, apiVersion };
 };
 
 const App = () => {

@@ -6,7 +6,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 /* Start */
 
 const configureDevServer = (decoratorFragments) => ({
-    onBeforeSetupMiddleware: (devServer) => {
+    setupMiddlewares: (middlewares, devServer) => {
         devServer.app.engine('html', mustacheExpress());
         devServer.app.set('view engine', 'mustache');
         devServer.app.set('views', `${__dirname}/../../../dist/dev`);
@@ -23,6 +23,7 @@ const configureDevServer = (decoratorFragments) => ({
         devServer.app.get(/^\/(?!.*dist).*$/, (req, res) => {
             res.render('index.html', Object.assign(decoratorFragments));
         });
+        return middlewares;
     },
     devMiddleware: {
         index: true,
