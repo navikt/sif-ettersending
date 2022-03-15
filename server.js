@@ -9,6 +9,7 @@ const envSettings = require('./envSettings');
 const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const cookieParser = require('cookie-parser');
+const jose = require('jose');
 
 const server = express();
 server.use(
@@ -42,6 +43,19 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
+const isExpired = (token) => {
+    if (token) {
+        try {
+            const exp = jose.decodeJwt(token).exp;
+            return Date.now() >= exp * 1000;
+        } catch (err) {
+            console.error('Feilet med dekoding av token: ', err);
+            return true;
+        }
+    }
+    return true;
+};
+
 const startServer = async (html) => {
     await Promise.all([initTokenX()]);
     server.use(`${process.env.PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
@@ -64,10 +78,15 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+
+                if (isExpired(selvbetjeningIdtoken)) {
+                    return process.env.LOGIN_URL;
+                }
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
                     req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
                 }
+
                 return undefined;
             },
             secure: true,
