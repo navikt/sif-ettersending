@@ -23,7 +23,7 @@
         "@navikt/sif-common-core": "^11.1.0",
         "@navikt/sif-common-formik": "^21.0.2",
         "@navikt/sif-common-sentry": "^0.2.1",
-        "@snyk/protect": "^1.870.0",
+        "@snyk/protect": "^1.873.0",
         "amplitude-js": "^8.17.0",
         "axios": "^0.24.0",
         "busboy": "^1.5.0",
