@@ -21,6 +21,6 @@
         "APPSTATUS_PROJECT_ID": "ryujtq87",
         "APPSTATUS_DATASET": "production",
         "USE_AMPLITUDE": "true",
-        "API_TOKENX_AUDIENCE": "prod-gcp:dusseldorf:k9-ettersending-api"
+        "API_TOKENX_AUDIENCE": "prod-gcp:dusseldorf:k9-brukerdialog-api"
     }
 }
