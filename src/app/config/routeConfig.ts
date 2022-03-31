@@ -17,7 +17,7 @@ export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
         ERROR_PAGE_ROUTE: `/${søknadstype}/feil`,
         WELCOMING_PAGE_ROUTE: `/${søknadstype}/velkommen`,
         APPLICATION_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`,
-        IKKE_TILGANG_PAGE: '/ikke-tilgang',
+        IKKE_TILGANG_PAGE: `/${søknadstype}/ikke-tilgang`,
     };
 };
 

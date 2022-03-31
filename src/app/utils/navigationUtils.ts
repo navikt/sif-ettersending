@@ -15,13 +15,8 @@ export const navigateToErrorPage = (søknadstype: ApplicationType, history?: His
         window.location.assign(getRouteUrl(routeConfig.ERROR_PAGE_ROUTE));
     }
 };
-export const navigateToIkkeTilgangPage = (søknadstype: ApplicationType, history?: History) => {
-    const routeConfig = getRouteConfig(søknadstype);
-    if (history) {
-        history.push(routeConfig.IKKE_TILGANG_PAGE);
-    } else {
-        window.location.assign(getRouteUrl(routeConfig.IKKE_TILGANG_PAGE));
-    }
+export const navigateToIkkeTilgangPage = (søknadstype: ApplicationType) => {
+    window.location.assign(getRouteUrl(getRouteConfig(søknadstype).IKKE_TILGANG_PAGE));
 };
 export const navigateToLoginPage = (søknadstype: ApplicationType) => window.location.assign(getLoginUrl(søknadstype));
 export const navigateToWelcomePage = (søknadstype: ApplicationType) =>
