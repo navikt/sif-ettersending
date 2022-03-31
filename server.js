@@ -1,14 +1,14 @@
 const express = require('express');
-const path = require('path');
 const mustacheExpress = require('mustache-express');
-const Promise = require('promise');
 const compression = require('compression');
-const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
+const cookieParser = require('cookie-parser');
 const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const cookieParser = require('cookie-parser');
+const Promise = require('promise');
+const helmet = require('helmet');
+const path = require('path');
 const jose = require('jose');
 
 const server = express();
