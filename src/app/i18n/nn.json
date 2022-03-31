@@ -123,11 +123,6 @@
     "page.generalErrorPage.tittel": "Noko gjekk gale ...",
     "page.generalErrorPage.tekst": "Beklagar, her har det dessverre skjedd ein feil.",
 
-    "page.ikkeMyndig.sidetittel": "Ettersending av dokument – ikkje myndig",
-    "page.ikkeMyndig.banner.tittel": "Hei!",
-    "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må den av foreldra dine eller den føresette som sende inn søknaden saman med deg, sende inn dokumenta.",
-    "page.ikkeMyndig.tittel": "Ettersending av dokument",
-
     "page.unavailable.info.1": "Den digitale søknaden for ettersending av dokument er dessverre ikkje tilgjengeleg på grunn av ein teknisk feil. Vi jobbar med å løyse feilen.",
     "page.unavailable.info.2": "Vi beklagar.",
 

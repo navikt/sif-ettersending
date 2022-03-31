@@ -4,15 +4,16 @@ import LoadWrapper from '../components/load-wrapper/LoadWrapper';
 import { SøkerdataContextProvider } from '../context/ApplicantDataContext';
 import { ApplicantData } from '../types/ApplicantData';
 import { ApplicationType } from '../types/ApplicationType';
-import * as apiUtils from '../utils/apiUtils';
 import {
     navigateToErrorPage,
+    navigateToIkkeTilgangPage,
     navigateToLoginPage,
     navigateToWelcomePage,
     userIsCurrentlyOnErrorPage,
 } from '../utils/navigationUtils';
 import appSentryLogger from '../utils/appSentryLogger';
 import { useHistory } from 'react-router';
+import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
@@ -44,7 +45,9 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer, søknadstype }: Pr
                     navigateToWelcomePage(søknadstype);
                 }
             } catch (error) {
-                if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
+                if (isForbidden(error)) {
+                    navigateToIkkeTilgangPage(søknadstype);
+                } else if (isUnauthorized(error)) {
                     navigateToLoginPage(søknadstype);
                 } else if (!userIsCurrentlyOnErrorPage(søknadstype)) {
                     appSentryLogger.logApiError(error);

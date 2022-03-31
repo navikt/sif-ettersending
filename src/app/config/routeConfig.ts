@@ -7,6 +7,7 @@ interface RouteConfig {
     ERROR_PAGE_ROUTE: string;
     WELCOMING_PAGE_ROUTE: string;
     APPLICATION_SENDT_ROUTE: string;
+    IKKE_TILGANG_PAGE: string;
 }
 
 export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
@@ -16,6 +17,7 @@ export const getRouteConfig = (søknadstype: ApplicationType): RouteConfig => {
         ERROR_PAGE_ROUTE: `/${søknadstype}/feil`,
         WELCOMING_PAGE_ROUTE: `/${søknadstype}/velkommen`,
         APPLICATION_SENDT_ROUTE: `/${søknadstype}/dokumenter-sendt`,
+        IKKE_TILGANG_PAGE: '/ikke-tilgang',
     };
 };
 

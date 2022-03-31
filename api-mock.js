@@ -31,7 +31,6 @@ const søkerMock = {
     mellomnavn: undefined,
     etternavn: 'Testesen',
     fødselsnummer: '12345123456',
-    myndig: true,
 };
 
 const startServer = () => {
@@ -42,6 +41,7 @@ const startServer = () => {
 
     server.get('/oppslag/soker', (req, res) => {
         setTimeout(() => {
+            // res.sendStatus(451);
             res.send(søkerMock);
         }, 1000);
     });

@@ -124,14 +124,12 @@
     "page.intro.type.omsorgspenger": "Omsorgspenger",
     "page.intro.gåVidere": "Gå videre",
 
+    "page.ikkeTilgang.sidetittel": "Ettersending av dokumenter",
+    "page.ikkeTilgang.tekst": "Du har ikke tilgang til denne siden.",
+
     "page.generalErrorPage.sidetittel": "Feil",
     "page.generalErrorPage.tittel": "Noe gikk galt...",
     "page.generalErrorPage.tekst": "Beklager, her har det dessverre skjedd en feil.",
-
-    "page.ikkeMyndig.sidetittel": "Ettersending av dokumenter - ikke myndig",
-    "page.ikkeMyndig.banner.tittel": "Hei!",
-    "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må den av foreldrene dine eller den foresatte som sendte inn søknanden sammen med deg, sende inn dokumentene.",
-    "page.ikkeMyndig.tittel": "Ettersending av dokumenter",
 
     "page.unavailable.info.1": "Den digitale søknaden for ettersending av dokumenter er dessverre ikke tilgjengelig på grunn av teknisk feil. Vi jobber med å løse feilen.",
     "page.unavailable.info.2": "Vi beklager.",
