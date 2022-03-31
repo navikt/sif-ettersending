@@ -21,7 +21,7 @@ import { ApplicationApiData, YtelseTypeApi } from '../../types/ApplicationApiDat
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import { getSkjemanavn } from '../../types/skjemanavn';
-import * as apiUtils from '../../utils/apiUtils';
+import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
 import appSentryLogger from '../../utils/appSentryLogger';
 import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
@@ -60,7 +60,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
             await logInfo({ 'Antall vedlegg sendt': data.vedlegg.length });
             onApplicationSent(apiValues, søker);
         } catch (error) {
-            if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
+            if (isForbidden(error) || isUnauthorized(error)) {
                 await logUserLoggedOut('Logget ut ved innsending');
                 navigateToLoginPage(søknadstype);
             } else {

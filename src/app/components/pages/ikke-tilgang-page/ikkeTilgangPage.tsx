@@ -6,15 +6,21 @@ import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-p
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { ApplicationType } from '../../../types/ApplicationType';
 
-const IkkeTilgangPage = () => {
+interface Props {
+    søknadstype: ApplicationType;
+}
+
+const IkkeTilgangPage = ({ søknadstype }: Props) => {
     const intl = useIntl();
     useLogSidevisning(SIFCommonPageKey.ikkeTilgang);
+
     return (
         <Page
             className="ikkeTilgangPage"
-            title={intlHelper(intl, 'application.title')}
-            topContentRenderer={() => <StepBanner text={intlHelper(intl, 'application.title')} />}>
+            title={intlHelper(intl, `application.title.${søknadstype}`)}
+            topContentRenderer={() => <StepBanner text={intlHelper(intl, `application.title.${søknadstype}`)} />}>
             <Box margin="xxl">
                 <CounsellorPanel type="plakat">
                     <p>

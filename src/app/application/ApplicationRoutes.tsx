@@ -17,7 +17,7 @@ import BeskrivelseStep from './beskrivelse-step/BeskrivelseStep';
 import DokumenterStep from './dokumenter-step/DokumenterStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 import ValgOmsTypeStep from './valgOmsType-step/ValgOmsTypeStep';
-import IkkeTilgangPage from '../components/pages/ikke-tilgang-page/ikkeTilgangPage';
+
 export interface KvitteringInfo {
     søkernavn: string;
 }
@@ -118,7 +118,7 @@ const ApplicationRoutes = () => {
             />
 
             <Route path={routeConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
-            <Route path={routeConfig.IKKE_TILGANG_PAGE} component={IkkeTilgangPage} />
+
             <Redirect to={routeConfig.WELCOMING_PAGE_ROUTE} />
         </Switch>
     );

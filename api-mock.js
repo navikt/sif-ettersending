@@ -41,7 +41,6 @@ const startServer = () => {
 
     server.get('/oppslag/soker', (req, res) => {
         setTimeout(() => {
-            // res.sendStatus(451);
             res.send(søkerMock);
         }, 1000);
     });
