@@ -81,12 +81,12 @@ const startServer = async (html) => {
 
                 if (!selvbetjeningIdtoken) {
                     // return process.env.LOGIN_URL;
-                    res.sendStatus(451);
+                    res.sendStatus(401);
                 }
 
                 if (isExpired(selvbetjeningIdtoken)) {
                     // return process.env.LOGIN_URL;
-                    res.sendStatus(451);
+                    res.sendStatus(401);
                 }
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
