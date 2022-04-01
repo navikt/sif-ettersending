@@ -78,15 +78,13 @@ const startServer = async (html) => {
 
             router: async (req, res) => {
                 const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
-
+                console.error('Debug selvbetjeningIdtoken: ', selvbetjeningIdtoken);
                 if (!selvbetjeningIdtoken) {
-                    // return process.env.LOGIN_URL;
-                    res.sendStatus(401);
+                    return process.env.LOGIN_URL;
                 }
 
                 if (isExpired(selvbetjeningIdtoken)) {
-                    // return process.env.LOGIN_URL;
-                    res.sendStatus(401);
+                    return process.env.LOGIN_URL;
                 }
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
