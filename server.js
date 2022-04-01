@@ -77,7 +77,7 @@ const startServer = async (html) => {
             },
 
             router: async (req, res) => {
-                const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+                const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
                 if (isExpired(selvbetjeningIdtoken)) {
                     return process.env.LOGIN_URL;
@@ -103,20 +103,6 @@ const startServer = async (html) => {
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
     });
-
-    // returns an object with the cookies' name as keys
-    const getAppCookies = (req) => {
-        const rawCookies = req.headers.cookie.split('; ');
-        // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
-
-        const parsedCookies = {};
-        rawCookies.forEach((rawCookie) => {
-            const parsedCookie = rawCookie.split('=');
-            // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-            parsedCookies[parsedCookie[0]] = parsedCookie[1];
-        });
-        return parsedCookies;
-    };
 };
 
 const logError = (errorMessage, details) => console.log(errorMessage, details);
