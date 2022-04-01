@@ -79,6 +79,10 @@ const startServer = async (html) => {
             router: async (req, res) => {
                 const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
+                if (!selvbetjeningIdtoken) {
+                    return process.env.LOGIN_URL;
+                }
+
                 if (isExpired(selvbetjeningIdtoken)) {
                     return process.env.LOGIN_URL;
                 }
