@@ -80,8 +80,8 @@ const startServer = async (html) => {
                 const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
                 if (!selvbetjeningIdtoken) {
-                    console.error('DEBUG !selvbetjeningIdtoken res.statusCode: ', res.statusCode);
-                    return process.env.LOGIN_URL;
+                    return undefined;
+                    // return process.env.LOGIN_URL;
                 }
 
                 if (isExpired(selvbetjeningIdtoken)) {
