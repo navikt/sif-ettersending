@@ -80,11 +80,13 @@ const startServer = async (html) => {
                 const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
                 if (!selvbetjeningIdtoken) {
-                    return process.env.LOGIN_URL;
+                    // return process.env.LOGIN_URL;
+                    res.sendStatus(451);
                 }
 
                 if (isExpired(selvbetjeningIdtoken)) {
-                    return process.env.LOGIN_URL;
+                    // return process.env.LOGIN_URL;
+                    res.sendStatus(451);
                 }
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
