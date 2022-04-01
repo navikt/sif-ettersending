@@ -43,7 +43,7 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
-const isExpired = (token) => {
+const isExpiredOrNotAuthorized = (token) => {
     if (token) {
         try {
             const exp = jose.decodeJwt(token).exp;
@@ -79,13 +79,8 @@ const startServer = async (html) => {
             router: async (req, res) => {
                 const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
-                if (!selvbetjeningIdtoken) {
+                if (isExpiredOrNotAuthorized(selvbetjeningIdtoken)) {
                     return undefined;
-                    // return process.env.LOGIN_URL;
-                }
-
-                if (isExpired(selvbetjeningIdtoken)) {
-                    return process.env.LOGIN_URL;
                 }
 
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
