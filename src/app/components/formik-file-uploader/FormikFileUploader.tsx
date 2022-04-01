@@ -15,8 +15,8 @@ import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
-import * as apiUtils from '../../utils/apiUtils';
 import appSentryLogger from '../../utils/appSentryLogger';
+import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;
 export type FieldArrayPushFn = (obj: any) => void;
@@ -96,7 +96,7 @@ const FormikFileUploader = ({
                 attachment.url = response.headers.location;
                 attachment.uploaded = true;
             } catch (error) {
-                if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
+                if (isForbidden(error) || isUnauthorized(error)) {
                     onUnauthorizedOrForbiddenUpload();
                 } else {
                     appSentryLogger.logApiError(error);

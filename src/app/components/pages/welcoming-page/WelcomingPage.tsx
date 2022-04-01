@@ -39,12 +39,12 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
     return (
         <>
             <Page
-                title={intlHelper(intl, `welcomingPage.title.${søknadstype}`)}
+                title={intlHelper(intl, `application.title.${søknadstype}`)}
                 className={bem.block}
                 topContentRenderer={() => <StepBanner text={intlHelper(intl, `banner.${søknadstype}`)} />}>
                 <Box margin="xxl">
                     <Sidetittel className={bem.element('title')}>
-                        {intlHelper(intl, `welcomingPage.title.${søknadstype}`)}
+                        {intlHelper(intl, `application.title.${søknadstype}`)}
                     </Sidetittel>
                 </Box>
                 <Box margin="xl">

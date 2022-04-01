@@ -1,14 +1,14 @@
 const express = require('express');
-const path = require('path');
 const mustacheExpress = require('mustache-express');
-const Promise = require('promise');
 const compression = require('compression');
-const helmet = require('helmet');
 const getDecorator = require('./src/build/scripts/decorator');
 const envSettings = require('./envSettings');
+const cookieParser = require('cookie-parser');
 const { initTokenX, exchangeToken } = require('./tokenx');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const cookieParser = require('cookie-parser');
+const Promise = require('promise');
+const helmet = require('helmet');
+const path = require('path');
 const jose = require('jose');
 
 const server = express();
@@ -43,7 +43,7 @@ const renderApp = (decoratorFragments) =>
         });
     });
 
-const isExpired = (token) => {
+const isExpiredOrNotAuthorized = (token) => {
     if (token) {
         try {
             const exp = jose.decodeJwt(token).exp;
@@ -77,11 +77,12 @@ const startServer = async (html) => {
             },
 
             router: async (req, res) => {
-                const selvbetjeningIdtoken = getAppCookies(req)['selvbetjening-idtoken'];
+                const selvbetjeningIdtoken = req.cookies['selvbetjening-idtoken'];
 
-                if (isExpired(selvbetjeningIdtoken)) {
-                    return process.env.LOGIN_URL;
+                if (isExpiredOrNotAuthorized(selvbetjeningIdtoken)) {
+                    return undefined;
                 }
+
                 const exchangedToken = await exchangeToken(selvbetjeningIdtoken);
                 if (exchangedToken != null && !exchangedToken.expired() && exchangedToken.access_token) {
                     req.headers['authorization'] = `Bearer ${exchangedToken.access_token}`;
@@ -103,20 +104,6 @@ const startServer = async (html) => {
     server.listen(port, () => {
         console.log(`App listening on port: ${port}`);
     });
-
-    // returns an object with the cookies' name as keys
-    const getAppCookies = (req) => {
-        const rawCookies = req.headers.cookie.split('; ');
-        // rawCookies = ['myapp=secretcookie, 'analytics_cookie=beacon;']
-
-        const parsedCookies = {};
-        rawCookies.forEach((rawCookie) => {
-            const parsedCookie = rawCookie.split('=');
-            // parsedCookie = ['myapp', 'secretcookie'], ['analytics_cookie', 'beacon']
-            parsedCookies[parsedCookie[0]] = parsedCookie[1];
-        });
-        return parsedCookies;
-    };
 };
 
 const logError = (errorMessage, details) => console.log(errorMessage, details);
