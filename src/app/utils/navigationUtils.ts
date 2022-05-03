@@ -15,6 +15,7 @@ export const navigateToErrorPage = (søknadstype: ApplicationType, history?: His
         window.location.assign(getRouteUrl(routeConfig.ERROR_PAGE_ROUTE));
     }
 };
+
 export const navigateToLoginPage = (søknadstype: ApplicationType) => window.location.assign(getLoginUrl(søknadstype));
 export const navigateToWelcomePage = (søknadstype: ApplicationType) =>
     window.location.assign(getRouteUrl(getRouteConfig(søknadstype).WELCOMING_PAGE_ROUTE));

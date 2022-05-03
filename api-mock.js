@@ -31,7 +31,6 @@ const søkerMock = {
     mellomnavn: undefined,
     etternavn: 'Testesen',
     fødselsnummer: '12345123456',
-    myndig: true,
 };
 
 const startServer = () => {
@@ -40,18 +39,13 @@ const startServer = () => {
     server.get('/health/isAlive', (req, res) => res.sendStatus(200));
     server.get('/health/isReady', (req, res) => res.sendStatus(200));
 
-    server.get('/soker', (req, res) => {
-        setTimeout(() => {
-            res.send(søkerMock);
-        }, 1000);
-    });
-    server.get('/ettersending/soker', (req, res) => {
+    server.get('/oppslag/soker', (req, res) => {
         setTimeout(() => {
             res.send(søkerMock);
         }, 1000);
     });
 
-    server.post('/ettersend', (req, res) => {
+    server.post('/ettersending/innsending', (req, res) => {
         res.sendStatus(200);
     });
 

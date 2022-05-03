@@ -114,6 +114,7 @@ const ApplicationRoutes = () => {
             />
 
             <Route path={routeConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
+
             <Redirect to={routeConfig.WELCOMING_PAGE_ROUTE} />
         </Switch>
     );

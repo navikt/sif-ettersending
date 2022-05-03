@@ -26,13 +26,13 @@
     "banner.OMP_UTV_MA": "Ettersending av dokumentasjon for omsorgspengar",
     "banner.OMP_DELING": "Ettersending av dokumentasjon for omsorgspengar",
 
-    "welcomingPage.title.pleiepenger": "Ettersending av dokumentasjon til søknad om pleiepengar",
-    "welcomingPage.title.omsorgspenger": "Ettersending av dokumentasjon for omsorgspengar",
-    "welcomingPage.title.OMP_UTV_KS": "Ettersending av dokumentasjon for omsorgspengar",
-    "welcomingPage.title.OMP_UT_SNF": "Ettersending av dokumentasjon for omsorgspengar",
-    "welcomingPage.title.OMP_UT_ARBEIDSTAKER": "Ettersending av dokumentasjon for omsorgspengar",
-    "welcomingPage.title.OMP_UTV_MA": "Ettersending av dokumentasjon for omsorgspengar",
-    "welcomingPage.title.OMP_DELING": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.pleiepenger": "Ettersending av dokumentasjon til søknad om pleiepengar",
+    "application.title.omsorgspenger": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.ekstraomsorgsdager": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.utbetaling": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.utbetalingarbeidstaker": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.regnetsomalene": "Ettersending av dokumentasjon for omsorgspengar",
+    "application.title.deling": "Ettersending av dokumentasjon for omsorgspengar",
 
     "welcomingPage.counsellor": "Her lastar du opp dokumentasjon til ein søknad du har sendt inn tidlegare. Har du dokumenta klare?",
     "welcomingPage.samtykke.tekst": "Eg stadfestar at eg har lese og forstått",
@@ -119,14 +119,12 @@
     "page.intro.type.omsorgspenger": "Omsorgspengar",
     "page.intro.gåVidere": "Gå vidare",
 
+    "page.ikkeTilgang.sidetittel": "Ettersending av dokumentasjon",
+    "page.ikkeTilgang.tekst": "Du har ikke tilgang til denne siden.",
+
     "page.generalErrorPage.sidetittel": "Feil",
     "page.generalErrorPage.tittel": "Noko gjekk gale ...",
     "page.generalErrorPage.tekst": "Beklagar, her har det dessverre skjedd ein feil.",
-
-    "page.ikkeMyndig.sidetittel": "Ettersending av dokument – ikkje myndig",
-    "page.ikkeMyndig.banner.tittel": "Hei!",
-    "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må den av foreldra dine eller den føresette som sende inn søknaden saman med deg, sende inn dokumenta.",
-    "page.ikkeMyndig.tittel": "Ettersending av dokument",
 
     "page.unavailable.info.1": "Den digitale søknaden for ettersending av dokument er dessverre ikkje tilgjengeleg på grunn av ein teknisk feil. Vi jobbar med å løyse feilen.",
     "page.unavailable.info.2": "Vi beklagar.",
