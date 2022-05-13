@@ -16,6 +16,7 @@
 
     "søknadstype.pleiepenger": "pleiepengesøknad",
     "søknadstype.omsorgspenger": "omsorgspengesøknad",
+    "søknadstype.pleiepenger-livets-sluttfase": "søknad om pleiepenger livets sluttfase",
 
     "banner.intro": "Ettersendelse av dokumentasjon",
     "banner.pleiepenger": "Ettersendelse av dokumentasjon til søknad om pleiepenger",
@@ -50,11 +51,13 @@
     "modal.personopplysninger.3": "Hvilke opplysninger innhenter vi?",
     "modal.personopplysninger.4": "Opplysningene vi innhenter kommer enten fra deg eller fra offentlige registre:",
     "modal.personopplysninger.4.1": "hvilke barn du er registrert som forelder til",
+    "modal.personopplysninger.4.1.pleiepengerLivetsSluttfase": "opplysninger om helsen til den du skal pleie",
     "modal.personopplysninger.4.2": "opplysninger om barnets helse",
     "modal.personopplysninger.4.3": "arbeidsforholdene dine og inntekten din",
     "modal.personopplysninger.4.4": "ytelser du mottar fra NAV",
     "modal.personopplysninger.4.5": "tilknytningen din til Norge",
     "modal.personopplysninger.4.6": "trygdeordninger du kan ha rett til i andre land. Vi kan også sende opplysninger om deg til trygdemyndigheter i andre land.",
+    "modal.personopplysninger.4.7": "Vi lagrer opplysninger vi får inn om personen du søker pleiepenger for. Dette gjør vi for å kunne gjenbruke opplysningene hvis andre søker pleiepenger for samme person.",
     "modal.personopplysninger.5.1": "Vil du vite mer om hvordan NAV behandler personopplysninger? Se ",
     "modal.personopplysninger.5.2": "nav.no/personvern",
     "modal.personopplysninger.5.3": ".",

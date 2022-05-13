@@ -69,7 +69,7 @@ const WelcomingPage = ({ onValidSubmit, søknadstype }: Props) => {
                 isOpen={behandlingAvPersonopplysningerModalOpen === true}
                 onRequestClose={(): void => setDialogState({ behandlingAvPersonopplysningerModalOpen: false })}
                 contentLabel={intlHelper(intl, 'welcomingPage.modal.behandlingAvPersonalia.tittel')}>
-                <BehandlingAvPersonopplysningerContent />
+                <BehandlingAvPersonopplysningerContent søknadstype={søknadstype} />
             </InfoDialog>
         </>
     );
