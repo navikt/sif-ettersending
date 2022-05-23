@@ -1,6 +1,7 @@
 export enum ApplicationType {
     'ukjent' = 'ukjent',
-    'pleiepenger' = 'pleiepenger',
+    'pleiepengerBarn' = 'pleiepenger',
+    'pleiepengerLivetsSluttfase' = 'pleiepenger-livets-sluttfase',
     'omsorgspenger' = 'omsorgspenger',
     'ekstraomsorgsdager' = 'ekstraomsorgsdager',
     'utbetaling' = 'utbetaling',

@@ -6,7 +6,7 @@ import ConfirmationPage from '../components/pages/confirmation-page/Confirmation
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
 import { getRouteConfig, getRouteUrl } from '../config/routeConfig';
-import { StepID } from '../config/stepConfig';
+import { StepID, getFirstStep } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { ApplicationType } from '../types/ApplicationType';
@@ -46,13 +46,7 @@ const ApplicationRoutes = () => {
     const startSoknad = async () => {
         await logSoknadStartet(getSkjemanavn(søknadstype));
         setTimeout(() => {
-            const startStep =
-                søknadstype === ApplicationType.pleiepenger
-                    ? StepID.BESKRIVELSE
-                    : søknadstype === ApplicationType.omsorgspenger
-                    ? StepID.OMS_TYPE
-                    : StepID.DOKUMENTER;
-            navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${startStep}`, history);
+            navigateTo(`${routeConfig.APPLICATION_ROUTE_PREFIX}/${getFirstStep(søknadstype)}`, history);
         });
     };
 
@@ -63,17 +57,19 @@ const ApplicationRoutes = () => {
                 render={() => <WelcomingPage søknadstype={søknadstype} onValidSubmit={startSoknad} />}
             />
 
-            {søknadstype === ApplicationType.pleiepenger && isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (
-                <Route
-                    path={getApplicationRoute(søknadstype, StepID.BESKRIVELSE)}
-                    render={() => (
-                        <BeskrivelseStep
-                            søknadstype={søknadstype}
-                            onValidSubmit={() => navigateToNextStep(StepID.BESKRIVELSE)}
-                        />
-                    )}
-                />
-            )}
+            {(søknadstype === ApplicationType.pleiepengerBarn ||
+                søknadstype === ApplicationType.pleiepengerLivetsSluttfase) &&
+                isAvailable(søknadstype, StepID.BESKRIVELSE, values) && (
+                    <Route
+                        path={getApplicationRoute(søknadstype, StepID.BESKRIVELSE)}
+                        render={() => (
+                            <BeskrivelseStep
+                                søknadstype={søknadstype}
+                                onValidSubmit={() => navigateToNextStep(StepID.BESKRIVELSE)}
+                            />
+                        )}
+                    />
+                )}
             {søknadstype === ApplicationType.omsorgspenger && isAvailable(søknadstype, StepID.OMS_TYPE, values) && (
                 <Route
                     path={getApplicationRoute(søknadstype, StepID.OMS_TYPE)}

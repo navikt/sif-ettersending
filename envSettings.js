@@ -12,6 +12,7 @@ const envSettings = () => {
     const APPSTATUS_PROJECT_ID = process.env.APPSTATUS_PROJECT_ID;
     const APPSTATUS_DATASET = process.env.APPSTATUS_DATASET;
     const USE_AMPLITUDE = process.env.USE_AMPLITUDE;
+    const LIVETS_SLUTTFASE = process.env.LIVETS_SLUTTFASE;
 
     const appSettings = `
      window.appSettings = {
@@ -25,6 +26,7 @@ const envSettings = () => {
          APPSTATUS_PROJECT_ID: '${APPSTATUS_PROJECT_ID}',
          APPSTATUS_DATASET: '${APPSTATUS_DATASET}',
          USE_AMPLITUDE: '${USE_AMPLITUDE}',
+         LIVETS_SLUTTFASE: '${LIVETS_SLUTTFASE}',
      };`
         .trim()
         .replace(/ /g, '');

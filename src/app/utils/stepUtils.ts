@@ -18,6 +18,8 @@ export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepCo
 export const beskrivelseStepIsAvailable = (formData: ApplicationFormData) => welcomingPageIsValid(formData);
 
 export const documentsStepIsAvailable = (formData: ApplicationFormData, søknadstype: ApplicationType) =>
-    søknadstype === ApplicationType.pleiepenger ? beskrivelseStepIsValid(formData) : welcomingPageIsValid(formData);
+    søknadstype === ApplicationType.pleiepengerBarn || søknadstype === ApplicationType.pleiepengerLivetsSluttfase
+        ? beskrivelseStepIsValid(formData)
+        : welcomingPageIsValid(formData);
 
 export const summaryStepAvailable = (formData: ApplicationFormData) => documentsStepIsValid(formData);

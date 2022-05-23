@@ -35,20 +35,24 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                 </Box>
             </div>
             <Box margin="xl">
-                <ul className="checklist">
-                    {søknadstype === ApplicationType.pleiepenger && (
+                {søknadstype === ApplicationType.pleiepengerBarn && (
+                    <ul className="checklist">
                         <li>
                             <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
                             <Lenke href={getLenker().INNSYN_PP} target="_blank">
                                 <FormattedMessage id="page.confirmation.check.1.pp.lenke" />
                             </Lenke>
                         </li>
-                    )}
-                    {søknadstype !== ApplicationType.pleiepenger && (
-                        <>
+                    </ul>
+                )}
+                {søknadstype !== ApplicationType.pleiepengerBarn && (
+                    <>
+                        <Box padBottom="m">
                             <Ingress>
                                 <FormattedMessage id="page.confirmation.undertittel" />
                             </Ingress>
+                        </Box>
+                        <ul className="checklist">
                             <li>
                                 <FormattedMessage id="page.confirmation.check.1" />{' '}
                             </li>
@@ -64,9 +68,9 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                                 </Lenke>
                                 .
                             </li>
-                        </>
-                    )}
-                </ul>
+                        </ul>
+                    </>
+                )}
             </Box>
         </Page>
     );

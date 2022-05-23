@@ -1,7 +1,8 @@
 import { ApplicationType } from './ApplicationType';
 
 export enum SKJEMANAVN {
-    pleiepenger = 'Ettersending pleiepenger',
+    pleiepenger = 'Ettersending pleiepenger barn',
+    pleiepengerLivetsSluttfase = 'Ettersending pleiepenger livets sluttfase',
     omsorgspenger = 'Ettersending omsorgspenger',
     OMP_UTV_KS = 'Ettersending omsorgspenger utvidet rett - kronisk syke eller funksjonshemming',
     OMP_UT_SNF = 'Ettersending omsorgspenger utbetaling SNF ytelse',
@@ -13,8 +14,10 @@ export enum SKJEMANAVN {
 
 export const getSkjemanavn = (søknadstype: ApplicationType): SKJEMANAVN => {
     switch (søknadstype) {
-        case ApplicationType.pleiepenger:
+        case ApplicationType.pleiepengerBarn:
             return SKJEMANAVN.pleiepenger;
+        case ApplicationType.pleiepengerLivetsSluttfase:
+            return SKJEMANAVN.pleiepengerLivetsSluttfase;
         case ApplicationType.ekstraomsorgsdager:
             return SKJEMANAVN.OMP_UTV_KS;
         case ApplicationType.utbetaling:
