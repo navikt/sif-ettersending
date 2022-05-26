@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useIntl } from 'react-intl';
 import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
+import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { Knapp } from 'nav-frontend-knapper';
 import Step, { StepProps } from '../components/step/Step';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { getRequiredFieldValidator } from '@navikt/sif-common-formik/lib/validation';
+import { getRequiredFieldValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
@@ -14,7 +14,7 @@ const ValgOmsTypeStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <ApplicationStep id={StepID.OMS_TYPE} onValidFormSubmit={onValidSubmit} useValidationErrorSummary={true}>
             <FormBlock>
-                <ApplicationFormComponents.RadioPanelGroup
+                <ApplicationFormComponents.RadioGroup
                     name={ApplicationFormField.søknadstype}
                     legend={intlHelper(intl, 'step.omstype.søknadstype.spm')}
                     validate={getRequiredFieldValidator()}

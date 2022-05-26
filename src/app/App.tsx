@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import '@navikt/ds-css';
 import { AmplitudeProvider } from '@navikt/sif-common-amplitude/lib';
 import AppStatusWrapper from '@navikt/sif-common-core/lib/components/app-status-wrapper/AppStatusWrapper';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
@@ -10,7 +11,7 @@ import appSentryLogger from './utils/appSentryLogger';
 import { getEnvironmentVariable } from './utils/envUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import YtelseSwitch from './YtelseSwitch';
-import '@navikt/sif-common-core/lib/styles/globalStyles.less';
+// import '@navikt/sif-common-core/lib/styles/globalStyles.less';
 
 export const APPLICATION_KEY = 'ettersending';
 

@@ -23,6 +23,10 @@ const webpackConfig = {
                 loader: require.resolve('ts-loader'),
             },
             {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
                 test: /\.less$/,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -35,6 +39,17 @@ const webpackConfig = {
                             },
                         },
                     },
+                ],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                    // Compiles Sass to CSS
+                    'sass-loader',
                 ],
             },
         ],

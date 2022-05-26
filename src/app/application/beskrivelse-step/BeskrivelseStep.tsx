@@ -8,7 +8,7 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import Lenke from 'nav-frontend-lenker';
-import { getStringValidator } from '@navikt/sif-common-formik/lib/validation';
+import { getStringValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 
 const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();

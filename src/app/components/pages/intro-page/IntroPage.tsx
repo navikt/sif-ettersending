@@ -6,10 +6,9 @@ import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik/lib';
-import getIntlFormErrorHandler from '@navikt/sif-common-formik/lib/validation/intlFormErrorHandler';
-import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
-import { RadioPanelProps } from 'nav-frontend-skjema';
+import { getTypedFormComponents, UnansweredQuestionsInfo } from '@navikt/sif-common-formik-ds/lib';
+import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
+import { ValidationError } from '@navikt/sif-common-formik-ds/lib/validation/types';
 import { ApplicationType } from '../../../types/ApplicationType';
 import { Feature, isFeatureEnabled } from '../../../utils/featureToggleUtils';
 import { navigateToWelcomePage } from '../../../utils/navigationUtils';
@@ -33,7 +32,7 @@ const IntroPage = () => {
 
     const livetsSluttfaseIsEnabled = isFeatureEnabled(Feature.LIVETS_SLUTTFASE);
 
-    const søknadstyper: RadioPanelProps[] = [
+    const søknadstyper = [
         {
             value: ApplicationType.pleiepengerBarn,
             label: intlHelper(intl, 'page.intro.type.pleiepenger'),
@@ -82,7 +81,7 @@ const IntroPage = () => {
                                 )
                             }>
                             <Box margin="xl">
-                                <PageForm.RadioPanelGroup
+                                <PageForm.RadioGroup
                                     name={PageFormField.søknadstype}
                                     legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
                                     radios={søknadstyper}

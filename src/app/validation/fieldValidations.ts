@@ -4,7 +4,7 @@ import {
     getTotalSizeOfAttachments,
     MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
-import { ValidationError, ValidationResult } from '@navikt/sif-common-formik/lib/validation/types';
+import { ValidationError, ValidationResult } from '@navikt/sif-common-formik-ds/lib/validation/types';
 
 export enum AppFieldValidationErrors {
     'ingen_dokumenter' = 'validation.ingen_dokumenter',

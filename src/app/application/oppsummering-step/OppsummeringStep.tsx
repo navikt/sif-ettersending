@@ -10,7 +10,6 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { sendApplication } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { getRouteConfig } from '../../config/routeConfig';
@@ -29,7 +28,7 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
-import { getCheckedValidator } from '@navikt/sif-common-formik/lib/validation';
+import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 
 interface Props {
     søknadstype: ApplicationType;
@@ -89,16 +88,14 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
             <Box margin="xl">
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
-                        <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                        <Normaltekst>
+                        <div>{formatName(fornavn, etternavn, mellomnavn)}</div>
+                        <div>
                             {intlHelper(intl, 'steg.oppsummering.fødselsnummer')}: {fødselsnummer}
-                        </Normaltekst>
+                        </div>
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.typeSøknad.tittel')}>
-                        <Normaltekst>
-                            {intlHelper(intl, `steg.oppsummering.typeSøknad.type.${apiValues.søknadstype}`)}
-                        </Normaltekst>
+                        {intlHelper(intl, `steg.oppsummering.typeSøknad.type.${apiValues.søknadstype}`)}
                     </SummaryBlock>
 
                     {apiValues.beskrivelse && (

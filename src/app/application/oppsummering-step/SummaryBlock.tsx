@@ -1,6 +1,6 @@
+import { Heading } from '@navikt/ds-react';
 import React from 'react';
 import Box, { BoxMargin } from '@navikt/sif-common-core/lib/components/box/Box';
-import { Element } from 'nav-frontend-typografi';
 
 interface Props {
     header: string;
@@ -10,7 +10,9 @@ interface Props {
 
 const SummaryBlock = ({ header, children, margin = 'l' }: Props) => (
     <Box margin={margin}>
-        <Element tag="h3">{header}</Element>
+        <Heading size="small" level="3" spacing={true}>
+            {header}
+        </Heading>
         {children}
     </Box>
 );

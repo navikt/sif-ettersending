@@ -64,7 +64,7 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                         søknadstype={søknadstype}
                         groupName={ApplicationFormField.dokumenterGruppe}
                         name={ApplicationFormField.dokumenter}
-                        label={intlHelper(intl, 'steg.dokumenter.vedlegg')}
+                        buttonLabel={intlHelper(intl, 'steg.dokumenter.vedlegg')}
                         onErrorUploadingAttachments={setFilesThatDidntGetUploaded}
                         onFileInputClick={() => {
                             setFilesThatDidntGetUploaded([]);

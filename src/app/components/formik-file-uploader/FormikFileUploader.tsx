@@ -8,8 +8,8 @@ import {
     isFileObject,
     VALID_EXTENSIONS,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
-import { TypedFormInputValidationProps } from '@navikt/sif-common-formik/lib';
-import { ValidationError } from '@navikt/sif-common-formik/lib/validation/types';
+import { TypedFormInputValidationProps } from '@navikt/sif-common-formik-ds/lib';
+import { ValidationError } from '@navikt/sif-common-formik-ds/lib/validation/types';
 import { ArrayHelpers, useFormikContext } from 'formik';
 import { uploadFile } from '../../api/api';
 import ApplicationFormComponents from '../../application/ApplicationFormComponents';
@@ -25,7 +25,7 @@ export type FieldArrayRemoveFn = (index: number) => undefined;
 interface FormikFileUploader extends TypedFormInputValidationProps<ApplicationFormField, ValidationError> {
     groupName: ApplicationFormField;
     name: ApplicationFormField;
-    label: string;
+    buttonLabel: string;
     onFileInputClick?: () => void;
     søknadstype: ApplicationType;
     onErrorUploadingAttachments: (files: File[]) => void;
@@ -121,18 +121,19 @@ const FormikFileUploader = ({
     }
 
     return (
-        <ApplicationFormComponents.InputGroup name={groupName} legend="Dokumenter">
-            <ApplicationFormComponents.FileInput
-                name={name}
-                acceptedExtensions={VALID_EXTENSIONS.join(', ')}
-                onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
-                    const attachments: Attachment[] = files.map((file) => addPendingAttachmentToFieldArray(file, push));
-                    await uploadAttachments([...(values as any)[name], ...attachments], replace);
-                }}
-                onClick={onFileInputClick}
-                {...otherProps}
-            />
-        </ApplicationFormComponents.InputGroup>
+        // <ApplicationFormComponents.InputGroup name={groupName} legend="Dokumenter">
+        <ApplicationFormComponents.FileInput
+            name={name}
+            legend="Dokumenter"
+            accept={VALID_EXTENSIONS.join(', ')}
+            onFilesSelect={async (files: File[], { push, replace }: ArrayHelpers) => {
+                const attachments: Attachment[] = files.map((file) => addPendingAttachmentToFieldArray(file, push));
+                await uploadAttachments([...(values as any)[name], ...attachments], replace);
+            }}
+            onClick={onFileInputClick}
+            {...otherProps}
+        />
+        // </ApplicationFormComponents.InputGroup>
     );
 };
 
