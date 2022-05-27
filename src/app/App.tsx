@@ -10,9 +10,8 @@ import appSentryLogger from './utils/appSentryLogger';
 import { getEnvironmentVariable } from './utils/envUtils';
 import { getLocaleFromSessionStorage, setLocaleInSessionStorage } from './utils/localeUtils';
 import YtelseSwitch from './YtelseSwitch';
-
-import './sif-common-core-ds/styles/sif-ds-theme/sif-ds-theme.css';
 import '@navikt/ds-css';
+import './sif-common-core-ds/styles/sif-ds-theme/sif-ds-theme.css';
 
 export const APPLICATION_KEY = 'ettersending';
 
