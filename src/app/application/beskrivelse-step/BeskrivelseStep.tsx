@@ -8,7 +8,7 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getStringValidator } from '@navikt/sif-common-formik-ds/lib/validation';
-import { Link } from '@navikt/ds-react';
+import { BodyLong, Link } from '@navikt/ds-react';
 
 const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -37,8 +37,8 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                             : undefined;
                     }}
                     description={
-                        <div>
-                            <p style={{ marginTop: 0 }}>
+                        <BodyLong as="div">
+                            <p>
                                 <FormattedMessage id="step.beskrivelse.intro.1" />
                             </p>
                             <ul>
@@ -64,7 +64,7 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                                     }}
                                 />
                             </p>
-                        </div>
+                        </BodyLong>
                     }
                 />
             </FormBlock>

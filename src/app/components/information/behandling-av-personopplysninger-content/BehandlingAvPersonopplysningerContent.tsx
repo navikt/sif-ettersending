@@ -16,7 +16,7 @@ const BehandlingAvPersonopplysningerContent = ({ søknadstype }: Props) => {
             <Heading level="1" size="large">
                 <FormattedMessage id="modal.personopplysninger.1" />
             </Heading>
-            <BodyLong>
+            <BodyLong as="div">
                 <Box margin="xl">
                     <FormattedMessage id="modal.personopplysninger.2" />
                 </Box>

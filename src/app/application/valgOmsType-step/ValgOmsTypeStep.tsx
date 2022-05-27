@@ -16,28 +16,28 @@ const ValgOmsTypeStep = ({ onValidSubmit }: StepConfigProps) => {
             <FormBlock>
                 <ApplicationFormComponents.RadioGroup
                     name={ApplicationFormField.søknadstype}
-                    legend={intlHelper(intl, 'step.omstype.søknadstype.spm')}
+                    legend={intlHelper(intl, 'step.omsorgspenger_type.søknadstype.spm')}
                     validate={getRequiredFieldValidator()}
                     radios={[
                         {
                             value: ApplicationType.ekstraomsorgsdager,
-                            label: intlHelper(intl, 'step.omstype.radio.label.ekstraomsorgsdager'),
+                            label: intlHelper(intl, 'step.omsorgspenger_type.radio.label.ekstraomsorgsdager'),
                         },
                         {
                             value: ApplicationType.utbetaling,
-                            label: intlHelper(intl, 'step.omstype.radio.label.utbetaling'),
+                            label: intlHelper(intl, 'step.omsorgspenger_type.radio.label.utbetaling'),
                         },
                         {
                             value: ApplicationType.utbetalingarbeidstaker,
-                            label: intlHelper(intl, 'step.omstype.radio.label.utbetalingarbeidstaker'),
+                            label: intlHelper(intl, 'step.omsorgspenger_type.radio.label.utbetalingarbeidstaker'),
                         },
                         {
                             value: ApplicationType.regnetsomalene,
-                            label: intlHelper(intl, 'step.omstype.radio.label.regnetsomalene'),
+                            label: intlHelper(intl, 'step.omsorgspenger_type.radio.label.regnetsomalene'),
                         },
                         {
                             value: ApplicationType.deling,
-                            label: intlHelper(intl, 'step.omstype.radio.label.deling'),
+                            label: intlHelper(intl, 'step.omsorgspenger_type.radio.label.deling'),
                         },
                     ]}
                 />

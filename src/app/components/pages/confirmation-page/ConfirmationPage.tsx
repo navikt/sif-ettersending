@@ -1,3 +1,4 @@
+import { Heading, Ingress, Link } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
@@ -6,11 +7,9 @@ import CheckmarkIcon from '@navikt/sif-common-core/lib/components/checkmark-icon
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import Lenke from 'nav-frontend-lenker';
-import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
-import './confirmationPage.less';
 import getLenker from '../../../lenker';
 import { ApplicationType } from '../../../types/ApplicationType';
+import './confirmationPage.less';
 
 interface Props {
     søknadstype: ApplicationType;
@@ -29,9 +28,9 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
             <div className={bem.element('centeredContent')}>
                 <CheckmarkIcon />
                 <Box margin="xl">
-                    <Innholdstittel>
+                    <Heading level="1" size="large">
                         <FormattedMessage id="page.confirmation.tittel" />
-                    </Innholdstittel>
+                    </Heading>
                 </Box>
             </div>
             <Box margin="xl">
@@ -39,9 +38,9 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                     <ul className="checklist">
                         <li>
                             <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
-                            <Lenke href={getLenker().INNSYN_PP} target="_blank">
+                            <Link href={getLenker().INNSYN_PP} target="_blank">
                                 <FormattedMessage id="page.confirmation.check.1.pp.lenke" />
-                            </Lenke>
+                            </Link>
                         </li>
                     </ul>
                 )}
@@ -61,11 +60,11 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                             </li>
                             <li>
                                 <FormattedMessage id="page.confirmation.check.3.1" />{' '}
-                                <Lenke
+                                <Link
                                     href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
                                     target="_blank">
                                     <FormattedMessage id="page.confirmation.check.3.2" />
-                                </Lenke>
+                                </Link>
                                 .
                             </li>
                         </ul>

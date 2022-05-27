@@ -1,11 +1,9 @@
+import { Alert, BodyLong, GuidePanel } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
-import FileUploadErrors from '@navikt/sif-common-core/lib/components/file-upload-errors/FileUploadErrors';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import PictureScanningGuide from '@navikt/sif-common-core/lib/components/picture-scanning-guide/PictureScanningGuide';
 import {
     getTotalSizeOfAttachments,
     MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
@@ -15,11 +13,12 @@ import { useFormikContext } from 'formik';
 import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
+import PictureScanningGuide from '../../sif-common-core-ds/components/picture-scanning-guide/PictureScanningGuide';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
-import { Alert } from '@navikt/ds-react';
+import FileUploadErrors from '../../sif-common-core-ds/components/file-upload-errors/FileUploadErrors';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -42,8 +41,8 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             onValidFormSubmit={onValidSubmit}
             useValidationErrorSummary={true}
             buttonDisabled={hasPendingUploads || sizeOver24Mb}>
-            <CounsellorPanel type={'normal'}>
-                <div>
+            <GuidePanel>
+                <BodyLong as="div">
                     <Box padBottom={'l'}>
                         <FormattedMessage id={'steg.dokumenter.infopanel.1'} />
                     </Box>
@@ -53,8 +52,8 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
                     <Box>
                         <FormattedMessage id={'steg.dokumenter.infopanel.3'} />
                     </Box>
-                </div>
-            </CounsellorPanel>
+                </BodyLong>
+            </GuidePanel>
             <Box margin={'l'}>
                 <PictureScanningGuide />
             </Box>

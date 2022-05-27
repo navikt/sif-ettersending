@@ -44,16 +44,17 @@ const ApplicationStep = (props: Props) => {
                 includeValidationSummary={true}
                 formErrorHandler={getIntlFormErrorHandler(intl, 'validation')}
                 formFooter={
-                    <FormBlock>
-                        <Button
-                            variant="primary"
-                            type="submit"
-                            loading={showButtonSpinner}
-                            className={'step__button'}
-                            disabled={buttonDisabled || false}>
-                            {texts.nextButtonLabel}
-                        </Button>
-                    </FormBlock>
+                    <div className="text-center">
+                        <FormBlock>
+                            <Button
+                                variant="primary"
+                                type="submit"
+                                loading={showButtonSpinner}
+                                disabled={buttonDisabled || false}>
+                                {texts.nextButtonLabel}
+                            </Button>
+                        </FormBlock>
+                    </div>
                 }>
                 {children}
                 {customErrorSummary && <FormBlock>{customErrorSummary()}</FormBlock>}

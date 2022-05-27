@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Attachment, PersistedFile } from '@navikt/sif-common-core/lib/types/Attachment';
+import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
 import {
     attachmentShouldBeProcessed,
     attachmentShouldBeUploaded,
@@ -16,7 +17,6 @@ import ApplicationFormComponents from '../../application/ApplicationFormComponen
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { ApplicationType } from '../../types/ApplicationType';
 import appSentryLogger from '../../utils/appSentryLogger';
-import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
 
 export type FieldArrayReplaceFn = (index: number, value: any) => void;
 export type FieldArrayPushFn = (obj: any) => void;
@@ -121,7 +121,6 @@ const FormikFileUploader = ({
     }
 
     return (
-        // <ApplicationFormComponents.InputGroup name={groupName} legend="Dokumenter">
         <ApplicationFormComponents.FileInput
             name={name}
             legend="Dokumenter"
@@ -133,7 +132,6 @@ const FormikFileUploader = ({
             onClick={onFileInputClick}
             {...otherProps}
         />
-        // </ApplicationFormComponents.InputGroup>
     );
 };
 

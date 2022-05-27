@@ -19,7 +19,6 @@ const ApplicationWrapper = ({ locale, children, onChangeLocale }: ApplicationWra
     return (
         <IntlProvider locale={locale}>
             {isFeatureEnabled(Feature.NYNORSK) && <LanguageToggle locale={locale} toggle={onChangeLocale} />}
-
             <Router basename={getEnvironmentVariable('PUBLIC_PATH')}>
                 {children}
                 <ApplicationMessages messages={appMessages} title="Ettersending av dokumenter" />
