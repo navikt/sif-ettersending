@@ -7,8 +7,8 @@ import { MAX_BESKRIVELSE_LENGTH, MIN_BESKRIVELSE_LENGTH } from '../../validation
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import Lenke from 'nav-frontend-lenker';
 import { getStringValidator } from '@navikt/sif-common-formik-ds/lib/validation';
+import { Link } from '@navikt/ds-react';
 
 const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -54,12 +54,12 @@ const BeskrivelseStep = ({ onValidSubmit }: StepConfigProps) => {
                                     id="step.beskrivelse.intro.2"
                                     values={{
                                         kontaktMedOssLink: (
-                                            <Lenke
+                                            <Link
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 href={'https://www.nav.no/person/kontakt-oss/nb/'}>
                                                 <FormattedMessage id="step.beskrivelse.intro.2.1" />
-                                            </Lenke>
+                                            </Link>
                                         ),
                                     }}
                                 />

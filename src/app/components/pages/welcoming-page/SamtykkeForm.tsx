@@ -1,22 +1,19 @@
+import { Button } from '@navikt/ds-react';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import bemHelper from '@navikt/sif-common-core/lib/utils/bemUtils';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
-import { Hovedknapp } from 'nav-frontend-knapper';
 import Lenke from 'nav-frontend-lenker';
 import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
 import { ApplicationFormField } from '../../../types/ApplicationFormData';
-import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 
 interface Props {
     onConfirm: () => void;
     onOpenDinePlikterModal: () => void;
     openBehandlingAvPersonopplysningerModal: () => void;
 }
-
-const bem = bemHelper('welcomingPage');
 
 const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPersonopplysningerModal }: Props) => {
     const intl = useIntl();
@@ -44,12 +41,12 @@ const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPerso
                     </ApplicationFormComponents.ConfirmationCheckbox>
                 </FormBlock>
                 <FormBlock>
-                    <Hovedknapp className={bem.element('startApplicationButton')}>
-                        {intlHelper(intl, 'step.button.gåVidere')}
-                    </Hovedknapp>
+                    <div className="text-center">
+                        <Button>{intlHelper(intl, 'step.button.gåVidere')}</Button>
+                    </div>
                 </FormBlock>
                 <FormBlock>
-                    <div className={bem.element('personopplysningModalLenke')}>
+                    <div className="text-center">
                         <Lenke href="#" onClick={openBehandlingAvPersonopplysningerModal}>
                             <FormattedMessage id="welcomingPage.personopplysninger.lenketekst" />
                         </Lenke>

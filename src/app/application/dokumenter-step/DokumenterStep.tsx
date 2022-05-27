@@ -12,7 +12,6 @@ import {
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { useFormikContext } from 'formik';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
@@ -20,6 +19,7 @@ import { ApplicationFormData, ApplicationFormField } from '../../types/Applicati
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
+import { Alert } from '@navikt/ds-react';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -77,9 +77,9 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
 
             {totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
                 <Box margin={'l'}>
-                    <AlertStripeAdvarsel>
+                    <Alert variant="warning">
                         <FormattedMessage id={'steg.dokumenter.advarsel.totalstørrelse'} />
-                    </AlertStripeAdvarsel>
+                    </Alert>
                 </Box>
             )}
 

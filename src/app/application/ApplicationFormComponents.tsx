@@ -3,7 +3,7 @@ import { ValidationError } from '@navikt/sif-common-formik-ds/lib/validation/typ
 import { ApplicationFormData, ApplicationFormField } from '../types/ApplicationFormData';
 
 /**
- * Lager typed nav-frontend-skjema komponenter med formik
+ * Lager typed skjema komponenter med formik
  * @navikt/sif-common-formik-ds
  */
 const ApplicationFormComponents = getTypedFormComponents<ApplicationFormField, ApplicationFormData, ValidationError>();

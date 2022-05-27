@@ -24,13 +24,14 @@ const webpackConfig = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
             },
             {
                 test: /\.less$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
+                    'postcss-loader',
                     {
                         loader: 'less-loader',
                         options: {
@@ -43,14 +44,7 @@ const webpackConfig = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    'style-loader',
-                    // Translates CSS into CommonJS
-                    'css-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-                ],
+                use: ['style-loader', 'css-loader', 'less-loader', 'sass-loader'],
             },
         ],
     },

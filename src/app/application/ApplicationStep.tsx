@@ -4,12 +4,12 @@ import { useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { Knapp } from 'nav-frontend-knapper';
 import Step, { StepProps } from '../components/step/Step';
 import { getStepConfig } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { getStepTexts } from '../utils/stepUtils';
 import ApplicationFormComponents from './ApplicationFormComponents';
+import { Button } from '@navikt/ds-react';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -45,14 +45,14 @@ const ApplicationStep = (props: Props) => {
                 formErrorHandler={getIntlFormErrorHandler(intl, 'validation')}
                 formFooter={
                     <FormBlock>
-                        <Knapp
-                            type="hoved"
-                            htmlType="submit"
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            loading={showButtonSpinner}
                             className={'step__button'}
-                            spinner={showButtonSpinner || false}
                             disabled={buttonDisabled || false}>
                             {texts.nextButtonLabel}
-                        </Knapp>
+                        </Button>
                     </FormBlock>
                 }>
                 {children}
