@@ -1,4 +1,4 @@
-import { BodyLong, GuidePanel } from '@navikt/ds-react';
+import { BodyLong, GuidePanel, Panel } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
@@ -11,7 +11,6 @@ import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import { useFormikContext } from 'formik';
-import Panel from 'nav-frontend-paneler';
 import { sendApplication } from '../../api/api';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { getRouteConfig } from '../../config/routeConfig';

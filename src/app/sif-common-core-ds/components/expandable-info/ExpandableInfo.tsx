@@ -1,7 +1,7 @@
 import { Alert } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
-import { guid } from 'nav-frontend-js-utils';
+import { v4 as uuid } from 'uuid';
 import CollapsableContainer from './CollapsableContainer';
 import InfoToggleButton from './InfoToggleButton';
 import './expandableInfo.less';
@@ -18,7 +18,7 @@ const bem = bemUtils('expandableInfo');
 
 const ExpandableInfo = ({ children, initialOpen, closeTitle, title, filledBackground = true }: Props) => {
     const [isOpen, setIsOpen] = useState<boolean>(initialOpen || false);
-    const [toggleContentId] = useState(guid());
+    const [toggleContentId] = useState(uuid());
 
     return (
         <div className={bem.block}>

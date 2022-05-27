@@ -5,8 +5,8 @@ import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import './unavailablePage.less';
+import { Alert, BodyLong } from '@navikt/ds-react';
 
 const bem = bemUtils('introPage');
 
@@ -16,14 +16,16 @@ const UnavailablePage = () => {
     return (
         <Page className={bem.block} title={title} topContentRenderer={() => <StepBanner text={title} />}>
             <Box margin="xxxl">
-                <AlertStripeAdvarsel>
-                    <p>
-                        <FormattedMessage id="page.unavailable.info.1" />
-                    </p>
-                    <p>
-                        <FormattedMessage id="page.unavailable.info.2" />
-                    </p>
-                </AlertStripeAdvarsel>
+                <Alert variant="warning">
+                    <BodyLong as="div">
+                        <p>
+                            <FormattedMessage id="page.unavailable.info.1" />
+                        </p>
+                        <p>
+                            <FormattedMessage id="page.unavailable.info.2" />
+                        </p>
+                    </BodyLong>
+                </Alert>
             </Box>
         </Page>
     );

@@ -1,11 +1,10 @@
-import { Button } from '@navikt/ds-react';
+import { Button, Link } from '@navikt/ds-react';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
-import Lenke from 'nav-frontend-lenker';
 import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
 import { ApplicationFormField } from '../../../types/ApplicationFormData';
 
@@ -32,9 +31,9 @@ const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPerso
                             id="welcomingPage.samtykke.harForståttLabel"
                             values={{
                                 plikterLink: (
-                                    <Lenke href="#" onClick={onOpenDinePlikterModal}>
+                                    <Link href="#" onClick={onOpenDinePlikterModal}>
                                         {intlHelper(intl, 'welcomingPage.samtykke.harForståttLabel.lenketekst')}
-                                    </Lenke>
+                                    </Link>
                                 ),
                             }}
                         />
@@ -47,9 +46,9 @@ const SamtykkeForm = ({ onConfirm, onOpenDinePlikterModal, openBehandlingAvPerso
                 </FormBlock>
                 <FormBlock>
                     <div className="text-center">
-                        <Lenke href="#" onClick={openBehandlingAvPersonopplysningerModal}>
+                        <Link href="#" onClick={openBehandlingAvPersonopplysningerModal}>
                             <FormattedMessage id="welcomingPage.personopplysninger.lenketekst" />
-                        </Lenke>
+                        </Link>
                     </div>
                 </FormBlock>
             </FormBlock>

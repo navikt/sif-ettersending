@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IntlShape, useIntl } from 'react-intl';
-import NAVStepIndicator from 'nav-frontend-stegindikator/lib/stegindikator';
+import StegIndikator from 'nav-frontend-stegindikator/lib/stegindikator';
 import { default as Step } from 'nav-frontend-stegindikator/lib/stegindikator-steg';
 import { StepConfigInterface } from '../../../config/stepConfig';
 import { getStepTexts } from '../../../utils/stepUtils';
@@ -20,9 +20,9 @@ const renderSteps = (stepConfig: StepConfigInterface, intl: IntlShape) =>
 const StepIndicator = ({ activeStep, stepConfig }: Props) => {
     const intl = useIntl();
     return (
-        <NAVStepIndicator visLabel={false} autoResponsiv={false} aktivtSteg={activeStep}>
+        <StegIndikator visLabel={false} autoResponsiv={false} aktivtSteg={activeStep}>
             {renderSteps(stepConfig, intl)}
-        </NAVStepIndicator>
+        </StegIndikator>
     );
 };
 
