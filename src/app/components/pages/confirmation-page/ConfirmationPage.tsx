@@ -1,4 +1,4 @@
-import { Heading, Ingress, Link } from '@navikt/ds-react';
+import { BodyLong, Heading, Ingress, Link } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
@@ -33,44 +33,46 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                     </Heading>
                 </Box>
             </div>
-            <Box margin="xl">
-                {søknadstype === ApplicationType.pleiepengerBarn && (
-                    <ul className="checklist">
-                        <li>
-                            <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
-                            <Link href={getLenker().INNSYN_PP} target="_blank">
-                                <FormattedMessage id="page.confirmation.check.1.pp.lenke" />
-                            </Link>
-                        </li>
-                    </ul>
-                )}
-                {søknadstype !== ApplicationType.pleiepengerBarn && (
-                    <>
-                        <Box padBottom="m">
-                            <Ingress>
-                                <FormattedMessage id="page.confirmation.undertittel" />
-                            </Ingress>
-                        </Box>
+            <BodyLong as="div">
+                <Box margin="xl">
+                    {søknadstype === ApplicationType.pleiepengerBarn && (
                         <ul className="checklist">
                             <li>
-                                <FormattedMessage id="page.confirmation.check.1" />{' '}
-                            </li>
-                            <li>
-                                <FormattedMessage id="page.confirmation.check.2" />
-                            </li>
-                            <li>
-                                <FormattedMessage id="page.confirmation.check.3.1" />{' '}
-                                <Link
-                                    href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
-                                    target="_blank">
-                                    <FormattedMessage id="page.confirmation.check.3.2" />
+                                <FormattedMessage id="page.confirmation.check.1.pp" />{' '}
+                                <Link href={getLenker().INNSYN_PP} target="_blank">
+                                    <FormattedMessage id="page.confirmation.check.1.pp.lenke" />
                                 </Link>
-                                .
                             </li>
                         </ul>
-                    </>
-                )}
-            </Box>
+                    )}
+                    {søknadstype !== ApplicationType.pleiepengerBarn && (
+                        <>
+                            <Box padBottom="m">
+                                <Ingress>
+                                    <FormattedMessage id="page.confirmation.undertittel" />
+                                </Ingress>
+                            </Box>
+                            <ul className="checklist">
+                                <li>
+                                    <FormattedMessage id="page.confirmation.check.1" />{' '}
+                                </li>
+                                <li>
+                                    <FormattedMessage id="page.confirmation.check.2" />
+                                </li>
+                                <li>
+                                    <FormattedMessage id="page.confirmation.check.3.1" />{' '}
+                                    <Link
+                                        href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
+                                        target="_blank">
+                                        <FormattedMessage id="page.confirmation.check.3.2" />
+                                    </Link>
+                                    .
+                                </li>
+                            </ul>
+                        </>
+                    )}
+                </Box>
+            </BodyLong>
         </Page>
     );
 };
