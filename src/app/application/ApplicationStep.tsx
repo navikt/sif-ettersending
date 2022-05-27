@@ -18,7 +18,6 @@ export interface FormikStepProps {
     buttonDisabled?: boolean;
     onValidFormSubmit?: () => void;
     skipValidation?: boolean;
-    customErrorSummary?: () => React.ReactNode;
 }
 
 type Props = FormikStepProps & StepProps;
@@ -33,7 +32,7 @@ const ApplicationStep = (props: Props) => {
 
     useLogSidevisning(props.id);
 
-    const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, customErrorSummary, id } = props;
+    const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, id } = props;
     const stepConfig = getStepConfig(søknadstype);
     const texts = getStepTexts(intl, id, stepConfig);
     return (
@@ -57,7 +56,6 @@ const ApplicationStep = (props: Props) => {
                     </div>
                 }>
                 {children}
-                {customErrorSummary && <FormBlock>{customErrorSummary()}</FormBlock>}
             </ApplicationFormComponents.Form>
         </Step>
     );
