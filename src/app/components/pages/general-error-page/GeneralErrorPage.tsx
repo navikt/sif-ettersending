@@ -1,9 +1,9 @@
 import { GuidePanel, Heading, Ingress } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import Page from '../../../sif-common-core-ds/components/page/Page';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
+import Page from 'sif-common-core-ds/components/page/Page';
 import VeilederLokal from './VeilederLokal';
 import './generalErrorPage.less';
 
@@ -16,11 +16,11 @@ const GeneralErrorPage = () => {
                     <Heading level="2" size="large">
                         <FormattedMessage id="page.generalErrorPage.tittel" />
                     </Heading>
-                    <Box margin="m" padBottom="l">
+                    <Block margin="m" padBottom="l">
                         <Ingress>
                             <FormattedMessage id="page.generalErrorPage.tekst" />
                         </Ingress>
-                    </Box>
+                    </Block>
                 </GuidePanel>
             </div>
         </Page>

@@ -3,11 +3,11 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { ExternalLink } from '@navikt/ds-icons';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import ExpandableInfo from '../expandable-info/ExpandableInfo';
+import ExpandableInfo from '../../components/expandable-info/ExpandableInfo';
 import PictureScanningExample from './PictureScanningExample';
 import ScanningIcon from './scanning-icon/ScanningIcon';
 import './pictureScanningGuide.less';
+import intlHelper from '../../utils/intlUtils';
 
 const bem = bemUtils('pictureScanningGuide');
 

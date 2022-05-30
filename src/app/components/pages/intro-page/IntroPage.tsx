@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 import { getTypedFormComponents } from '@navikt/sif-common-formik-ds/lib';
 import { getRequiredFieldValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
 import { ValidationError } from '@navikt/sif-common-formik-ds/lib/validation/types';
-import PageBanner from '../../../sif-common-core-ds/components/page/page-banner/PageBanner';
+import PageBanner from 'sif-common-core-ds/components/page/page-banner/PageBanner';
 import { ApplicationType } from '../../../types/ApplicationType';
 import { Feature, isFeatureEnabled } from '../../../utils/featureToggleUtils';
 import { navigateToWelcomePage } from '../../../utils/navigationUtils';
@@ -64,14 +64,14 @@ const IntroPage = () => {
                         <PageForm.Form
                             formErrorHandler={getIntlFormErrorHandler(intl, 'page.intro')}
                             submitButtonLabel={intlHelper(intl, 'step.button.gåVidere')}>
-                            <Box margin="xl">
+                            <Block margin="xl">
                                 <PageForm.RadioGroup
                                     name={PageFormField.søknadstype}
                                     legend={intlHelper(intl, 'page.intro.hvilkenTypeSøknad')}
                                     radios={getSøknadstyper(intl)}
                                     validate={getRequiredFieldValidator()}
                                 />
-                            </Box>
+                            </Block>
                         </PageForm.Form>
                     );
                 }}

@@ -1,20 +1,19 @@
 import { Heading } from '@navikt/ds-react';
 import React from 'react';
-import Box, { BoxMargin } from '@navikt/sif-common-core/lib/components/box/Box';
+import Block, { BlockProps } from 'sif-common-core-ds/components/layout/block/Block';
 
-interface Props {
+interface Props extends BlockProps {
     header: string;
     children: React.ReactElement<any> | Array<React.ReactElement<any>> | React.ReactNode;
-    margin?: BoxMargin;
 }
 
 const SummaryBlock = ({ header, children, margin = 'l' }: Props) => (
-    <Box margin={margin}>
+    <Block margin={margin}>
         <Heading size="small" level="3" spacing={true}>
             {header}
         </Heading>
         {children}
-    </Box>
+    </Block>
 );
 
 export default SummaryBlock;

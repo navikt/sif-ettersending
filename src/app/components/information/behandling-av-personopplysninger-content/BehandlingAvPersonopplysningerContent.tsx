@@ -1,7 +1,7 @@
 import { BodyLong, Heading, Link } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import getLenker from '../../../lenker';
 import { ApplicationType } from '../../../types/ApplicationType';
 
@@ -17,10 +17,10 @@ const BehandlingAvPersonopplysningerContent = ({ søknadstype }: Props) => {
                 <FormattedMessage id="modal.personopplysninger.1" />
             </Heading>
             <BodyLong as="div">
-                <Box margin="xl">
+                <Block margin="xl">
                     <FormattedMessage id="modal.personopplysninger.2" />
-                </Box>
-                <Box margin="xl">
+                </Block>
+                <Block margin="xl">
                     <Heading size="medium" level="2">
                         <FormattedMessage id="modal.personopplysninger.3" />
                     </Heading>
@@ -58,15 +58,15 @@ const BehandlingAvPersonopplysningerContent = ({ søknadstype }: Props) => {
                             <FormattedMessage id="modal.personopplysninger.4.6" />
                         </li>
                     </ul>
-                </Box>
+                </Block>
                 {søknadstype === ApplicationType.pleiepengerLivetsSluttfase && (
-                    <Box margin="xl">
+                    <Block margin="xl">
                         <p>
                             <FormattedMessage id="modal.personopplysninger.4.7" />
                         </p>
-                    </Box>
+                    </Block>
                 )}
-                <Box margin="xl">
+                <Block margin="xl">
                     <p>
                         <FormattedMessage id="modal.personopplysninger.5.1" />
                         {` `}
@@ -75,7 +75,7 @@ const BehandlingAvPersonopplysningerContent = ({ søknadstype }: Props) => {
                         </Link>
                         <FormattedMessage id="modal.personopplysninger.5.3" />
                     </p>
-                </Box>
+                </Block>
             </BodyLong>
         </>
     );

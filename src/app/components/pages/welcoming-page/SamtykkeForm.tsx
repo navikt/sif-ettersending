@@ -2,11 +2,11 @@ import { Button, Link } from '@navikt/ds-react';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import getIntlFormErrorHandler from '@navikt/sif-common-formik-ds/lib/validation/intlFormErrorHandler';
 import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
 import { ApplicationFormField } from '../../../types/ApplicationFormData';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 
 interface Props {
     onConfirm: () => void;

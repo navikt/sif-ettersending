@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 import { ApplicationType } from '../../../types/ApplicationType';
 
 interface Props {
@@ -21,13 +21,13 @@ const IkkeTilgangPage = ({ søknadstype }: Props) => {
             className="ikkeTilgangPage"
             title={intlHelper(intl, `application.title.${søknadstype}`)}
             topContentRenderer={() => <StepBanner text={intlHelper(intl, `application.title.${søknadstype}`)} />}>
-            <Box margin="xxl">
+            <Block margin="xxl">
                 <CounsellorPanel type="plakat">
                     <p>
                         <FormattedMessage id="page.ikkeTilgang.tekst" />
                     </p>
                 </CounsellorPanel>
-            </Box>
+            </Block>
         </Page>
     );
 };

@@ -13,13 +13,19 @@ const webpackConfig = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
-        alias: {},
+        alias: {
+            ['sif-common-core-ds']: path.resolve(__dirname, './../../sif-common-core-ds'),
+        },
     },
+
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                include: [path.resolve(__dirname, './../../app'), path.resolve(__dirname, './../../common')],
+                include: [
+                    path.resolve(__dirname, './../../app'),
+                    path.resolve(__dirname, './../../sif-common-core-ds'),
+                ],
                 loader: require.resolve('ts-loader'),
             },
             {

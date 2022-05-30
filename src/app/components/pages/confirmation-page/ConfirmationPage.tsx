@@ -2,11 +2,11 @@ import { BodyLong, Heading, Ingress, Link } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import CheckmarkIcon from '@navikt/sif-common-core/lib/components/checkmark-icon/CheckmarkIcon';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 import getLenker from '../../../lenker';
 import { ApplicationType } from '../../../types/ApplicationType';
 import './confirmationPage.less';
@@ -27,14 +27,14 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
         <Page title={intlHelper(intl, 'page.confirmation.sidetittel')} className={bem.block}>
             <div className={bem.element('centeredContent')}>
                 <CheckmarkIcon />
-                <Box margin="xl">
+                <Block margin="xl">
                     <Heading level="1" size="large">
                         <FormattedMessage id="page.confirmation.tittel" />
                     </Heading>
-                </Box>
+                </Block>
             </div>
             <BodyLong as="div">
-                <Box margin="xl">
+                <Block margin="xl">
                     {søknadstype === ApplicationType.pleiepengerBarn && (
                         <ul className="checklist">
                             <li>
@@ -47,11 +47,11 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                     )}
                     {søknadstype !== ApplicationType.pleiepengerBarn && (
                         <>
-                            <Box padBottom="m">
+                            <Block padBottom="m">
                                 <Ingress>
                                     <FormattedMessage id="page.confirmation.undertittel" />
                                 </Ingress>
-                            </Box>
+                            </Block>
                             <ul className="checklist">
                                 <li>
                                     <FormattedMessage id="page.confirmation.check.1" />{' '}
@@ -71,7 +71,7 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                             </ul>
                         </>
                     )}
-                </Box>
+                </Block>
             </BodyLong>
         </Page>
     );

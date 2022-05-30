@@ -1,7 +1,7 @@
 import { IntlShape } from 'react-intl';
 import { ValidationSummaryError } from '@navikt/sif-common-core/lib/components/validation-error-summary-base/ValidationErrorSummaryBase';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { ApplicationApiData } from '../types/ApplicationApiData';
+import intlHelper from '../../sif-common-core-ds/utils/intlUtils';
 
 export const apiVedleggIsInvalid = (vedlegg: string[]): boolean => {
     vedlegg.find((v) => {

@@ -2,23 +2,23 @@ import { Alert, BodyLong, GuidePanel } from '@navikt/ds-react';
 import * as React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     getTotalSizeOfAttachments,
     MAX_TOTAL_ATTACHMENT_SIZE_BYTES,
 } from '@navikt/sif-common-core/lib/utils/attachmentUtils';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 import { useFormikContext } from 'formik';
 import FormikFileUploader from '../../components/formik-file-uploader/FormikFileUploader';
 import UploadedDocumentsList from '../../components/uploaded-documents-list/UploadedDocumentsList';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import PictureScanningGuide from '../../sif-common-core-ds/components/picture-scanning-guide/PictureScanningGuide';
+import PictureScanningGuide from 'sif-common-core-ds/content/picture-scanning-guide/PictureScanningGuide';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import { navigateToLoginPage } from '../../utils/navigationUtils';
 import { validateDocuments } from '../../validation/fieldValidations';
 import ApplicationStep from '../ApplicationStep';
-import FileUploadErrors from '../../sif-common-core-ds/components/file-upload-errors/FileUploadErrors';
+import FileUploadErrors from 'sif-common-core-ds/components/file-upload-errors/FileUploadErrors';
 
 const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
     const intl = useIntl();
@@ -43,20 +43,22 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             buttonDisabled={hasPendingUploads || sizeOver24Mb}>
             <GuidePanel>
                 <BodyLong as="div">
-                    <Box padBottom={'l'}>
+                    <p>
                         <FormattedMessage id={'steg.dokumenter.infopanel.1'} />
-                    </Box>
-                    <Box padBottom={'l'}>
+                    </p>
+                    <p>
                         <FormattedMessage id={'steg.dokumenter.infopanel.2'} />
-                    </Box>
-                    <Box>
+                    </p>
+                    <p>
                         <FormattedMessage id={'steg.dokumenter.infopanel.3'} />
-                    </Box>
+                    </p>
                 </BodyLong>
             </GuidePanel>
-            <Box margin={'l'}>
+
+            <Block margin="l">
                 <PictureScanningGuide />
-            </Box>
+            </Block>
+
             {totalSize <= MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
                 <FormBlock>
                     <FormikFileUploader
@@ -75,19 +77,19 @@ const DokumenterStep = ({ onValidSubmit, søknadstype }: StepConfigProps) => {
             )}
 
             {totalSize > MAX_TOTAL_ATTACHMENT_SIZE_BYTES && (
-                <Box margin={'l'}>
+                <Block margin="l">
                     <Alert variant="warning">
                         <FormattedMessage id={'steg.dokumenter.advarsel.totalstørrelse'} />
                     </Alert>
-                </Box>
+                </Block>
             )}
 
-            <Box margin="m">
+            <Block margin="m">
                 <FileUploadErrors filesThatDidntGetUploaded={filesThatDidntGetUploaded} />
-            </Box>
-            <Box margin="l">
+            </Block>
+            <Block margin="l">
                 <UploadedDocumentsList wrapNoAttachmentsInBox={true} includeDeletionFunctionality={true} />
-            </Box>
+            </Block>
         </ApplicationStep>
     );
 };

@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { useAmplitudeInstance } from '@navikt/sif-common-amplitude/lib';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import TextareaSummary from '@navikt/sif-common-core/lib/components/textarea-summary/TextareaSummary';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import { isForbidden, isUnauthorized } from '@navikt/sif-common-core/lib/utils/apiUtils';
-import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
+import intlHelper from 'sif-common-core-ds/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { getCheckedValidator } from '@navikt/sif-common-formik-ds/lib/validation';
 import { useFormikContext } from 'formik';
@@ -86,7 +86,7 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                     <FormattedMessage id="steg.oppsummering.info" />
                 </BodyLong>
             </GuidePanel>
-            <Box margin="xl">
+            <Block margin="xl">
                 <Panel border={true}>
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
                         <div>{formatName(fornavn, etternavn, mellomnavn)}</div>
@@ -109,15 +109,15 @@ const OppsummeringStep = ({ onApplicationSent, søknadstype }: Props) => {
                         <UploadedDocumentsList includeDeletionFunctionality={false} />
                     </SummaryBlock>
                 </Panel>
-            </Box>
+            </Block>
 
-            <Box margin="l">
+            <Block margin="l">
                 <ApplicationFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
                     name={ApplicationFormField.harBekreftetOpplysninger}
                     validate={getCheckedValidator()}
                 />
-            </Box>
+            </Block>
         </ApplicationStep>
     );
 };

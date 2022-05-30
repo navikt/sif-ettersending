@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SIFCommonPageKey, useLogSidevisning } from '@navikt/sif-common-amplitude/lib';
-import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import Block from 'sif-common-core-ds/components/layout/block/Block';
 import Page from '@navikt/sif-common-core/lib/components/page/Page';
 import StepBanner from '@navikt/sif-common-core/lib/components/step-banner/StepBanner';
 import bemUtils from '@navikt/sif-common-core/lib/utils/bemUtils';
@@ -15,7 +15,7 @@ const UnavailablePage = () => {
     useLogSidevisning(SIFCommonPageKey.ikkeTilgjengelig);
     return (
         <Page className={bem.block} title={title} topContentRenderer={() => <StepBanner text={title} />}>
-            <Box margin="xxxl">
+            <Block margin="xxxl">
                 <Alert variant="warning">
                     <BodyLong as="div">
                         <p>
@@ -26,7 +26,7 @@ const UnavailablePage = () => {
                         </p>
                     </BodyLong>
                 </Alert>
-            </Box>
+            </Block>
         </Page>
     );
 };
