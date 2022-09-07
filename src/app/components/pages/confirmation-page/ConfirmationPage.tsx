@@ -65,8 +65,8 @@ const ConfirmationPage = ({ søknadstype }: Props) => {
                                     href="https://www.nav.no/no/NAV+og+samfunn/Om+NAV/Saksbehandlingstider+i+NAV"
                                     target="_blank">
                                     <FormattedMessage id="page.confirmation.check.3.2" />
-                                </Lenke>
-                                .
+                                </Lenke>{' '}
+                                <FormattedMessage id="page.confirmation.check.3.3" />.
                             </li>
                         </ul>
                     </>
