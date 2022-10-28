@@ -19,7 +19,7 @@
         "prepare": "npm run snyk-protect"
     },
     "dependencies": {
-        "@formatjs/intl-pluralrules": "^4.3.3",
+        "@formatjs/intl-pluralrules": "^5.1.4",
         "@navikt/sif-common-amplitude": "^2.5.2",
         "@navikt/sif-common-core": "^11.1.0",
         "@navikt/sif-common-formik": "^21.0.2",
