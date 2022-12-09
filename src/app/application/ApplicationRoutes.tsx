@@ -6,7 +6,7 @@ import ConfirmationPage from '../components/pages/confirmation-page/Confirmation
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
 import { getRouteConfig, getRouteUrl } from '../config/routeConfig';
-import { StepID, getFirstStep } from '../config/stepConfig';
+import { getFirstStep, StepID } from '../config/stepConfig';
 import { ApplicationTypeContext } from '../context/ApplicationTypeContext';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { ApplicationType } from '../types/ApplicationType';
