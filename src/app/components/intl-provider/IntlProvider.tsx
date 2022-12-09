@@ -4,12 +4,14 @@ import '@formatjs/intl-pluralrules/locale-data/nb';
 import '@formatjs/intl-pluralrules/locale-data/nn';
 import '@formatjs/intl-pluralrules/polyfill';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
+import { allCommonMessages } from '@navikt/sif-common-core/lib/i18n/allCommonMessages';
+
 import { velkommenPageMessages } from '../pages/welcoming-page/velkommenPageMessages';
 
 const appBokmålstekster = require('../../i18n/nb.json');
 
 export const appMessages = {
-    nb: { ...appBokmålstekster, ...velkommenPageMessages.nb },
+    nb: { ...allCommonMessages.nb, ...appBokmålstekster, ...velkommenPageMessages.nb },
 };
 
 export interface IntlProviderProps {
