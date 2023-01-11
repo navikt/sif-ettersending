@@ -15,7 +15,7 @@
         "FRONTEND_API_PATH": "/api",
         "PUBLIC_PATH": "/familie/sykdom-i-familien/soknad/ettersending",
         "LOGIN_URL": "https://loginservice.dev.nav.no/login?redirect=https://k9-ettersending-soknad.dev.nav.no/familie/sykdom-i-familien/soknad/ettersending",
-        "NYNORSK": "on",
+        "NYNORSK": "off",
         "LIVETS_SLUTTFASE": "on",
         "INNSYN_PP": "https://sif-innsyn.dev.nav.no/familie/sykdom-i-familien/soknad/innsyn/dine-pleiepenger",
         "DITT_NAV_URL": "https://www.dev.nav.no/person/dittnav/",

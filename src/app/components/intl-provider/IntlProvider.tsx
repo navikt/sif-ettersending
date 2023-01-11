@@ -3,20 +3,16 @@ import { IntlProvider as Provider } from 'react-intl';
 import '@formatjs/intl-pluralrules/locale-data/nb';
 import '@formatjs/intl-pluralrules/locale-data/nn';
 import '@formatjs/intl-pluralrules/polyfill';
-import { allCommonMessages } from '@navikt/sif-common-core/lib/i18n/allCommonMessages';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
-import { getBokmålLocale, getNynorskLocale } from '@navikt/sif-common-core/lib/utils/localeUtils';
+import { allCommonMessages } from '@navikt/sif-common-core/lib/i18n/allCommonMessages';
+
+import { velkommenPageMessages } from '../pages/welcoming-page/velkommenPageMessages';
 
 const appBokmålstekster = require('../../i18n/nb.json');
-const appNynorsktekster = require('../../i18n/nn.json');
 
 export const appMessages = {
-    nb: appBokmålstekster,
-    nn: appNynorsktekster,
+    nb: { ...allCommonMessages.nb, ...appBokmålstekster, ...velkommenPageMessages.nb },
 };
-
-const bokmålstekster = { ...appBokmålstekster, ...allCommonMessages.nb };
-const nynorsktekster = { ...appNynorsktekster, ...allCommonMessages.nn };
 
 export interface IntlProviderProps {
     locale: Locale;
@@ -25,10 +21,8 @@ export interface IntlProviderProps {
 }
 
 const IntlProvider = ({ locale, children, onError }: IntlProviderProps) => {
-    const messages = locale === 'nb' ? bokmålstekster : nynorsktekster;
-    const localeToUse = locale === 'nb' ? getBokmålLocale() : getNynorskLocale();
     return (
-        <Provider locale={localeToUse} messages={messages} onError={onError}>
+        <Provider locale={'nb'} messages={appMessages.nb} onError={onError}>
             {children}
         </Provider>
     );
